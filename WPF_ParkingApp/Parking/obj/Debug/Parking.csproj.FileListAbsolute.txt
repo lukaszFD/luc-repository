@@ -1,0 +1,2 @@
+C:\Users\lukasz.dejko\Documents\GitHub\luc-repository\WPF_ParkingApp\CSharp\Parking\Parking\bin\Debug\Parking.exe.config
+C:\Users\lukasz.dejko\Documents\GitHub\luc-repository\WPF_ParkingApp\Parking\bin\Debug\Parking.exe.config
