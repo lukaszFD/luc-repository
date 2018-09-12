@@ -1,0 +1,2 @@
+C:\Users\lukasz.dejko\Documents\C# Project\HttpWebRequest_API\HttpWebRequest_API\bin\Debug\HttpWebRequest_API.exe.config
+C:\Projects\luc-repository\CA_HttpWebRequest_API\HttpWebRequest_API\bin\Debug\HttpWebRequest_API.exe.config
