@@ -1,0 +1,7 @@
+C:\Projects\luc-repository\WFA_ZipFileWithRandomPassword\CreateShortcut\bin\Debug\CreateShortcut.exe.config
+C:\Projects\luc-repository\WFA_ZipFileWithRandomPassword\CreateShortcut\bin\Debug\CreateShortcut.exe
+C:\Projects\luc-repository\WFA_ZipFileWithRandomPassword\CreateShortcut\bin\Debug\CreateShortcut.pdb
+C:\Projects\luc-repository\WFA_ZipFileWithRandomPassword\CreateShortcut\obj\Debug\Interop.IWshRuntimeLibrary.dll
+C:\Projects\luc-repository\WFA_ZipFileWithRandomPassword\CreateShortcut\obj\Debug\CreateShortcut.csproj.ResolveComReference.cache
+C:\Projects\luc-repository\WFA_ZipFileWithRandomPassword\CreateShortcut\obj\Debug\CreateShortcut.exe
+C:\Projects\luc-repository\WFA_ZipFileWithRandomPassword\CreateShortcut\obj\Debug\CreateShortcut.pdb
