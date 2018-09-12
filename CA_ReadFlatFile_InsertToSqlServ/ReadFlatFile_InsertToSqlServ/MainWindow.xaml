@@ -1,0 +1,26 @@
+﻿<Window x:Class="ReadFlatFile_InsertToSqlServ.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ReadFlatFile_InsertToSqlServ"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="200" Width="500">
+    <StackPanel>
+        <Border Padding="5" Background="Gray">
+            <Grid >
+                <Border Padding="25" Background="LightGray">
+                    <Grid >
+                        <Grid.ColumnDefinitions >
+                            <ColumnDefinition Width ="*"/>
+
+                        </Grid.ColumnDefinitions>
+
+                        <Button IsEnabled="True" Margin="0 0 0 0 " Grid.Column="0" FontWeight="Black" Content="start" x:Name="start" Background="Lime" Padding="10" Click="start_Click"/>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Border>
+    </StackPanel>
+
+</Window>
