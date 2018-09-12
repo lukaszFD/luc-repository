@@ -1,0 +1,24 @@
+Program ZipPassword.exe jest to proste narzêdzie do tworzenia plików ZIP z has³em. 
+
+*********************
+Instalacja programu :
+
+1.	Umieœæ folder „ZipPassword” na pulpicie.
+2.	Otwórz folder i uruchom podwójnym klikniêciem „CreateShortcut.exe” 
+3.	Na pulpicie stworzy siê skrót o nazwie „ZipPassword”
+4.	Poprzez powy¿szy skrót bêdziesz uruchamiaæ program. 
+5.      Mo¿esz skasowaæ folder z pulpitu. Wszystkie pliki niebiedne do poprawnego funkcjonowania aplikacji znajduj¹ siê w C:\ZipPassword.
+
+******************************
+Tworzenie pliku ZIP z has³em :
+1.	Klikaj¹c „Wybierz” definiujesz œcie¿kê do pliku który chcesz skompresowaæ. 
+2.	Wybierasz rodzaj has³a które bêdzie u¿yte (domyœlna wartoœæ to losowe znaki).
+3.	Wybierz si³ê has³a (domyœlnie has³o bêdzie mia³o 20 znaków)
+4.	W folderze którym znajdujê siê plik docelowy utworzy siê plik z rozszerzeniem .zip oraz plik Password.txt który zawiera has³o niezbêdne do odszyfrowania. 
+5.      Przed rozpoczêciem szyfrowania mo¿esz wybraæ opcje zamkniêcia programu po skoñczonej pracy. 
+
+*************
+Dobrej zabawy 
+
+Pozdr.
+£ukasz
