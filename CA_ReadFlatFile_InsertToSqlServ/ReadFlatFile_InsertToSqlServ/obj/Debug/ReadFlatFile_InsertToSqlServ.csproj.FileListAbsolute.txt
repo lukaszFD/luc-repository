@@ -1,0 +1,17 @@
+C:\Users\lukasz.dejko\Documents\C# Project\ReadFlatFile_InsertToSqlServ\ReadFlatFile_InsertToSqlServ\bin\Debug\ReadFlatFile_InsertToSqlServ.exe.config
+C:\Users\lukasz.dejko\Documents\C# Project\ReadFlatFile_InsertToSqlServ\ReadFlatFile_InsertToSqlServ\bin\Debug\ReadFlatFile_InsertToSqlServ.exe
+C:\Users\lukasz.dejko\Documents\C# Project\ReadFlatFile_InsertToSqlServ\ReadFlatFile_InsertToSqlServ\bin\Debug\ReadFlatFile_InsertToSqlServ.pdb
+C:\Users\lukasz.dejko\Documents\C# Project\ReadFlatFile_InsertToSqlServ\ReadFlatFile_InsertToSqlServ\obj\Debug\ReadFlatFile_InsertToSqlServ.csprojResolveAssemblyReference.cache
+C:\Users\lukasz.dejko\Documents\C# Project\ReadFlatFile_InsertToSqlServ\ReadFlatFile_InsertToSqlServ\obj\Debug\MainWindow.g.cs
+C:\Users\lukasz.dejko\Documents\C# Project\ReadFlatFile_InsertToSqlServ\ReadFlatFile_InsertToSqlServ\obj\Debug\App.g.cs
+C:\Users\lukasz.dejko\Documents\C# Project\ReadFlatFile_InsertToSqlServ\ReadFlatFile_InsertToSqlServ\obj\Debug\ReadFlatFile_InsertToSqlServ_MarkupCompile.cache
+C:\Users\lukasz.dejko\Documents\C# Project\ReadFlatFile_InsertToSqlServ\ReadFlatFile_InsertToSqlServ\obj\Debug\ReadFlatFile_InsertToSqlServ_MarkupCompile.lref
+C:\Users\lukasz.dejko\Documents\C# Project\ReadFlatFile_InsertToSqlServ\ReadFlatFile_InsertToSqlServ\obj\Debug\MainWindow.baml
+C:\Users\lukasz.dejko\Documents\C# Project\ReadFlatFile_InsertToSqlServ\ReadFlatFile_InsertToSqlServ\obj\Debug\ReadFlatFile_InsertToSqlServ.g.resources
+C:\Users\lukasz.dejko\Documents\C# Project\ReadFlatFile_InsertToSqlServ\ReadFlatFile_InsertToSqlServ\obj\Debug\ReadFlatFile_InsertToSqlServ.Properties.Resources.resources
+C:\Users\lukasz.dejko\Documents\C# Project\ReadFlatFile_InsertToSqlServ\ReadFlatFile_InsertToSqlServ\obj\Debug\ReadFlatFile_InsertToSqlServ.csproj.GenerateResource.Cache
+C:\Users\lukasz.dejko\Documents\C# Project\ReadFlatFile_InsertToSqlServ\ReadFlatFile_InsertToSqlServ\obj\Debug\ReadFlatFile_InsertToSqlServ.exe
+C:\Users\lukasz.dejko\Documents\C# Project\ReadFlatFile_InsertToSqlServ\ReadFlatFile_InsertToSqlServ\obj\Debug\ReadFlatFile_InsertToSqlServ.pdb
+C:\Projects\luc-repository\ReadFlatFile_InsertToSqlServ\ReadFlatFile_InsertToSqlServ\bin\Debug\ReadFlatFile_InsertToSqlServ.exe.config
+C:\Projects\luc-repository\ReadFlatFile_InsertToSqlServ\ReadFlatFile_InsertToSqlServ\obj\Debug\ReadFlatFile_InsertToSqlServ.exe
+C:\Projects\luc-repository\ReadFlatFile_InsertToSqlServ\ReadFlatFile_InsertToSqlServ\obj\Debug\ReadFlatFile_InsertToSqlServ.pdb
