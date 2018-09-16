@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/if_advantage_deliver_1034356.ico")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/blue-gradient_1.jpg")]
 
 
