@@ -141,10 +141,19 @@
     <Folder Include="Database\Model\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\FolderSettings.ico" />
+    <Resource Include="Images\car.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\car.ico" />
+    <Resource Include="Images\blue-gradient_0.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\settings.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\blue-gradient_1.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

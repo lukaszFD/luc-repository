@@ -5,8 +5,71 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Parking"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="" Height="600" Width="525">
     <Grid>
-        
+        <Grid.Background>
+            <ImageBrush ImageSource="/Images/blue-gradient_0.jpg" Stretch="UniformToFill"/>
+        </Grid.Background>
+        <StackPanel>
+            <Border Margin="10" Background="Transparent">
+                <Border.Effect>
+                    <DropShadowEffect/>
+                </Border.Effect>
+                <StackPanel  Visibility="Visible">
+                    <Grid>
+                        <Grid.ColumnDefinitions >
+                            <ColumnDefinition Width ="*"/>
+                            <ColumnDefinition Width ="7*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button  HorizontalAlignment="Left" Height="45" BorderBrush="Transparent" Grid.Column="0" Background="Transparent" >
+                            <Image Source="/Images/car.ico">
+                            </Image>
+                        </Button>
+                        <TextBlock Grid.Column="1" FontStyle="Italic" FontWeight="Black" Text="Parking" Foreground="#ffff" FontSize="30"></TextBlock>
+                    </Grid>
+                </StackPanel>
+            </Border>
+            <Border Margin="10" BorderBrush="LightBlue" BorderThickness="0.6" CornerRadius="4" Background="Transparent">
+                <Border.Effect>
+                    <DropShadowEffect/>
+                </Border.Effect>
+                <StackPanel  Visibility="Visible">
+                    <Grid>
+                        <Grid.Background>
+                            <ImageBrush ImageSource="/Images/blue-gradient_1.jpg" Stretch="UniformToFill"/>
+                        </Grid.Background>
+
+                        <Grid.ColumnDefinitions >
+                            <ColumnDefinition Width ="*"/>
+                            <ColumnDefinition Width ="*"/>
+                            <ColumnDefinition Width ="*"/>
+                            <ColumnDefinition Width ="*"/>
+                            <ColumnDefinition Width ="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button HorizontalAlignment="Left" Height="30" BorderBrush="Transparent" Grid.Column="0" Background="Transparent" >
+                            <Image Source="/Images/settings.ico">
+
+                            </Image>
+                        </Button>
+                        <Button FontSize="14" BorderBrush="Transparent" Grid.Column="2" Content="Rezerwacja" Background="Transparent" FontWeight= "Bold" Foreground="#ffff"></Button>
+                        <Button FontSize="14" BorderBrush="Transparent" Grid.Column="3" Content="Odwołanie" Background="Transparent" FontWeight= "Bold" Foreground="#ffff"></Button>
+                        <Button FontSize="14" BorderBrush="Transparent" Grid.Column="4" Content="Administracja" Background="Transparent" FontWeight= "Bold" Foreground="#ffff"></Button>
+                    </Grid>
+                </StackPanel>
+            </Border>
+            <Border Margin="10" BorderBrush="LightGray" BorderThickness="0.6" CornerRadius="4" Background="Transparent">
+                <Border.Effect>
+                    <DropShadowEffect/>
+                </Border.Effect>
+                <StackPanel Margin="5" Visibility="Visible">
+                    <Grid>
+                        <Frame x:Name="mainFrame" Height="400" Width="480" NavigationUIVisibility="Hidden" Background="Transparent" />
+                    </Grid>
+                </StackPanel>
+            </Border>
+            <Grid Margin="10 0 0 0 ">
+                <TextBlock FontStyle="Italic" FontWeight="Black" Text="Designed by : ŁD" Foreground="#ffff" FontSize="7"></TextBlock>
+            </Grid>
+        </StackPanel>
     </Grid>
 </Window>
