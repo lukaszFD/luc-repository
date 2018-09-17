@@ -1,0 +1,76 @@
+9/17/2018 12:20:56 PM	This log contains information about the import schema operation into project 'Parking.DB' on computer 'PL-L-050' by user 'Lukasz.Dejko'.
+9/17/2018 12:20:57 PM	Import of database schema has started.
+9/17/2018 12:21:47 PM	Gathering database options
+9/17/2018 12:21:47 PM	Gathering users
+9/17/2018 12:21:47 PM	Gathering roles
+9/17/2018 12:21:47 PM	Gathering application roles
+9/17/2018 12:21:47 PM	Gathering role memberships
+9/17/2018 12:21:47 PM	Gathering filegroups
+9/17/2018 12:21:47 PM	Gathering full-text catalogs
+9/17/2018 12:21:47 PM	Gathering assemblies
+9/17/2018 12:21:47 PM	Gathering certificates
+9/17/2018 12:21:47 PM	Gathering asymmetric keys
+9/17/2018 12:21:47 PM	Gathering symmetric keys
+9/17/2018 12:21:47 PM	Gathering encrypted symmetric keys
+9/17/2018 12:21:47 PM	Gathering schemas
+9/17/2018 12:21:47 PM	Gathering XML schema collections
+9/17/2018 12:21:47 PM	Gathering user-defined data types
+9/17/2018 12:21:47 PM	Gathering user-defined types
+9/17/2018 12:21:47 PM	Gathering table types
+9/17/2018 12:21:47 PM	Gathering unique keys for table types
+9/17/2018 12:21:47 PM	Gathering primary keys for table types
+9/17/2018 12:21:47 PM	Gathering check constraints for table types
+9/17/2018 12:21:47 PM	Gathering default constraints for table types
+9/17/2018 12:21:47 PM	Gathering partition functions
+9/17/2018 12:21:47 PM	Gathering partition schemes
+9/17/2018 12:21:47 PM	Gathering functions
+9/17/2018 12:22:04 PM	Gathering encrypted functions
+9/17/2018 12:22:04 PM	Gathering aggregates
+9/17/2018 12:22:04 PM	Gathering procedures
+9/17/2018 12:22:35 PM	Gathering encrypted procedures
+9/17/2018 12:24:30 PM	Gathering tables
+9/17/2018 12:25:27 PM	Gathering primary keys
+9/17/2018 12:25:29 PM	Gathering unique constraints
+9/17/2018 12:25:30 PM	Gathering foreign keys
+9/17/2018 12:25:31 PM	Gathering default constraints
+9/17/2018 12:25:32 PM	Gathering check constraints
+9/17/2018 12:25:33 PM	Gathering views
+9/17/2018 12:25:38 PM	Gathering encrypted views
+9/17/2018 12:25:46 PM	Gathering indexes
+9/17/2018 12:25:48 PM	Gathering statistics
+9/17/2018 12:25:48 PM	Gathering full-text index stoplists
+9/17/2018 12:25:48 PM	Gathering search property lists
+9/17/2018 12:25:48 PM	Gathering search properties
+9/17/2018 12:25:49 PM	Gathering full-text indexes
+9/17/2018 12:25:51 PM	Gathering column store indexes
+9/17/2018 12:25:53 PM	Gathering spatial indexes
+9/17/2018 12:25:54 PM	Gathering XML indexes
+9/17/2018 12:25:58 PM	Gathering Selective XML indexes
+9/17/2018 12:25:59 PM	Gathering encrypted triggers
+9/17/2018 12:26:00 PM	Gathering triggers
+9/17/2018 12:26:00 PM	Gathering encrypted and clr ddl triggers
+9/17/2018 12:26:01 PM	Gathering ddl triggers
+9/17/2018 12:26:01 PM	Gathering synonyms
+9/17/2018 12:26:04 PM	Gathering defaults
+9/17/2018 12:26:05 PM	Gathering data constraint uddt bindings
+9/17/2018 12:26:11 PM	Gathering rules
+9/17/2018 12:26:11 PM	Gathering data constraint uddt bindings
+9/17/2018 12:26:12 PM	Gathering message types
+9/17/2018 12:26:12 PM	Gathering queues
+9/17/2018 12:26:13 PM	Gathering contracts
+9/17/2018 12:26:13 PM	Gathering services
+9/17/2018 12:26:14 PM	Gathering event notifications
+9/17/2018 12:26:14 PM	Gathering remote service bindings
+9/17/2018 12:26:14 PM	Gathering broker priorities
+9/17/2018 12:26:15 PM	Gathering signatures
+9/17/2018 12:26:16 PM	Gathering data compression options
+9/17/2018 12:26:17 PM	Gathering sequence types
+9/17/2018 12:26:17 PM	Gathering extended properties
+9/17/2018 12:26:35 PM	Gathering credentials
+9/17/2018 12:26:35 PM	Gathering logins
+9/17/2018 12:26:35 PM	Gathering server audits
+9/17/2018 12:27:03 PM	Scanning project for duplicate elements
+9/17/2018 12:27:04 PM	Finished duplicate element processing
+9/17/2018 12:28:11 PM	Finished importing database.
+9/17/2018 12:28:11 PM	A summary of the import was saved to the following location: C:\Users\lukasz.dejko\Documents\GitHub\luc-repository\DB_ParkingApp\Parking.DB\Parking.DB\Import Schema Logs\Parking.DB_20180917102056.log
+9/17/2018 12:28:11 PM	Click Finish to continue...
