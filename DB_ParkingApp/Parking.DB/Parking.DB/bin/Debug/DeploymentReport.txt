@@ -1,0 +1,26 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [Data] (Filegroup)
+       [parking] (Schema)
+       [parking].[ParkingSpacesOwners] (Table)
+       [parking].[ParkingSpacesAdministrator] (Table)
+       [parking].[ParkingSpaces] (Table)
+       [parking].[BlackoutDates] (Table)
+       Default Constraint: unnamed constraint on [parking].[ParkingSpacesOwners] (Default Constraint)
+       Default Constraint: unnamed constraint on [parking].[ParkingSpacesOwners] (Default Constraint)
+       Default Constraint: unnamed constraint on [parking].[ParkingSpacesOwners] (Default Constraint)
+       [parking].[usp_ParkingSpacesOwners_Delete] (Procedure)
+       [parking].[usp_ParkingSpacesOwners_AddNew] (Procedure)
+       [parking].[usp_AddParkingSpaces] (Procedure)
+
+** Supporting actions
