@@ -1,0 +1,799 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DataSchemaModel FileFormatVersion="1.2" SchemaVersion="2.4" DspName="Microsoft.Data.Tools.Schema.Sql.Sql110DatabaseSchemaProvider" CollationLcid="1033" CollationCaseSensitive="False" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+	<Header>
+		<CustomData Category="AnsiNulls">
+			<Metadata Name="AnsiNulls" Value="True" />
+		</CustomData>
+		<CustomData Category="QuotedIdentifier">
+			<Metadata Name="QuotedIdentifier" Value="True" />
+		</CustomData>
+		<CustomData Category="CompatibilityMode">
+			<Metadata Name="CompatibilityMode" Value="110" />
+		</CustomData>
+		<CustomData Category="Reference" Type="Assembly">
+			<Metadata Name="LogicalName" Value="Parking.DB.dll" />
+			<Metadata Name="FileName" Value="C:\USERS\LUKASZ.DEJKO\DOCUMENTS\GITHUB\LUC-REPOSITORY\DB_PARKINGAPP\PARKING.DB\OBJ\DEBUG\PARKING.DB.DLL" />
+			<Metadata Name="AssemblyName" Value="Parking.DB" />
+			<Metadata Name="PermissionSet" Value="SAFE" />
+			<Metadata Name="Owner" Value="" />
+			<Metadata Name="GenerateSqlClrDdl" Value="True" />
+			<Metadata Name="IsVisible" Value="True" />
+			<Metadata Name="IsModelAware" Value="True" />
+			<Metadata Name="SkipCreationIfEmpty" Value="True" />
+			<Metadata Name="AssemblySymbolsName" Value="C:\Users\lukasz.dejko\Documents\GitHub\luc-repository\DB_ParkingApp\Parking.DB\obj\Debug\Parking.DB.pdb" />
+		</CustomData>
+		<CustomData Category="SqlCmdVariables" Type="SqlCmdVariable" />
+	</Header>
+	<Model>
+		<Element Type="SqlDatabaseOptions">
+			<Property Name="Collation" Value="Latin1_General_CI_AS" />
+			<Property Name="IsAnsiNullDefaultOn" Value="True" />
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Property Name="IsAnsiWarningsOn" Value="True" />
+			<Property Name="IsArithAbortOn" Value="True" />
+			<Property Name="IsConcatNullYieldsNullOn" Value="True" />
+			<Property Name="IsTornPageProtectionOn" Value="False" />
+			<Property Name="IsFullTextEnabled" Value="True" />
+			<Property Name="PageVerifyMode" Value="3" />
+			<Property Name="DefaultLanguage" Value="" />
+			<Property Name="DefaultFullTextLanguage" Value="" />
+			<Relationship Name="DefaultFilegroup">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[PRIMARY]" />
+				</Entry>
+			</Relationship>
+		</Element>
+		<Element Type="SqlDefaultConstraint">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA[(lower(substring(suser_sname(),charindex('\',suser_sname())+(1),len(suser_sname())-charindex('\',suser_sname()))))]]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[parking].[ParkingSpacesOwners]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[parking].[ParkingSpacesOwners].[OwnerName]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="3" />
+		</Element>
+		<Element Type="SqlDefaultConstraint">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA[(getdate())]]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[parking].[ParkingSpacesOwners]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[parking].[ParkingSpacesOwners].[StartsOn]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="4" />
+		</Element>
+		<Element Type="SqlDefaultConstraint">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA[('9999-12-31 23:59:59.000')]]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[parking].[ParkingSpacesOwners]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[parking].[ParkingSpacesOwners].[EndsOn]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="5" />
+		</Element>
+		<Element Type="SqlFilegroup" Name="[Data]" />
+		<Element Type="SqlSchema" Name="[parking]">
+			<Relationship Name="Authorizer">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+		</Element>
+		<Element Type="SqlTable" Name="[parking].[BlackoutDates]">
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="Columns">
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[parking].[BlackoutDates].[Date]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[date]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References Name="[parking]" />
+				</Entry>
+			</Relationship>
+		</Element>
+		<Element Type="SqlTable" Name="[parking].[ParkingSpaces]">
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="Columns">
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[parking].[ParkingSpaces].[Date]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[date]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[parking].[ParkingSpaces].[ParkingPlaceStatus]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[parking].[ParkingSpaces].[ParkingSpacesOwnerID]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References Name="[parking]" />
+				</Entry>
+			</Relationship>
+		</Element>
+		<Element Type="SqlTable" Name="[parking].[ParkingSpacesAdministrator]">
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="Columns">
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[parking].[ParkingSpacesAdministrator].[AdministratorName]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="100" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[parking].[ParkingSpacesAdministrator].[StartsOn]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[datetime]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[parking].[ParkingSpacesAdministrator].[EndsOn]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[datetime]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References Name="[parking]" />
+				</Entry>
+			</Relationship>
+		</Element>
+		<Element Type="SqlTable" Name="[parking].[ParkingSpacesOwners]">
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="Columns">
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[parking].[ParkingSpacesOwners].[OwnerID]">
+						<Property Name="IsNullable" Value="False" />
+						<Property Name="IsIdentity" Value="True" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[parking].[ParkingSpacesOwners].[OwnerName]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="100" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+						<AttachedAnnotation Disambiguator="3" />
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[parking].[ParkingSpacesOwners].[SpaceNumber]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[parking].[ParkingSpacesOwners].[StartsOn]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[datetime]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+						<AttachedAnnotation Disambiguator="4" />
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[parking].[ParkingSpacesOwners].[EndsOn]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[datetime]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+						<AttachedAnnotation Disambiguator="5" />
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References Name="[parking]" />
+				</Entry>
+			</Relationship>
+		</Element>
+		<Element Type="SqlProcedure" Name="[parking].[usp_AddFreeParkingSpaces]">
+			<Property Name="BodyScript">
+				<Value><![CDATA[
+
+CREATE TABLE #parking
+(
+      [Date]       DATE
+	 ,ParkingPlaceStatus int
+	 ,ParkingSpacesOwnerID int 
+)
+
+WHILE @date_start <= @date_end
+
+BEGIN
+        INSERT INTO #parking
+			(
+			 Date
+			,ParkingPlaceStatus
+			,ParkingSpacesOwnerID
+			)
+        VALUES 
+			(@date_start
+			,null
+			,@ownerId
+			)
+				 
+			SET @date_start = DATEADD(dd, 1, @date_start)
+
+END
+
+	MERGE parking.ParkingSpaces AS target 
+	USING (SELECT * FROM #parking ) AS Source ON target.Date = source.Date AND target.ParkingSpacesOwnerID = source.ParkingSpacesOwnerID AND target.date = source.Date
+
+	WHEN NOT MATCHED BY TARGET THEN 
+	INSERT 
+	(
+		 Date
+		,ParkingPlaceStatus
+		,ParkingSpacesOwnerID
+	) 
+	VALUES
+	(
+	     SOURCE.Date
+		,SOURCE.ParkingPlaceStatus
+		,SOURCE.ParkingSpacesOwnerID
+	);]]></Value>
+			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References Name="[parking].[usp_AddFreeParkingSpaces].[@date_start]" />
+				</Entry>
+				<Entry>
+					<References Name="[parking].[usp_AddFreeParkingSpaces].[@date_end]" />
+				</Entry>
+				<Entry>
+					<References Name="[parking].[usp_AddFreeParkingSpaces].[#parking]" />
+				</Entry>
+				<Entry>
+					<References Name="[parking].[usp_AddFreeParkingSpaces].[#parking].[Date]" />
+				</Entry>
+				<Entry>
+					<References Name="[parking].[usp_AddFreeParkingSpaces].[#parking].[ParkingPlaceStatus]" />
+				</Entry>
+				<Entry>
+					<References Name="[parking].[usp_AddFreeParkingSpaces].[#parking].[ParkingSpacesOwnerID]" />
+				</Entry>
+				<Entry>
+					<References Name="[parking].[usp_AddFreeParkingSpaces].[@ownerId]" />
+				</Entry>
+				<Entry>
+					<References Name="[parking].[ParkingSpaces]" />
+				</Entry>
+				<Entry>
+					<References Name="[parking].[ParkingSpaces].[Date]" />
+				</Entry>
+				<Entry>
+					<References Name="[parking].[usp_AddFreeParkingSpaces].[#parking].[Date]" />
+				</Entry>
+				<Entry>
+					<References Name="[parking].[ParkingSpaces].[ParkingSpacesOwnerID]" />
+				</Entry>
+				<Entry>
+					<References Name="[parking].[usp_AddFreeParkingSpaces].[#parking].[ParkingSpacesOwnerID]" />
+				</Entry>
+				<Entry>
+					<References Name="[parking].[ParkingSpaces].[Date]" />
+				</Entry>
+				<Entry>
+					<References Name="[parking].[ParkingSpaces].[Date]" />
+				</Entry>
+				<Entry>
+					<References Name="[parking].[ParkingSpaces].[ParkingPlaceStatus]" />
+				</Entry>
+				<Entry>
+					<References Name="[parking].[ParkingSpaces].[ParkingSpacesOwnerID]" />
+				</Entry>
+				<Entry>
+					<References Name="[parking].[usp_AddFreeParkingSpaces].[#parking].[Date]" />
+				</Entry>
+				<Entry>
+					<References Name="[parking].[usp_AddFreeParkingSpaces].[#parking].[ParkingPlaceStatus]" />
+				</Entry>
+				<Entry>
+					<References Name="[parking].[usp_AddFreeParkingSpaces].[#parking].[ParkingSpacesOwnerID]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="DynamicObjects">
+				<Entry>
+					<Element Type="SqlDynamicColumnSource" Name="[parking].[usp_AddFreeParkingSpaces].[#parking]">
+						<Relationship Name="Columns">
+							<Entry>
+								<Element Type="SqlSimpleColumn" Name="[parking].[usp_AddFreeParkingSpaces].[#parking].[Date]">
+									<Relationship Name="TypeSpecifier">
+										<Entry>
+											<Element Type="SqlTypeSpecifier">
+												<Relationship Name="Type">
+													<Entry>
+														<References ExternalSource="BuiltIns" Name="[date]" />
+													</Entry>
+												</Relationship>
+											</Element>
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+							<Entry>
+								<Element Type="SqlSimpleColumn" Name="[parking].[usp_AddFreeParkingSpaces].[#parking].[ParkingPlaceStatus]">
+									<Relationship Name="TypeSpecifier">
+										<Entry>
+											<Element Type="SqlTypeSpecifier">
+												<Relationship Name="Type">
+													<Entry>
+														<References ExternalSource="BuiltIns" Name="[int]" />
+													</Entry>
+												</Relationship>
+											</Element>
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+							<Entry>
+								<Element Type="SqlSimpleColumn" Name="[parking].[usp_AddFreeParkingSpaces].[#parking].[ParkingSpacesOwnerID]">
+									<Relationship Name="TypeSpecifier">
+										<Entry>
+											<Element Type="SqlTypeSpecifier">
+												<Relationship Name="Type">
+													<Entry>
+														<References ExternalSource="BuiltIns" Name="[int]" />
+													</Entry>
+												</Relationship>
+											</Element>
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Parameters">
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[parking].[usp_AddFreeParkingSpaces].[@ownerId]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[parking].[usp_AddFreeParkingSpaces].[@date_start]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[date]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[parking].[usp_AddFreeParkingSpaces].[@date_end]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[date]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References Name="[parking]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="CreateOffset" Value="4" />
+				<Property Name="Length" Value="929" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value="&#xD;&#xA;&#xD;&#xA;CREATE PROC [parking].[usp_AddFreeParkingSpaces]&#xD;&#xA;(&#xD;&#xA;   @ownerId INT &#xD;&#xA;  ,@date_start DATE&#xD;&#xA;  ,@date_end DATE &#xD;&#xA;)&#xD;&#xA;&#xD;&#xA;AS" />
+			</Annotation>
+		</Element>
+		<Element Type="SqlProcedure" Name="[parking].[usp_BlackoutDates_AddNew]">
+			<Property Name="BodyScript">
+				<Value><![CDATA[
+INSERT INTO parking.BlackoutDates(Date) 
+VALUES 
+	(@date)]]></Value>
+			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References Name="[parking].[BlackoutDates]" />
+				</Entry>
+				<Entry>
+					<References Name="[parking].[BlackoutDates].[Date]" />
+				</Entry>
+				<Entry>
+					<References Name="[parking].[usp_BlackoutDates_AddNew].[@date]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Parameters">
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[parking].[usp_BlackoutDates_AddNew].[@date]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[date]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References Name="[parking]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="Length" Value="140" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value="CREATE PROCEDURE [parking].[usp_BlackoutDates_AddNew]&#xD;&#xA;(&#xD;&#xA;&#x9;@date Date &#xD;&#xA;)&#xD;&#xA;&#xD;&#xA;AS" />
+			</Annotation>
+		</Element>
+		<Element Type="SqlProcedure" Name="[parking].[usp_BlackoutDates_Delete]">
+			<Property Name="BodyScript">
+				<Value><![CDATA[
+DELETE FROM parking.BlackoutDates 
+WHERE 
+	Date = (@date)]]></Value>
+			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References Name="[parking].[BlackoutDates]" />
+				</Entry>
+				<Entry>
+					<References Name="[parking].[BlackoutDates].[Date]" />
+				</Entry>
+				<Entry>
+					<References Name="[parking].[usp_BlackoutDates_Delete].[@date]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Parameters">
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[parking].[usp_BlackoutDates_Delete].[@date]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[date]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References Name="[parking]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="Length" Value="138" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value="CREATE PROCEDURE [parking].[usp_BlackoutDates_Delete]&#xD;&#xA;(&#xD;&#xA;&#x9;@date Date &#xD;&#xA;)&#xD;&#xA;AS" />
+			</Annotation>
+		</Element>
+		<Element Type="SqlProcedure" Name="[parking].[usp_ParkingSpacesOwners_AddNew]">
+			<Property Name="BodyScript">
+				<Value><![CDATA[
+
+INSERT INTO [parking].[ParkingSpacesOwners] ([OwnerName],[SpaceNumber]) 
+VALUES (@owner,@space)]]></Value>
+			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References Name="[parking].[ParkingSpacesOwners]" />
+				</Entry>
+				<Entry>
+					<References Name="[parking].[ParkingSpacesOwners].[OwnerName]" />
+				</Entry>
+				<Entry>
+					<References Name="[parking].[ParkingSpacesOwners].[SpaceNumber]" />
+				</Entry>
+				<Entry>
+					<References Name="[parking].[usp_ParkingSpacesOwners_AddNew].[@owner]" />
+				</Entry>
+				<Entry>
+					<References Name="[parking].[usp_ParkingSpacesOwners_AddNew].[@space]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Parameters">
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[parking].[usp_ParkingSpacesOwners_AddNew].[@owner]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="100" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[parking].[usp_ParkingSpacesOwners_AddNew].[@space]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References Name="[parking]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="CreateOffset" Value="2" />
+				<Property Name="Length" Value="203" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value="&#xD;&#xA;CREATE PROC [parking].[usp_ParkingSpacesOwners_AddNew]&#xD;&#xA;(&#xD;&#xA; @owner NVARCHAR(100)&#xD;&#xA;,@space INT &#xD;&#xA;)&#xD;&#xA;AS" />
+			</Annotation>
+		</Element>
+		<Element Type="SqlProcedure" Name="[parking].[usp_ParkingSpacesOwners_Delete]">
+			<Property Name="BodyScript">
+				<Value><![CDATA[
+
+update parking.ParkingSpacesOwners
+SET EndsOn = GETDATE()
+WHERE 
+	OwnerID = @OwnerID
+	AND
+    EndsOn IS NULL 
+
+DELETE FROM parking.ParkingSpaces 
+WHERE
+	Date >= CAST(GETDATE() AS DATE )
+	AND 
+	ParkingSpacesOwnerID = @OwnerID]]></Value>
+			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References Name="[parking].[ParkingSpacesOwners]" />
+				</Entry>
+				<Entry>
+					<References Name="[parking].[ParkingSpacesOwners].[EndsOn]" />
+				</Entry>
+				<Entry>
+					<References Name="[parking].[ParkingSpacesOwners].[OwnerID]" />
+				</Entry>
+				<Entry>
+					<References Name="[parking].[usp_ParkingSpacesOwners_Delete].[@OwnerID]" />
+				</Entry>
+				<Entry>
+					<References Name="[parking].[ParkingSpaces]" />
+				</Entry>
+				<Entry>
+					<References Name="[parking].[ParkingSpaces].[Date]" />
+				</Entry>
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[date]" />
+				</Entry>
+				<Entry>
+					<References Name="[parking].[ParkingSpaces].[ParkingSpacesOwnerID]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Parameters">
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[parking].[usp_ParkingSpacesOwners_Delete].[@OwnerID]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References Name="[parking]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="CreateOffset" Value="2" />
+				<Property Name="Length" Value="321" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value="&#xD;&#xA;CREATE PROC [parking].[usp_ParkingSpacesOwners_Delete]&#xD;&#xA;(&#xD;&#xA; @OwnerID INT &#xD;&#xA;)&#xD;&#xA;AS" />
+			</Annotation>
+		</Element>
+	</Model>
+</DataSchemaModel>
