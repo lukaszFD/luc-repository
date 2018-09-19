@@ -71,7 +71,7 @@
     <Build Include="parking\Tables\ParkingSpaces.sql" />
     <Build Include="parking\Tables\ParkingSpacesAdministrator.sql" />
     <Build Include="parking\Tables\ParkingSpacesOwners.sql" />
-    <Build Include="parking\Stored Procedures\usp_AddParkingSpaces.sql" />
+    <Build Include="parking\Stored Procedures\usp_AddFreeParkingSpaces.sql" />
     <Build Include="parking\Stored Procedures\usp_ParkingSpacesOwners_AddNew.sql" />
     <Build Include="parking\Stored Procedures\usp_ParkingSpacesOwners_Delete.sql" />
     <Build Include="Security\Schema\parking.sql" />
