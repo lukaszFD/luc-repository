@@ -1,27 +1,42 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
 using Parking.Interface;
+using System.Threading.Tasks;
 
 namespace Parking.Class
 {
-    class Balloon
+    class Balloon : ISetBalloonTip
     {
-        public void SetBalloonTip(string text)
+        private string _text { get; set; }
+
+        public Balloon(string text)
+        {
+            this._text = text;
+        }
+        public async Task StartBalloonInformation()
+        {
+            await Task.Run(() => SetBalloonTip(_text));
+        }
+
+        private void SetBalloonTip(string text)
         {
             try
             {
-                using (var icon = new NotifyIcon())
+                while (true)
                 {
-                    icon.Icon = SystemIcons.Information;
-                    icon.BalloonTipTitle = "Wolne miejsce parkingowe";
-                    icon.BalloonTipText = text;
-                    icon.BalloonTipIcon = ToolTipIcon.Info;
-                    icon.Visible = true;
-                    icon.ShowBalloonTip(6000);
-                    Thread.Sleep(9000);
-                    icon.Visible = false;
+                    using (var icon = new NotifyIcon())
+                    {
+                        icon.Icon = SystemIcons.Hand;
+                        icon.BalloonTipTitle = "Wolne miejsce parkingowe : ";
+                        icon.BalloonTipText = text;
+                        icon.BalloonTipIcon = ToolTipIcon.Info;
+                        icon.Visible = true;
+                        icon.ShowBalloonTip(6000);
+                        Thread.Sleep(9000);
+                        icon.Visible = false;
+                    }
+                    Thread.Sleep(3600000);
                 }
             }
             catch (System.Exception ex)
