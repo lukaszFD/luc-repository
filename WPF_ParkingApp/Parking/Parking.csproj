@@ -34,12 +34,16 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Images\car.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Office.Interop.Outlook, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -70,10 +74,18 @@
     </Compile>
     <Compile Include="Class\AutomaticallyStartWithWindows.cs" />
     <Compile Include="Class\Balloon.cs" />
-    <Compile Include="Class\Information.cs" />
-    <Compile Include="Class\Main_Interface_Class\Parking.cs" />
+    <Compile Include="Class\Days.cs" />
+    <Compile Include="Class\Main_Interface_Class\ParkingInterface.cs" />
     <Compile Include="Class\OutlookAppointment.cs" />
-    <Compile Include="Database\Core\SqlServDatabase.cs" />
+    <Compile Include="Database\Controller\AdminController.cs" />
+    <Compile Include="Database\Controller\ReservationAddController.cs" />
+    <Compile Include="Database\Controller\ReservationDeleteController.cs" />
+    <Compile Include="Database\Controller\SettingsController.cs" />
+    <Compile Include="Database\Model\DataModel.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataModel.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Interface\IOutlook.cs" />
     <Compile Include="Interface\ISetBalloonTip.cs" />
     <Compile Include="Interface\IWindows.cs" />
@@ -124,10 +136,18 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Database\Model\DataModel.dbml.layout">
+      <DependentUpon>DataModel.dbml</DependentUpon>
+    </None>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Database\Model\DataModel.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>DataModel.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -138,7 +158,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Database\Model\" />
+    <Resource Include="Images\delete.ico" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\car.ico" />
@@ -147,13 +167,20 @@
     <Resource Include="Images\blue-gradient_0.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\blue.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\settings.ico" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\blue-gradient_1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ok.ico" />
+    <Resource Include="Images\settings_2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\settings_3.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
