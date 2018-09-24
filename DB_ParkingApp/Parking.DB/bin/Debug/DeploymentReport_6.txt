@@ -1,0 +1,22 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       [parking].[ParkingSpaces]
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       The column [parking].[ParkingSpaces].[ParkingPlaceStatus] is being dropped, data loss could occur.
+
+** User actions
+     Table rebuild
+       [parking].[ParkingSpaces] (Table)
+     Alter
+       [parking].[usp_AddFreeParkingSpaces] (Procedure)
+
+** Supporting actions
+     Refresh
+       [parking].[usp_ParkingSpacesOwners_Delete] (Procedure)
+
+The column [parking].[ParkingSpaces].[ParkingPlaceStatus] is being dropped, data loss could occur.
+
