@@ -12,7 +12,7 @@ AS
 CREATE TABLE #parking
 (
       [Date]       DATE
-	 ,ParkingPlaceStatus int
+	 ,PlaceRentedFor int
 	 ,ParkingSpacesOwnerID int 
 )
 
@@ -22,12 +22,15 @@ BEGIN
         INSERT INTO #parking
 			(
 			 Date
-			,ParkingPlaceStatus
+			,PlaceRentedFor
 			,ParkingSpacesOwnerID
 			)
         VALUES 
 			(@date_start
-			,null
+			,CASE 
+				WHEN DATENAME(dw, @date_start) IN ('Saturday','Sunday') THEN -1  
+				WHEN @date_start IN ( SELECT [Date] FROM parking.BlackoutDates ) THEN -1 
+			 END 
 			,@ownerId
 			)
 				 
@@ -42,13 +45,13 @@ END
 	INSERT 
 	(
 		 Date
-		,ParkingPlaceStatus
+		,PlaceRentedFor
 		,ParkingSpacesOwnerID
 	) 
 	VALUES
 	(
 	     SOURCE.Date
-		,SOURCE.ParkingPlaceStatus
+		,SOURCE.PlaceRentedFor
 		,SOURCE.ParkingSpacesOwnerID
 	);
 
