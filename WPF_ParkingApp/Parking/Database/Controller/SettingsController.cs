@@ -8,5 +8,6 @@ namespace Parking.Database.Controller
 {
     class SettingsController
     {
+
     }
 }

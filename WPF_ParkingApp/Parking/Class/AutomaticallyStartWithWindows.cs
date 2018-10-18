@@ -1,5 +1,4 @@
 ﻿using Microsoft.Win32;
-using System;
 using System.IO;
 using System.Windows.Forms;
 using Parking.Interface;
@@ -12,33 +11,18 @@ namespace Parking.Class
         private string appName = Path.GetFileName(Application.ExecutablePath);
         public void Start()
         {
-            try
+            using (var key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true))
             {
-                using (var key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true))
-                {
-                    key.SetValue(appName, path + @"\" + appName);
-                }
-                MessageBox.Show(string.Format("Aplikacja : {0} została dodana.", appName));
+                key.SetValue(appName, path + @"\" + appName);
             }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            MessageBox.Show(string.Format("Aplikacja : {0} została dodana.", appName));
         }
-
         public void Stop()
         {
-            try
+            using (var key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true))
             {
-                using (var key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true))
-                {
-                    key.DeleteValue(appName, false);
-                    MessageBox.Show(string.Format("Aplikacja : {0} została usunięta.", appName));
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
+                key.DeleteValue(appName, false);
+                MessageBox.Show(string.Format("Aplikacja : {0} została usunięta.", appName));
             }
         }
     }

@@ -2,7 +2,6 @@ C:\Users\lukasz.dejko\Documents\GitHub\luc-repository\WPF_ParkingApp\CSharp\Park
 C:\Users\lukasz.dejko\Documents\GitHub\luc-repository\WPF_ParkingApp\Parking\bin\Debug\Parking.exe.config
 C:\Users\lukasz.dejko\Documents\GitHub\luc-repository\WPF_ParkingApp\Parking\bin\Debug\Parking.exe
 C:\Users\lukasz.dejko\Documents\GitHub\luc-repository\WPF_ParkingApp\Parking\bin\Debug\Parking.pdb
-C:\Users\lukasz.dejko\Documents\GitHub\luc-repository\WPF_ParkingApp\Parking\obj\Debug\Parking.csprojResolveAssemblyReference.cache
 C:\Users\lukasz.dejko\Documents\GitHub\luc-repository\WPF_ParkingApp\Parking\obj\Debug\MainWindow.g.cs
 C:\Users\lukasz.dejko\Documents\GitHub\luc-repository\WPF_ParkingApp\Parking\obj\Debug\Pages\Admin.g.cs
 C:\Users\lukasz.dejko\Documents\GitHub\luc-repository\WPF_ParkingApp\Parking\obj\Debug\Pages\Reservation_Add.g.cs
@@ -21,3 +20,4 @@ C:\Users\lukasz.dejko\Documents\GitHub\luc-repository\WPF_ParkingApp\Parking\obj
 C:\Users\lukasz.dejko\Documents\GitHub\luc-repository\WPF_ParkingApp\Parking\obj\Debug\Parking.csproj.GenerateResource.Cache
 C:\Users\lukasz.dejko\Documents\GitHub\luc-repository\WPF_ParkingApp\Parking\obj\Debug\Parking.exe
 C:\Users\lukasz.dejko\Documents\GitHub\luc-repository\WPF_ParkingApp\Parking\obj\Debug\Parking.pdb
+C:\Users\lukasz.dejko\Documents\GitHub\luc-repository\WPF_ParkingApp\Parking\obj\Debug\Parking.csprojResolveAssemblyReference.cache

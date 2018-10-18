@@ -2,6 +2,7 @@
 using System;
 using Outlook = Microsoft.Office.Interop.Outlook;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace Parking.Class
 {
@@ -17,12 +18,16 @@ namespace Parking.Class
             this._startDate = startDate;
             this._endDate = endDate;
         }
-
+        public async Task CreateNewOutlookAppointment(object obj)
+        {
+            CancellationToken ct = (CancellationToken)obj;
+            ct.ThrowIfCancellationRequested();
+            await Task.Factory.StartNew(() => OutlookApp(),ct);
+        }
         private void OutlookApp()
         {
             Outlook.AppointmentItem appItem = null;
             Outlook.Application OutlookApp = new Outlook.Application();
-
             try
             {
                 appItem = OutlookApp.Application.CreateItem(
@@ -45,11 +50,6 @@ namespace Parking.Class
                 if (OutlookApp != null)
                     System.Runtime.InteropServices.Marshal.ReleaseComObject(OutlookApp);
             }
-        }
-
-        public async Task CreateNewOutlookAppointment()
-        {
-            await Task.Run(() => OutlookApp());
         }
     }
 }

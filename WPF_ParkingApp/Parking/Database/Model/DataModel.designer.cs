@@ -30,6 +30,18 @@ namespace Parking.Database.Model
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
+    partial void InsertBlackoutDate(BlackoutDate instance);
+    partial void UpdateBlackoutDate(BlackoutDate instance);
+    partial void DeleteBlackoutDate(BlackoutDate instance);
+    partial void InsertParkingSpace(ParkingSpace instance);
+    partial void UpdateParkingSpace(ParkingSpace instance);
+    partial void DeleteParkingSpace(ParkingSpace instance);
+    partial void InsertParkingSpacesAdministrator(ParkingSpacesAdministrator instance);
+    partial void UpdateParkingSpacesAdministrator(ParkingSpacesAdministrator instance);
+    partial void DeleteParkingSpacesAdministrator(ParkingSpacesAdministrator instance);
+    partial void InsertParkingSpacesOwner(ParkingSpacesOwner instance);
+    partial void UpdateParkingSpacesOwner(ParkingSpacesOwner instance);
+    partial void DeleteParkingSpacesOwner(ParkingSpacesOwner instance);
     #endregion
 		
 		public DataModelDataContext() : 
@@ -70,6 +82,14 @@ namespace Parking.Database.Model
 			}
 		}
 		
+		public System.Data.Linq.Table<ParkingSpace> ParkingSpaces
+		{
+			get
+			{
+				return this.GetTable<ParkingSpace>();
+			}
+		}
+		
 		public System.Data.Linq.Table<ParkingSpacesAdministrator> ParkingSpacesAdministrators
 		{
 			get
@@ -86,44 +106,8 @@ namespace Parking.Database.Model
 			}
 		}
 		
-		public System.Data.Linq.Table<ParkingSpace> ParkingSpaces
-		{
-			get
-			{
-				return this.GetTable<ParkingSpace>();
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="parking.usp_BlackoutDates_AddNew")]
-		public int usp_BlackoutDates_AddNew([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Date")] System.Nullable<System.DateTime> date)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), date);
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="parking.usp_BlackoutDates_Delete")]
-		public int usp_BlackoutDates_Delete([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Date")] System.Nullable<System.DateTime> date)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), date);
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="parking.usp_ParkingSpacesOwners_AddNew")]
-		public int usp_ParkingSpacesOwners_AddNew([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string owner, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> space)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), owner, space);
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="parking.usp_ParkingSpacesOwners_Delete")]
-		public int usp_ParkingSpacesOwners_Delete([global::System.Data.Linq.Mapping.ParameterAttribute(Name="OwnerID", DbType="Int")] System.Nullable<int> ownerID)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), ownerID);
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="parking.usp_AddFreeParkingSpaces")]
-		public int usp_AddFreeParkingSpaces([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> ownerId, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Date")] System.Nullable<System.DateTime> date_start, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Date")] System.Nullable<System.DateTime> date_end)
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="parking.usp_FreeParkingSpaces_AddNew")]
+		public int usp_FreeParkingSpaces_AddNew([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> ownerId, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Date")] System.Nullable<System.DateTime> date_start, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Date")] System.Nullable<System.DateTime> date_end)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), ownerId, date_start, date_end);
 			return ((int)(result.ReturnValue));
@@ -131,197 +115,98 @@ namespace Parking.Database.Model
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="parking.BlackoutDates")]
-	public partial class BlackoutDate
+	public partial class BlackoutDate : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
-		private System.DateTime _Date;
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _DateId;
+		
+		private System.DateTime _BlackoutDate1;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnDateIdChanging(int value);
+    partial void OnDateIdChanged();
+    partial void OnBlackoutDate1Changing(System.DateTime value);
+    partial void OnBlackoutDate1Changed();
+    #endregion
 		
 		public BlackoutDate()
 		{
+			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="Date NOT NULL")]
-		public System.DateTime Date
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int DateId
 		{
 			get
 			{
-				return this._Date;
+				return this._DateId;
 			}
 			set
 			{
-				if ((this._Date != value))
+				if ((this._DateId != value))
 				{
-					this._Date = value;
-				}
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="parking.ParkingSpacesAdministrator")]
-	public partial class ParkingSpacesAdministrator
-	{
-		
-		private string _AdministratorName;
-		
-		private System.DateTime _StartsOn;
-		
-		private System.DateTime _EndsOn;
-		
-		public ParkingSpacesAdministrator()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AdministratorName", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
-		public string AdministratorName
-		{
-			get
-			{
-				return this._AdministratorName;
-			}
-			set
-			{
-				if ((this._AdministratorName != value))
-				{
-					this._AdministratorName = value;
+					this.OnDateIdChanging(value);
+					this.SendPropertyChanging();
+					this._DateId = value;
+					this.SendPropertyChanged("DateId");
+					this.OnDateIdChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StartsOn", DbType="DateTime NOT NULL")]
-		public System.DateTime StartsOn
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="BlackoutDate", Storage="_BlackoutDate1", DbType="Date NOT NULL")]
+		public System.DateTime BlackoutDate1
 		{
 			get
 			{
-				return this._StartsOn;
+				return this._BlackoutDate1;
 			}
 			set
 			{
-				if ((this._StartsOn != value))
+				if ((this._BlackoutDate1 != value))
 				{
-					this._StartsOn = value;
+					this.OnBlackoutDate1Changing(value);
+					this.SendPropertyChanging();
+					this._BlackoutDate1 = value;
+					this.SendPropertyChanged("BlackoutDate1");
+					this.OnBlackoutDate1Changed();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EndsOn", DbType="DateTime NOT NULL")]
-		public System.DateTime EndsOn
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
 		{
-			get
+			if ((this.PropertyChanging != null))
 			{
-				return this._EndsOn;
-			}
-			set
-			{
-				if ((this._EndsOn != value))
-				{
-					this._EndsOn = value;
-				}
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="parking.ParkingSpacesOwners")]
-	public partial class ParkingSpacesOwner
-	{
-		
-		private int _OwnerID;
-		
-		private string _OwnerName;
-		
-		private System.Nullable<int> _SpaceNumber;
-		
-		private System.DateTime _StartsOn;
-		
-		private System.DateTime _EndsOn;
-		
-		public ParkingSpacesOwner()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OwnerID", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
-		public int OwnerID
-		{
-			get
-			{
-				return this._OwnerID;
-			}
-			set
-			{
-				if ((this._OwnerID != value))
-				{
-					this._OwnerID = value;
-				}
+				this.PropertyChanging(this, emptyChangingEventArgs);
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OwnerName", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
-		public string OwnerName
+		protected virtual void SendPropertyChanged(String propertyName)
 		{
-			get
+			if ((this.PropertyChanged != null))
 			{
-				return this._OwnerName;
-			}
-			set
-			{
-				if ((this._OwnerName != value))
-				{
-					this._OwnerName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SpaceNumber", DbType="Int")]
-		public System.Nullable<int> SpaceNumber
-		{
-			get
-			{
-				return this._SpaceNumber;
-			}
-			set
-			{
-				if ((this._SpaceNumber != value))
-				{
-					this._SpaceNumber = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StartsOn", DbType="DateTime NOT NULL")]
-		public System.DateTime StartsOn
-		{
-			get
-			{
-				return this._StartsOn;
-			}
-			set
-			{
-				if ((this._StartsOn != value))
-				{
-					this._StartsOn = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EndsOn", DbType="DateTime NOT NULL")]
-		public System.DateTime EndsOn
-		{
-			get
-			{
-				return this._EndsOn;
-			}
-			set
-			{
-				if ((this._EndsOn != value))
-				{
-					this._EndsOn = value;
-				}
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="parking.ParkingSpaces")]
-	public partial class ParkingSpace
+	public partial class ParkingSpace : INotifyPropertyChanging, INotifyPropertyChanged
 	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ParkingSpaceId;
 		
 		private System.DateTime _Date;
 		
@@ -329,8 +214,43 @@ namespace Parking.Database.Model
 		
 		private System.Nullable<int> _ParkingSpacesOwnerID;
 		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnParkingSpaceIdChanging(int value);
+    partial void OnParkingSpaceIdChanged();
+    partial void OnDateChanging(System.DateTime value);
+    partial void OnDateChanged();
+    partial void OnPlaceRentedForChanging(System.Nullable<int> value);
+    partial void OnPlaceRentedForChanged();
+    partial void OnParkingSpacesOwnerIDChanging(System.Nullable<int> value);
+    partial void OnParkingSpacesOwnerIDChanged();
+    #endregion
+		
 		public ParkingSpace()
 		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ParkingSpaceId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ParkingSpaceId
+		{
+			get
+			{
+				return this._ParkingSpaceId;
+			}
+			set
+			{
+				if ((this._ParkingSpaceId != value))
+				{
+					this.OnParkingSpaceIdChanging(value);
+					this.SendPropertyChanging();
+					this._ParkingSpaceId = value;
+					this.SendPropertyChanged("ParkingSpaceId");
+					this.OnParkingSpaceIdChanged();
+				}
+			}
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="Date NOT NULL")]
@@ -344,7 +264,11 @@ namespace Parking.Database.Model
 			{
 				if ((this._Date != value))
 				{
+					this.OnDateChanging(value);
+					this.SendPropertyChanging();
 					this._Date = value;
+					this.SendPropertyChanged("Date");
+					this.OnDateChanged();
 				}
 			}
 		}
@@ -360,7 +284,11 @@ namespace Parking.Database.Model
 			{
 				if ((this._PlaceRentedFor != value))
 				{
+					this.OnPlaceRentedForChanging(value);
+					this.SendPropertyChanging();
 					this._PlaceRentedFor = value;
+					this.SendPropertyChanged("PlaceRentedFor");
+					this.OnPlaceRentedForChanged();
 				}
 			}
 		}
@@ -376,8 +304,324 @@ namespace Parking.Database.Model
 			{
 				if ((this._ParkingSpacesOwnerID != value))
 				{
+					this.OnParkingSpacesOwnerIDChanging(value);
+					this.SendPropertyChanging();
 					this._ParkingSpacesOwnerID = value;
+					this.SendPropertyChanged("ParkingSpacesOwnerID");
+					this.OnParkingSpacesOwnerIDChanged();
 				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="parking.ParkingSpacesAdministrator")]
+	public partial class ParkingSpacesAdministrator : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _AdministratorId;
+		
+		private string _AdministratorName;
+		
+		private System.DateTime _StartsOn;
+		
+		private System.DateTime _EndsOn;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnAdministratorIdChanging(int value);
+    partial void OnAdministratorIdChanged();
+    partial void OnAdministratorNameChanging(string value);
+    partial void OnAdministratorNameChanged();
+    partial void OnStartsOnChanging(System.DateTime value);
+    partial void OnStartsOnChanged();
+    partial void OnEndsOnChanging(System.DateTime value);
+    partial void OnEndsOnChanged();
+    #endregion
+		
+		public ParkingSpacesAdministrator()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AdministratorId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int AdministratorId
+		{
+			get
+			{
+				return this._AdministratorId;
+			}
+			set
+			{
+				if ((this._AdministratorId != value))
+				{
+					this.OnAdministratorIdChanging(value);
+					this.SendPropertyChanging();
+					this._AdministratorId = value;
+					this.SendPropertyChanged("AdministratorId");
+					this.OnAdministratorIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AdministratorName", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string AdministratorName
+		{
+			get
+			{
+				return this._AdministratorName;
+			}
+			set
+			{
+				if ((this._AdministratorName != value))
+				{
+					this.OnAdministratorNameChanging(value);
+					this.SendPropertyChanging();
+					this._AdministratorName = value;
+					this.SendPropertyChanged("AdministratorName");
+					this.OnAdministratorNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StartsOn", DbType="DateTime NOT NULL")]
+		public System.DateTime StartsOn
+		{
+			get
+			{
+				return this._StartsOn;
+			}
+			set
+			{
+				if ((this._StartsOn != value))
+				{
+					this.OnStartsOnChanging(value);
+					this.SendPropertyChanging();
+					this._StartsOn = value;
+					this.SendPropertyChanged("StartsOn");
+					this.OnStartsOnChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EndsOn", DbType="DateTime NOT NULL")]
+		public System.DateTime EndsOn
+		{
+			get
+			{
+				return this._EndsOn;
+			}
+			set
+			{
+				if ((this._EndsOn != value))
+				{
+					this.OnEndsOnChanging(value);
+					this.SendPropertyChanging();
+					this._EndsOn = value;
+					this.SendPropertyChanged("EndsOn");
+					this.OnEndsOnChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="parking.ParkingSpacesOwners")]
+	public partial class ParkingSpacesOwner : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _OwnerID;
+		
+		private string _OwnerName;
+		
+		private System.Nullable<int> _SpaceNumber;
+		
+		private System.DateTime _StartsOn;
+		
+		private System.DateTime _EndsOn;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnOwnerIDChanging(int value);
+    partial void OnOwnerIDChanged();
+    partial void OnOwnerNameChanging(string value);
+    partial void OnOwnerNameChanged();
+    partial void OnSpaceNumberChanging(System.Nullable<int> value);
+    partial void OnSpaceNumberChanged();
+    partial void OnStartsOnChanging(System.DateTime value);
+    partial void OnStartsOnChanged();
+    partial void OnEndsOnChanging(System.DateTime value);
+    partial void OnEndsOnChanged();
+    #endregion
+		
+		public ParkingSpacesOwner()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OwnerID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int OwnerID
+		{
+			get
+			{
+				return this._OwnerID;
+			}
+			set
+			{
+				if ((this._OwnerID != value))
+				{
+					this.OnOwnerIDChanging(value);
+					this.SendPropertyChanging();
+					this._OwnerID = value;
+					this.SendPropertyChanged("OwnerID");
+					this.OnOwnerIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OwnerName", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string OwnerName
+		{
+			get
+			{
+				return this._OwnerName;
+			}
+			set
+			{
+				if ((this._OwnerName != value))
+				{
+					this.OnOwnerNameChanging(value);
+					this.SendPropertyChanging();
+					this._OwnerName = value;
+					this.SendPropertyChanged("OwnerName");
+					this.OnOwnerNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SpaceNumber", DbType="Int")]
+		public System.Nullable<int> SpaceNumber
+		{
+			get
+			{
+				return this._SpaceNumber;
+			}
+			set
+			{
+				if ((this._SpaceNumber != value))
+				{
+					this.OnSpaceNumberChanging(value);
+					this.SendPropertyChanging();
+					this._SpaceNumber = value;
+					this.SendPropertyChanged("SpaceNumber");
+					this.OnSpaceNumberChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StartsOn", DbType="DateTime NOT NULL")]
+		public System.DateTime StartsOn
+		{
+			get
+			{
+				return this._StartsOn;
+			}
+			set
+			{
+				if ((this._StartsOn != value))
+				{
+					this.OnStartsOnChanging(value);
+					this.SendPropertyChanging();
+					this._StartsOn = value;
+					this.SendPropertyChanged("StartsOn");
+					this.OnStartsOnChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EndsOn", DbType="DateTime NOT NULL")]
+		public System.DateTime EndsOn
+		{
+			get
+			{
+				return this._EndsOn;
+			}
+			set
+			{
+				if ((this._EndsOn != value))
+				{
+					this.OnEndsOnChanging(value);
+					this.SendPropertyChanging();
+					this._EndsOn = value;
+					this.SendPropertyChanged("EndsOn");
+					this.OnEndsOnChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
