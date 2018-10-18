@@ -14,11 +14,12 @@ namespace Parking.Class
         {
             this._text = text;
         }
-        public async Task StartBalloonInformation()
+        public async Task StartBalloonInformation(object obj)
         {
-            await Task.Run(() => SetBalloonTip(_text));
+            CancellationToken ct = (CancellationToken)obj;
+            ct.ThrowIfCancellationRequested();
+            await Task.Factory.StartNew(() => SetBalloonTip(_text), ct);
         }
-
         private void SetBalloonTip(string text)
         {
             try

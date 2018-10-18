@@ -2,11 +2,11 @@
 using System.Drawing;
 using System.Windows;
 using System.Windows.Forms;
-using Parking.Interface;
 using System.Threading.Tasks;
 using Parking.Class;
 using Parking.Class.Main_Interface_Class;
 using Parking.Pages;
+using System.Threading;
 
 namespace Parking
 {
@@ -51,12 +51,22 @@ namespace Parking
 
         private void btnSettings_Click(object sender, RoutedEventArgs e)
         {
-            //ShowBalloon("test");
+            mainFrame.NavigationService.Navigate(new Settings());
         }
 
         private async Task ShowBalloon(string text)
         {
-            await new ParkingInterfaces().StartBalloon(new Balloon(text));
+            CancellationTokenSource cts = new CancellationTokenSource();
+            try
+            {
+                await new PlugToInterface(cts.Token).StartBalloon(new Balloon(text));
+            }
+            catch (Exception ex)
+            {
+                cts.Cancel();
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+
         }
 
         private void OnStart()
@@ -79,9 +89,9 @@ namespace Parking
             mainFrame.NavigationService.Navigate(new Reservation_Delete());
         }
 
-        private void btnAdmin_Click(object sender, RoutedEventArgs e)
+        private async  void btnAdmin_Click(object sender, RoutedEventArgs e)
         {
-
+            await ShowBalloon("to co robimy ");
         }
     }
 }

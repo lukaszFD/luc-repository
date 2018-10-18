@@ -4,44 +4,67 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Parking.Database.Model;
+using System.Threading;
 
 namespace Parking.Database.Controller
 {
     class ReservationDeleteController
     {
         private int _ownerId { get; set; }
+        private DateTime _date { get; set; }
 
         public ReservationDeleteController(int ownerId)
         {
             this._ownerId = ownerId;
         }
-        private DataModelDataContext data = new DataModelDataContext();
-
-        public async Task ReleaseSpace(DateTime start, DateTime end)
+        public ReservationDeleteController(int ownerId, DateTime date)
         {
-            try
+            this._ownerId = ownerId;
+            this._date = date;
+        }
+        private static DataModelDataContext Data
+        {
+            get
             {
-                await Task.Run(() => data.usp_AddFreeParkingSpaces(_ownerId, start, end));
-            }
-            catch (Exception ex)
-            {
-                throw ex;
+                return new DataModelDataContext();
             }
         }
 
-        public async Task GetSpaces()
+        public async Task ReleaseSpaceAsync(DateTime start, DateTime end)
         {
-            await Task.Run(() => ListSpaces());
+            await Task.Factory.StartNew(() => Data.usp_FreeParkingSpaces_AddNew(_ownerId, start, end));
         }
 
-        public List<DateTime> ListSpaces()
+        public async Task<List<DateTime>> GetSpacesAsync(object obj)
+        {
+            CancellationToken ct = (CancellationToken)obj;
+            ct.ThrowIfCancellationRequested();
+            return await Task.Factory.StartNew(() => ListSpaces(),ct);
+        }
+        public async Task DeleteReleaseSpaceAsync(object obj)
+        {
+            CancellationToken ct = (CancellationToken)obj;
+            ct.ThrowIfCancellationRequested();
+            await Task.Factory.StartNew(() => DeleteReleaseSpace(), ct);
+        }
+
+        private void DeleteReleaseSpace()
+        {
+            var deleteDetails = Data.ParkingSpaces.Single(p => p.Date == _date && p.ParkingSpacesOwnerID == _ownerId);
+            DataModelDataContext d = new DataModelDataContext();
+            d.ParkingSpaces.Attach(deleteDetails);
+            d.ParkingSpaces.DeleteOnSubmit(deleteDetails);
+            d.SubmitChanges();
+        }
+
+        private List<DateTime> ListSpaces()
         {
             List<DateTime> list = new List<DateTime>();
-            var listDate = data.ParkingSpaces.ToList();
+            var listDate = Data.ParkingSpaces.ToList();
             var spaces =
                     from s in listDate
                     where
-                        s.Date >= DateTime.Now
+                        s.Date >= Convert.ToDateTime(Convert.ToDateTime(DateTime.Now).ToString("yyyy-MM-dd"))
                         &&
                         s.ParkingSpacesOwnerID == _ownerId
                         &&

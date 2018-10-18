@@ -4,6 +4,6 @@ namespace Parking.Interface
 {
     interface IOutlook
     {
-        Task CreateNewOutlookAppointment();
+        Task CreateNewOutlookAppointment(object obj);
     }
 }

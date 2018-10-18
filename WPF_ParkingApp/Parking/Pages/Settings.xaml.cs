@@ -1,28 +1,54 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Parking.Class.Main_Interface_Class;
+using Parking.Class;
+using Parking.Interface;
+using System;
 
 namespace Parking.Pages
 {
     /// <summary>
     /// Interaction logic for Settings.xaml
     /// </summary>
-    public partial class Settings : Page
+    public partial class Settings : Page, IWindows
     {
         public Settings()
         {
             InitializeComponent();
+        }
+
+        public void Start()
+        {
+            new AutomaticallyStartWithWindows();
+        }
+
+        public void Stop()
+        {
+            new AutomaticallyStartWithWindows();
+        }
+
+        private void startWithWindows_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Start();
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void stopWithWindows_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Stop();
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

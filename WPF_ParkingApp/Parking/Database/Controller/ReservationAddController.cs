@@ -9,12 +9,22 @@ namespace Parking.Database.Controller
 {
     class ReservationAddController
     {
-        private DataModelDataContext data = new DataModelDataContext();
+        private static DataModelDataContext Data
+        {
+            get
+            {
+                return new DataModelDataContext();
+            }
+        }
+        public async Task<List<DateTime>> ListAllSpacesAsync()
+        {
+            return await Task.Factory.StartNew(() => ListAllSpaces());
+        }
 
-        public List<DateTime> ListAllSpaces()
+        private List<DateTime> ListAllSpaces()
         {
             List<DateTime> list = new List<DateTime>();
-            var listDate = data.ParkingSpaces.ToList();
+            var listDate = Data.ParkingSpaces.ToList();
             var spaces =
                     from s in listDate
                     where

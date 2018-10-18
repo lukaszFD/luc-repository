@@ -2,11 +2,21 @@
   <Connection Mode="AppSettings" ConnectionString="Data Source=.\SQLEXPRESS;Initial Catalog=Parking;Integrated Security=True" SettingsObjectName="Parking.Properties.Settings" SettingsPropertyName="ParkingConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="parking.BlackoutDates" Member="BlackoutDates">
     <Type Name="BlackoutDate">
+      <Column Name="DateId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="BlackoutDate" Member="BlackoutDate1" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="parking.ParkingSpaces" Member="ParkingSpaces">
+    <Type Name="ParkingSpace">
+      <Column Name="ParkingSpaceId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="PlaceRentedFor" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ParkingSpacesOwnerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="parking.ParkingSpacesAdministrator" Member="ParkingSpacesAdministrators">
     <Type Name="ParkingSpacesAdministrator">
+      <Column Name="AdministratorId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="AdministratorName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
       <Column Name="StartsOn" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="EndsOn" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
@@ -14,38 +24,14 @@
   </Table>
   <Table Name="parking.ParkingSpacesOwners" Member="ParkingSpacesOwners">
     <Type Name="ParkingSpacesOwner">
-      <Column Name="OwnerID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="OwnerID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="OwnerName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
       <Column Name="SpaceNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="StartsOn" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="EndsOn" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
-  <Table Name="parking.ParkingSpaces" Member="ParkingSpaces">
-    <Type Name="ParkingSpace">
-      <Column Name="Date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="PlaceRentedFor" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ParkingSpacesOwnerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Function Name="parking.usp_BlackoutDates_AddNew" Method="usp_BlackoutDates_AddNew">
-    <Parameter Name="date" Type="System.DateTime" DbType="Date" />
-    <Return Type="System.Int32" />
-  </Function>
-  <Function Name="parking.usp_BlackoutDates_Delete" Method="usp_BlackoutDates_Delete">
-    <Parameter Name="date" Type="System.DateTime" DbType="Date" />
-    <Return Type="System.Int32" />
-  </Function>
-  <Function Name="parking.usp_ParkingSpacesOwners_AddNew" Method="usp_ParkingSpacesOwners_AddNew">
-    <Parameter Name="owner" Type="System.String" DbType="NVarChar(100)" />
-    <Parameter Name="space" Type="System.Int32" DbType="Int" />
-    <Return Type="System.Int32" />
-  </Function>
-  <Function Name="parking.usp_ParkingSpacesOwners_Delete" Method="usp_ParkingSpacesOwners_Delete">
-    <Parameter Name="OwnerID" Parameter="ownerID" Type="System.Int32" DbType="Int" />
-    <Return Type="System.Int32" />
-  </Function>
-  <Function Name="parking.usp_AddFreeParkingSpaces" Method="usp_AddFreeParkingSpaces">
+  <Function Name="parking.usp_FreeParkingSpaces_AddNew" Method="usp_FreeParkingSpaces_AddNew">
     <Parameter Name="ownerId" Type="System.Int32" DbType="Int" />
     <Parameter Name="date_start" Type="System.DateTime" DbType="Date" />
     <Parameter Name="date_end" Type="System.DateTime" DbType="Date" />

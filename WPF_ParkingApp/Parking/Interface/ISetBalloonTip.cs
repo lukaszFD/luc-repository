@@ -4,6 +4,6 @@ namespace Parking.Interface
 {
     interface ISetBalloonTip
     {
-        Task StartBalloonInformation();
+        Task StartBalloonInformation(object obj);
     }
 }

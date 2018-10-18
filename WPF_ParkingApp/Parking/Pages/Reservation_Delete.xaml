@@ -7,10 +7,10 @@
       xmlns:sys="clr-namespace:System;assembly=mscorlib"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="660"
-      Title="Reservation_Delete" >
+      Title="Reservation_Delete" Loaded="Page_Loaded">
 
     <Grid>
-        <TabControl  BorderBrush="Transparent" Background="Transparent" SelectionChanged="TabControl_SelectionChanged">
+        <TabControl  BorderBrush="Transparent" Background="Transparent" >
             <TabControl.Resources>
                 <Style TargetType="TabItem">
                     <Setter Property="Template">
@@ -25,10 +25,10 @@
                                 </Border>
                                 <ControlTemplate.Triggers>
                                     <Trigger Property="IsSelected" Value="True">
-                                        <!--<Setter  TargetName="Border" Property="Background" Value="#008fd5" />-->
+                                        <Setter TargetName="Border" Property="Background" Value="LightSkyBlue" />
                                     </Trigger>
                                     <Trigger Property="IsSelected" Value="False">
-                                        <!--<Setter TargetName="Border" Property="Background" Value="#008fd5" />-->
+                                        <Setter TargetName="Border" Property="Background" Value="Transparent" />
                                     </Trigger>
                                 </ControlTemplate.Triggers>
                             </ControlTemplate>
@@ -38,51 +38,49 @@
             </TabControl.Resources>
             <TabItem x:Name="tabDelet" FontWeight="Bold" FontSize="18" Header="Odwołaj rezerwację" Width="280" Height="35" Background="Transparent" BorderThickness="0.6" BorderBrush="Black" Foreground="#ffff">
                 <Border  BorderBrush="LightGray" BorderThickness="1" CornerRadius="4" >
-                <Grid >
-                    <StackPanel>
-                        <TextBlock Text="Data od" FontSize="18" Margin="10 10 10 10" Foreground="#ffff"  />
-                        <DatePicker x:Name="dateFrom" Width="400" FontSize="20" SelectedDate="{x:Static sys:DateTime.Now}" SelectedDateChanged="dateFrom_SelectedDateChanged">
-                        </DatePicker>
-                        <TextBlock Text="Data do" FontSize="18" Margin="10 10 10 10" Foreground="#ffff"  />
-                            <DatePicker x:Name="dateTo" Width="400" FontSize="20" SelectedDate="{x:Static sys:DateTime.Now}" SelectedDateChanged="dateTo_SelectedDateChanged">
-                        </DatePicker>
+                    <Grid >
+                        <StackPanel>
+                            <TextBlock Text="Data od" FontSize="18" Margin="10 10 10 10" Foreground="#ffff"  />
+                            <DatePicker x:Name="dateFromDatePicker" Width="400" FontSize="20" SelectedDate="{x:Static sys:DateTime.Now}" SelectedDateChanged="dateFrom_SelectedDateChanged">
+                            </DatePicker>
+                            <TextBlock Text="Data do" FontSize="18" Margin="10 10 10 10" Foreground="#ffff"  />
+                            <DatePicker x:Name="dateToDatePicker" Width="400" FontSize="20" SelectedDate="{x:Static sys:DateTime.Now}" SelectedDateChanged="dateTo_SelectedDateChanged">
+                            </DatePicker>
 
-                        <Grid Width="550" Margin="10" HorizontalAlignment="Left">
-                            <Grid.ColumnDefinitions >
-                                <ColumnDefinition  Width ="*"/>
-                                <ColumnDefinition  Width ="4*"/>
-                            </Grid.ColumnDefinitions>
-                            <Button Grid.Column="0"  x:Name="btnOk" Click="btnOk_Click" HorizontalAlignment="Center" Height="100" BorderBrush="Transparent"  Background="Transparent" >
-                                <Image Source="/Images/ok.ico">
-                                </Image>
-                            </Button>
-                            <CheckBox Margin="15" Width="200" Grid.Column="1" Foreground="#ffff"  x:Name="checkboxCalendarDelete" >
+                            <Grid Width="550" Margin="10" HorizontalAlignment="Left">
+                                <Grid.ColumnDefinitions >
+                                    <ColumnDefinition  Width ="*"/>
+                                    <ColumnDefinition  Width ="4*"/>
+                                </Grid.ColumnDefinitions>
+                                <Button Grid.Column="0"  x:Name="btnOk" Click="btnOk_Click" HorizontalAlignment="Center" Height="100" BorderBrush="Transparent"  Background="Transparent" >
+                                    <Image Source="/Images/ok.ico">
+                                    </Image>
+                                </Button>
+                                <CheckBox Margin="15" Width="200" Grid.Column="1" Foreground="#ffff"  x:Name="checkboxCalendarDelete" >
                                     <CheckBox.LayoutTransform>
                                         <ScaleTransform ScaleX="2" ScaleY="2" />
                                     </CheckBox.LayoutTransform>
 
                                     <StackPanel>
                                         <TextBlock FontSize="10" Width="400">Wyslij emaila do zainteresowanych</TextBlock>
-       
-                                </StackPanel>
-                            </CheckBox>
-                        </Grid>
-                       
-                    </StackPanel>
-                </Grid>
-            </Border>
-                
+
+                                    </StackPanel>
+                                </CheckBox>
+                            </Grid>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
             </TabItem>
-            <TabItem x:Name="tabCheck" FontWeight="Bold" Header="Sprawdź odwołane rezerwacje" FontSize="18" Width="350" Foreground="#ffff">
+            <TabItem x:Name="tabCheck" FontWeight="Bold" Header="Sprawdź odwołane rezerwacje" FontSize="18" Width="350" Foreground="#ffff" >
                 <Border BorderBrush="LightGray" BorderThickness="1" CornerRadius="4" Background="Transparent">
                     <Grid>
                         <Grid.ColumnDefinitions >
-                            <ColumnDefinition Width ="*"/>
+                            <ColumnDefinition Width ="280"/>
                             <ColumnDefinition Width ="*"/>
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Column="0">
-                            <!--<TextBlock Text="Cofnięte rezerwacje" Foreground="#ffff" FontSize="18" Margin="10 10 10 10"/>-->
-                            <ListBox Background="Transparent" Foreground="#ffff" FontSize="30" HorizontalAlignment="Left" Height="405" Width="280"  x:Name="freeSpaces">
+                            <ListBox SelectionChanged="freeSpaces_SelectionChanged" Background="Transparent" Foreground="#ffff" FontSize="30" HorizontalAlignment="Center" Height="405" Width="280"  x:Name="freeSpaces">
                                 <ListBox.Resources>
                                     <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent" />
                                 </ListBox.Resources>
@@ -90,10 +88,10 @@
                         </StackPanel>
 
                         <StackPanel Grid.Column="1">
-                            <TextBlock Text="Zaznacz datę aby usunąć cofniętą" Foreground="#ffff" FontSize="18" Margin="10 60 10 10"/>
-                            <TextBlock Text="rezerwację" Foreground="#ffff" FontSize="18" Margin="10 10 10 10"/>
+                            <TextBlock Text="Zaznacz datę aby usunąć cofniętą" Foreground="#ffff" FontSize="18" Margin="10 60 10 10" HorizontalAlignment="Center"/>
+                            <TextBlock Text="rezerwację i naciśni przycisk" Foreground="#ffff" FontSize="18" Margin="10 10 10 10" HorizontalAlignment="Center"/>
                             <Button Margin="0 48" x:Name="btnDelete" Click="btnDelete_Click" VerticalAlignment="Center" HorizontalAlignment="Center" Height="200" BorderBrush="Transparent" Background="Transparent" >
-                                <Image Source="/Images/delete.ico">
+                                <Image Source="/Images/delete.ico" HorizontalAlignment="Center">
                                 </Image>
                             </Button>
                         </StackPanel>

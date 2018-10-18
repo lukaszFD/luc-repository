@@ -3,8 +3,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using Parking.Database.Controller;
-using System.Threading.Tasks;
-using System.Collections.Generic;
+using System.Threading;
+using Parking.Class;
 
 namespace Parking.Pages
 {
@@ -17,24 +17,22 @@ namespace Parking.Pages
         {
             InitializeComponent();
         }
-
+        private DateTime _date { get; set; }
         private DateTime _dateFrom { get; set; }
         private DateTime _dateTo { get; set; }
-        private ReservationDeleteController reserv = new ReservationDeleteController(1);
-
 
         private async void btnOk_Click(object sender, RoutedEventArgs e)
         {
             if (_dateFrom > _dateTo)
             {
-                dateTo.Background = Brushes.Red;
+                dateToDatePicker.Background = Brushes.Red;
             }
             else
             {
-                dateTo.Background = Brushes.Transparent;
+                dateToDatePicker.Background = Brushes.Transparent;
                 try
                 {
-                    await reserv.ReleaseSpace(_dateFrom, _dateTo);
+                    await new ReservationDeleteController(1).ReleaseSpaceAsync(_dateFrom, _dateTo);
                     FillListBox();
                 }
                 catch (Exception ex)
@@ -44,35 +42,86 @@ namespace Parking.Pages
             }
         }
 
-        private void FillListBox()
+        private async void FillListBox()
         {
-            foreach (var item in reserv.ListSpaces())
+            CancellationTokenSource cts = new CancellationTokenSource();
+            try
             {
-                freeSpaces.Items.Add(item);
+                freeSpaces.Items.Clear();
+                foreach (var item in await new ReservationDeleteController(1).GetSpacesAsync(cts.Token))
+                {
+                    freeSpaces.Items.Add(item);
+                }
+            }
+            catch (Exception)
+            {
+                cts.Cancel();
+                throw;
             }
         }
 
         private void dateFrom_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
-            _dateFrom = Convert.ToDateTime(Convert.ToDateTime(dateFrom.Text).ToString("yyyy-MM-dd"));
+            _dateFrom = Convert.ToDateTime(Convert.ToDateTime(dateFromDatePicker.Text).ToString("yyyy-MM-dd"));
         }
 
         private void dateTo_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
-            _dateTo = Convert.ToDateTime(Convert.ToDateTime(dateTo.Text).ToString("yyyy-MM-dd"));
+            _dateTo = Convert.ToDateTime(Convert.ToDateTime(dateToDatePicker.Text).ToString("yyyy-MM-dd"));
         }
 
-        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        private async void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (tabCheck != null && tabCheck.IsSelected)
+            CancellationTokenSource cts = new CancellationTokenSource();
+            try
+            {
+                await new ReservationDeleteController(1, _date).DeleteReleaseSpaceAsync(cts.Token);
+            }
+            catch (Exception ex)
+            {
+                cts.Cancel();
+                MessageBox.Show(ex.Message);
+            }
+            finally
             {
                 FillListBox();
             }
         }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Days days = new Days();
+                foreach (var item in days.Weekend())
+                {
+                    dateFromDatePicker.BlackoutDates.Add(new CalendarDateRange(item));
+                    dateToDatePicker.BlackoutDates.Add(new CalendarDateRange(item));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                FillListBox();
+            }
+        }
+
+        private void freeSpaces_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+            int index = freeSpaces.SelectedIndex;
+            if (index >= 0)
+            {
+                _date = Convert.ToDateTime(Convert.ToDateTime(freeSpaces.Items[index].ToString()).ToString("yyyy-MM-dd"));
+            }
+            else
+            {
+                return;
+            }
+        }
+
     }
 }

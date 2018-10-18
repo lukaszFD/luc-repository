@@ -8,14 +8,14 @@ namespace Parking.Class
 {
     class Days
     {
-        public static List<DateTime> Weekend(DateTime now, DateTime lastDay)
+        public List<DateTime> Weekend()
         {
             List<DateTime> list = new List<DateTime>();
-            TimeSpan diff = lastDay - now;
+            TimeSpan diff = DateTime.Now.AddMonths(6) - DateTime.Now;
             int days = diff.Days;
             for (var i = 0; i <= days; i++)
             {
-                var date = now.AddDays(i);
+                var date = DateTime.Now.AddDays(i);
                 switch (date.DayOfWeek)
                 {
                     case DayOfWeek.Saturday:

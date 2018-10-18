@@ -75,7 +75,7 @@
     <Compile Include="Class\AutomaticallyStartWithWindows.cs" />
     <Compile Include="Class\Balloon.cs" />
     <Compile Include="Class\Days.cs" />
-    <Compile Include="Class\Main_Interface_Class\ParkingInterface.cs" />
+    <Compile Include="Class\Main_Interface_Class\PlugToInterface.cs" />
     <Compile Include="Class\OutlookAppointment.cs" />
     <Compile Include="Database\Controller\AdminController.cs" />
     <Compile Include="Database\Controller\ReservationAddController.cs" />
@@ -167,17 +167,13 @@
     <Resource Include="Images\blue-gradient_0.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\settings.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\blue-gradient_1.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\ok.ico" />
-    <Resource Include="Images\settings_2.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\settings_3.ico" />
+    <Resource Include="Images\settings.ico" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
