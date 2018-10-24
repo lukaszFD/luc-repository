@@ -61,7 +61,6 @@
     <Folder Include="Properties" />
     <Folder Include="parking\" />
     <Folder Include="parking\Tables\" />
-    <Folder Include="parking\Stored Procedures\" />
     <Folder Include="Security" />
     <Folder Include="Security\Schema" />
     <Folder Include="Storage" />
@@ -71,13 +70,8 @@
     <Build Include="parking\Tables\ParkingSpaces.sql" />
     <Build Include="parking\Tables\ParkingSpacesAdministrator.sql" />
     <Build Include="parking\Tables\ParkingSpacesOwners.sql" />
-    <Build Include="parking\Stored Procedures\usp_AddFreeParkingSpaces.sql" />
-    <Build Include="parking\Stored Procedures\usp_ParkingSpacesOwners_AddNew.sql" />
-    <Build Include="parking\Stored Procedures\usp_ParkingSpacesOwners_Delete.sql" />
     <Build Include="Security\Schema\parking.sql" />
     <Build Include="Storage\Data.sql" />
-    <Build Include="parking\Stored Procedures\usp_BlackoutDates_AddNew.sql" />
-    <Build Include="parking\Stored Procedures\usp_BlackoutDates_Delete.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Parking.DB.publish.xml" />

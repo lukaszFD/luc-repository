@@ -12,3 +12,7 @@ C:\Users\lukasz.dejko\Documents\GitHub\luc-repository\DB_ParkingApp\Parking.DB\b
 C:\Users\lukasz.dejko\Documents\GitHub\luc-repository\DB_ParkingApp\Parking.DB\bin\Debug\Parking.DB.pdb
 C:\Users\lukasz.dejko\Documents\GitHub\luc-repository\DB_ParkingApp\Parking.DB\obj\Debug\Parking.DB.dll
 C:\Users\lukasz.dejko\Documents\GitHub\luc-repository\DB_ParkingApp\Parking.DB\obj\Debug\Parking.DB.pdb
+C:\Users\lukasz.dejko\Documents\GitHub\luc-repository\DB_ParkingApp\Parking.DB\obj\Debug\Model.xml
+C:\Users\lukasz.dejko\Documents\GitHub\luc-repository\DB_ParkingApp\Parking.DB\obj\Debug\refactor.xml
+C:\Users\lukasz.dejko\Documents\GitHub\luc-repository\DB_ParkingApp\Parking.DB\obj\Debug\postdeploy.sql
+C:\Users\lukasz.dejko\Documents\GitHub\luc-repository\DB_ParkingApp\Parking.DB\obj\Debug\predeploy.sql

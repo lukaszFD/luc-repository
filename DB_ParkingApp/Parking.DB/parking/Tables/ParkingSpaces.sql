@@ -1,6 +1,11 @@
-﻿CREATE TABLE [parking].[ParkingSpaces] (
-    [Date]                 DATE NOT NULL,
-    [PlaceRentedFor]   INT  NULL,
-    [ParkingSpacesOwnerID] INT  NULL
-);
-
+﻿CREATE TABLE [parking].[ParkingSpaces](
+	[ParkingSpaceId] [INT] IDENTITY(1,1) NOT NULL,
+	[Date] [DATE] NOT NULL,
+	[PlaceRentedFor] [INT] NULL,
+	[ParkingSpaceOwnerID] [INT] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[ParkingSpaceId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
