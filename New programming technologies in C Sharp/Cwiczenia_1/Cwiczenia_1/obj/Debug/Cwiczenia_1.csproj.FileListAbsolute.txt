@@ -1,0 +1,6 @@
+C:\Users\lukasz.dejko\Documents\GitHub\luc-repository\Postgraduate_Studies_NET\New programming technologies in C Sharp\Cwiczenia_1\Cwiczenia_1\bin\Debug\Cwiczenia_1.exe.config
+C:\Users\lukasz.dejko\Documents\GitHub\luc-repository\Postgraduate_Studies_NET\New programming technologies in C Sharp\Cwiczenia_1\Cwiczenia_1\bin\Debug\Cwiczenia_1.exe
+C:\Users\lukasz.dejko\Documents\GitHub\luc-repository\Postgraduate_Studies_NET\New programming technologies in C Sharp\Cwiczenia_1\Cwiczenia_1\bin\Debug\Cwiczenia_1.pdb
+C:\Users\lukasz.dejko\Documents\GitHub\luc-repository\Postgraduate_Studies_NET\New programming technologies in C Sharp\Cwiczenia_1\Cwiczenia_1\obj\Debug\Cwiczenia_1.csprojResolveAssemblyReference.cache
+C:\Users\lukasz.dejko\Documents\GitHub\luc-repository\Postgraduate_Studies_NET\New programming technologies in C Sharp\Cwiczenia_1\Cwiczenia_1\obj\Debug\Cwiczenia_1.exe
+C:\Users\lukasz.dejko\Documents\GitHub\luc-repository\Postgraduate_Studies_NET\New programming technologies in C Sharp\Cwiczenia_1\Cwiczenia_1\obj\Debug\Cwiczenia_1.pdb
