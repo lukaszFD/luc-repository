@@ -28,16 +28,21 @@
                               DisplayMode="Month">
                     </Calendar>
                 </Viewbox>
-                <Border Padding="10">
-                    <Button x:Name="btnAddReservation"  
+                <Border Padding="5">
+                    <StackPanel>
+                        <Button x:Name="btnAddReservation"  
                             Click="btnAddReservation_Click"
-                            HorizontalAlignment="Center" 
+                            HorizontalAlignment="Left" 
                             Height="100" 
                             BorderBrush="Transparent"  
                             Background="Transparent" >
-                        <Image Source="/Images/ok.ico">
-                        </Image>
-                    </Button>
+                            <Image Source="/Images/ok.ico">
+                            </Image>
+                        </Button>
+                        <CheckBox FontSize="17" IsChecked="True" Content="Dodaj przypomnienie do kalendarza" Foreground="#ffff" x:Name="checkBoxAddInfoToCalendar">
+                            
+                        </CheckBox>
+                    </StackPanel>
                 </Border>
             </StackPanel>
 

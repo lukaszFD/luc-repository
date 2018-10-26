@@ -61,10 +61,8 @@
                                     <CheckBox.LayoutTransform>
                                         <ScaleTransform ScaleX="2" ScaleY="2" />
                                     </CheckBox.LayoutTransform>
-
                                     <StackPanel>
                                         <TextBlock FontSize="10" Width="400">Wyslij emaila do zainteresowanych</TextBlock>
-
                                     </StackPanel>
                                 </CheckBox>
                             </Grid>
