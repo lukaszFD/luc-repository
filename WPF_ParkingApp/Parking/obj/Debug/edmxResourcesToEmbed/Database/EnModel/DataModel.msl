@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ParkingModelStoreContainer" CdmEntityContainer="ParkingEntities">
+    <EntitySetMapping Name="BlackoutDates">
+      <EntityTypeMapping TypeName="ParkingModel.BlackoutDate">
+        <MappingFragment StoreEntitySet="BlackoutDates">
+          <ScalarProperty Name="DateId" ColumnName="DateId" />
+          <ScalarProperty Name="BlackoutDate1" ColumnName="BlackoutDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ParkingSpaces">
+      <EntityTypeMapping TypeName="ParkingModel.ParkingSpace">
+        <MappingFragment StoreEntitySet="ParkingSpaces">
+          <ScalarProperty Name="ParkingSpaceId" ColumnName="ParkingSpaceId" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="PlaceRentedFor" ColumnName="PlaceRentedFor" />
+          <ScalarProperty Name="ParkingSpaceOwnerID" ColumnName="ParkingSpaceOwnerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ParkingSpacesAdministrators">
+      <EntityTypeMapping TypeName="ParkingModel.ParkingSpacesAdministrator">
+        <MappingFragment StoreEntitySet="ParkingSpacesAdministrator">
+          <ScalarProperty Name="AdministratorId" ColumnName="AdministratorId" />
+          <ScalarProperty Name="AdministratorName" ColumnName="AdministratorName" />
+          <ScalarProperty Name="StartsOn" ColumnName="StartsOn" />
+          <ScalarProperty Name="EndsOn" ColumnName="EndsOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ParkingSpacesOwners">
+      <EntityTypeMapping TypeName="ParkingModel.ParkingSpacesOwner">
+        <MappingFragment StoreEntitySet="ParkingSpacesOwners">
+          <ScalarProperty Name="ParkingSpaceOwnerID" ColumnName="ParkingSpaceOwnerID" />
+          <ScalarProperty Name="OwnerName" ColumnName="OwnerName" />
+          <ScalarProperty Name="SpaceNumber" ColumnName="SpaceNumber" />
+          <ScalarProperty Name="StartsOn" ColumnName="StartsOn" />
+          <ScalarProperty Name="EndsOn" ColumnName="EndsOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

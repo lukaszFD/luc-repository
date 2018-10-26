@@ -21,15 +21,32 @@
                             <ColumnDefinition Width ="*"/>
                             <ColumnDefinition Width ="7*"/>
                         </Grid.ColumnDefinitions>
-                        <Button  HorizontalAlignment="Left" Height="45" BorderBrush="Transparent" Grid.Column="0" Background="Transparent" >
+                        <Button  
+                            HorizontalAlignment="Left" 
+                            Height="45" 
+                            BorderBrush="Transparent" 
+                            Grid.Column="0" 
+                            Background="Transparent" >
                             <Image Source="/Images/car.ico">
                             </Image>
                         </Button>
-                        <TextBlock Grid.Column="1" FontStyle="Italic" FontWeight="Black" Text="Parking App" Foreground="#ffff" FontSize="30"></TextBlock>
+                        <TextBlock 
+                            Grid.Column="1" 
+                            FontStyle="Italic" 
+                            FontWeight="Black" 
+                            Text="Parking App" 
+                            Foreground="#ffff" 
+                            FontSize="30">
+                            
+                        </TextBlock>
                     </Grid>
                 </StackPanel>
             </Border>
-            <Border Margin="10" BorderBrush="LightBlue" BorderThickness="0.6" CornerRadius="4" Background="Transparent">
+            <Border Margin="10" 
+                    BorderBrush="LightBlue" 
+                    BorderThickness="0.6" 
+                    CornerRadius="4" 
+                    Background="Transparent">
                 <Border.Effect>
                     <DropShadowEffect/>
                 </Border.Effect>
@@ -46,24 +63,63 @@
                             <ColumnDefinition Width ="*"/>
                             <ColumnDefinition Width ="*"/>
                         </Grid.ColumnDefinitions>
-                        <Button x:Name="btnSettings" Click="btnSettings_Click" HorizontalAlignment="Left" Height="40" BorderBrush="Transparent" Grid.Column="0" Background="Transparent" >
+                        <Button x:Name="btnSettings" 
+                                Click="btnSettings_Click" 
+                                HorizontalAlignment="Left" 
+                                Height="40" 
+                                BorderBrush="Transparent" 
+                                Grid.Column="0" 
+                                Background="Transparent" >
                             <Image Source="/Images/settings.ico">
-
                             </Image>
                         </Button>
-                        <Button x:Name="btnAdd" Click="btnAdd_Click" FontSize="18" BorderBrush="Transparent" Grid.Column="2" Content="Rezerwacja" Background="Transparent" FontWeight= "Bold" Foreground="#ffff"></Button>
-                        <Button x:Name="btnDelete" Click="btnDelete_Click" FontSize="18" BorderBrush="Transparent" Grid.Column="3" Content="Odwołanie" Background="Transparent" FontWeight= "Bold" Foreground="#ffff"></Button>
-                        <Button x:Name="btnAdmin" Click="btnAdmin_Click" FontSize="18" BorderBrush="Transparent" Grid.Column="4" Content="Administracja" Background="Transparent" FontWeight= "Bold" Foreground="#ffff"></Button>
+                       
+                        <Button x:Name="btnAdd" 
+                                Click="btnAdd_Click" 
+                                FontSize="18" 
+                                BorderBrush="Transparent" 
+                                Grid.Column="2" 
+                                Content="Rezerwacja" 
+                                Background="Transparent" 
+                                FontWeight= "Bold" 
+                                Foreground="#ffff"></Button>
+                        <Button x:Name="btnDelete" 
+                                Click="btnDelete_Click" 
+                                FontSize="18" 
+                                BorderBrush="Transparent" 
+                                Grid.Column="3" 
+                                Content="Odwołanie" 
+                                Background="Transparent" 
+                                FontWeight= "Bold" 
+                                Foreground="#ffff"></Button>
+                        <Button x:Name="btnAdmin" 
+                                Click="btnAdmin_Click" 
+                                FontSize="18" 
+                                BorderBrush="Transparent" 
+                                Grid.Column="4" 
+                                Content="Administracja" 
+                                Background="Transparent" 
+                                FontWeight= "Bold" 
+                                Foreground="#ffff"></Button>
                     </Grid>
                 </StackPanel>
             </Border>
-            <StackPanel Margin="5" Visibility="Visible">
+            <StackPanel Margin="5" 
+                        Visibility="Visible">
                 <Grid>
-                    <Frame x:Name="mainFrame" Height="450" Width="auto" NavigationUIVisibility="Hidden" Background="Transparent" />
+                    <Frame x:Name="mainFrame" 
+                           Height="450" 
+                           Width="auto" 
+                           NavigationUIVisibility="Hidden" 
+                           Background="Transparent" />
                 </Grid>
             </StackPanel>
             <Grid Margin="10 0 0 0 ">
-                <TextBlock FontStyle="Italic" FontWeight="Black" Text="Designed by : ŁD" Foreground="#ffff" FontSize="7"></TextBlock>
+                <TextBlock FontStyle="Italic" 
+                           FontWeight="Black" 
+                           Text="Designed by : ŁD" 
+                           Foreground="#ffff" 
+                           FontSize="7"></TextBlock>
             </Grid>
         </StackPanel>
     </Grid>

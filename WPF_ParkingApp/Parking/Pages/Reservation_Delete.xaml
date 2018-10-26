@@ -10,7 +10,7 @@
       Title="Reservation_Delete" Loaded="Page_Loaded">
 
     <Grid>
-        <TabControl  BorderBrush="Transparent" Background="Transparent" >
+        <TabControl  BorderBrush="Transparent" Background="Transparent" SelectionChanged="TabControl_SelectionChanged">
             <TabControl.Resources>
                 <Style TargetType="TabItem">
                     <Setter Property="Template">
@@ -41,10 +41,11 @@
                     <Grid >
                         <StackPanel>
                             <TextBlock Text="Data od" FontSize="18" Margin="10 10 10 10" Foreground="#ffff"  />
-                            <DatePicker x:Name="dateFromDatePicker" Width="400" FontSize="20" SelectedDate="{x:Static sys:DateTime.Now}" SelectedDateChanged="dateFrom_SelectedDateChanged">
+                            <DatePicker x:Name="dateFrom" Width="400" FontSize="20" SelectedDate="{x:Static sys:DateTime.Now}" SelectedDateChanged="dateFrom_SelectedDateChanged">
+
                             </DatePicker>
                             <TextBlock Text="Data do" FontSize="18" Margin="10 10 10 10" Foreground="#ffff"  />
-                            <DatePicker x:Name="dateToDatePicker" Width="400" FontSize="20" SelectedDate="{x:Static sys:DateTime.Now}" SelectedDateChanged="dateTo_SelectedDateChanged">
+                            <DatePicker x:Name="dateTo" Width="400" FontSize="20" SelectedDate="{x:Static sys:DateTime.Now}" SelectedDateChanged="dateTo_SelectedDateChanged">
                             </DatePicker>
 
                             <Grid Width="550" Margin="10" HorizontalAlignment="Left">
@@ -52,7 +53,7 @@
                                     <ColumnDefinition  Width ="*"/>
                                     <ColumnDefinition  Width ="4*"/>
                                 </Grid.ColumnDefinitions>
-                                <Button Grid.Column="0"  x:Name="btnOk" Click="btnOk_Click" HorizontalAlignment="Center" Height="100" BorderBrush="Transparent"  Background="Transparent" >
+                                <Button Grid.Column="0"  x:Name="btnDeleteRes" Click="btnDeleteRes_Click" HorizontalAlignment="Center" Height="100" BorderBrush="Transparent"  Background="Transparent" >
                                     <Image Source="/Images/ok.ico">
                                     </Image>
                                 </Button>
@@ -76,20 +77,21 @@
                 <Border BorderBrush="LightGray" BorderThickness="1" CornerRadius="4" Background="Transparent">
                     <Grid>
                         <Grid.ColumnDefinitions >
-                            <ColumnDefinition Width ="280"/>
+                            <ColumnDefinition Width ="121"/>
+                            <ColumnDefinition Width="159"/>
                             <ColumnDefinition Width ="*"/>
                         </Grid.ColumnDefinitions>
-                        <StackPanel Grid.Column="0">
+                        <StackPanel Grid.Column="0" Grid.ColumnSpan="2">
                             <ListBox SelectionChanged="freeSpaces_SelectionChanged" Background="Transparent" Foreground="#ffff" FontSize="30" HorizontalAlignment="Center" Height="405" Width="280"  x:Name="freeSpaces">
-                                <ListBox.Resources>
+                                <!--<ListBox.Resources>
                                     <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent" />
-                                </ListBox.Resources>
+                                </ListBox.Resources>-->
                             </ListBox>
                         </StackPanel>
 
-                        <StackPanel Grid.Column="1">
-                            <TextBlock Text="Zaznacz datę aby usunąć cofniętą" Foreground="#ffff" FontSize="18" Margin="10 60 10 10" HorizontalAlignment="Center"/>
-                            <TextBlock Text="rezerwację i naciśni przycisk" Foreground="#ffff" FontSize="18" Margin="10 10 10 10" HorizontalAlignment="Center"/>
+                        <StackPanel Grid.Column="2">
+                            <TextBlock Text="Zaznacz datę aby usunąć" Foreground="#ffff" FontSize="18" Margin="10 60 10 10" HorizontalAlignment="Center"/>
+                            <TextBlock Text="i naciśni przycisk" Foreground="#ffff" FontSize="18" Margin="10 10 10 10" HorizontalAlignment="Center"/>
                             <Button Margin="0 48" x:Name="btnDelete" Click="btnDelete_Click" VerticalAlignment="Center" HorizontalAlignment="Center" Height="200" BorderBrush="Transparent" Background="Transparent" >
                                 <Image Source="/Images/delete.ico" HorizontalAlignment="Center">
                                 </Image>

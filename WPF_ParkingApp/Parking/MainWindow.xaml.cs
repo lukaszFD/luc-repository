@@ -81,7 +81,7 @@ namespace Parking
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-
+            mainFrame.NavigationService.Navigate(new Reservation_Add());
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)

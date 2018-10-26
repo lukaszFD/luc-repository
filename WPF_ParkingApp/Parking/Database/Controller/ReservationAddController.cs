@@ -1,44 +1,88 @@
-﻿using Parking.Database.Model;
+﻿using Parking.Class;
+using Parking.Database.Model;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
-using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Parking.Database.Controller
 {
     class ReservationAddController
     {
-        private static DataModelDataContext Data
+        ParkingEntities pe = new ParkingEntities();
+        private int _ownerId { get; set; }
+        private int _parkingSpaceId { get; set; }
+        private DateTime _dateFrom { get; set; }
+        private DateTime _dateTo { get; set; }
+        public ReservationAddController()
         {
-            get
-            {
-                return new DataModelDataContext();
-            }
+
         }
-        public async Task<List<DateTime>> ListAllSpacesAsync()
+        public ReservationAddController(int ownerId, int parkingSpaceId)
         {
-            return await Task.Factory.StartNew(() => ListAllSpaces());
+            this._ownerId = ownerId;
+            this._parkingSpaceId = parkingSpaceId;
+        }
+        public ReservationAddController(int ownerId, DateTime dateFrom, DateTime dateTo)
+        {
+            this._ownerId = ownerId;
+            this._dateFrom = dateFrom;
+            this._dateTo = dateTo;
+        }
+        public async Task<DataTable> ListAllSpacesAsync(object obj)
+        {
+            CancellationToken ct = (CancellationToken)obj;
+            ct.ThrowIfCancellationRequested();
+            return await Task.Factory.StartNew(() => ListAllSpaces(), ct);
+        }
+        public async Task ReservationAsync(object obj)
+        {
+            CancellationToken ct = (CancellationToken)obj;
+            ct.ThrowIfCancellationRequested();
+            await Task.Factory.StartNew(() => Reservation(), ct);
         }
 
-        private List<DateTime> ListAllSpaces()
+        private void Reservation()
         {
-            List<DateTime> list = new List<DateTime>();
-            var listDate = Data.ParkingSpaces.ToList();
+            ParkingSpace updateParkingSpaces = (from p in pe.ParkingSpaces where p.ParkingSpaceId == _parkingSpaceId select p).FirstOrDefault();
+            updateParkingSpaces.PlaceRentedFor = _ownerId;
+            pe.SaveChanges();
+        }
+
+        private DataTable ListAllSpaces()
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("ParkingSpaceId");
+            dt.Columns.Add("Date");
+            dt.Columns.Add("SpaceNumber");
+
+            var listDate = pe.ParkingSpaces.ToList();
+            var listOwners = pe.ParkingSpacesOwners.ToList();
             var spaces =
-                    from s in listDate
+                    from
+                        s in listDate
+                    join
+                    o in listOwners on s.ParkingSpaceOwnerID equals o.ParkingSpaceOwnerID
                     where
-                        s.Date >= DateTime.Now
+                        s.Date >= Date.Format(DateTime.Now)
                         &&
                         s.PlaceRentedFor == null
-                    orderby
-                        s.Date ascending
-                    select s.Date;
-            foreach (var item in spaces)
+                    select new
+                    {
+                        s.ParkingSpaceId
+                        ,
+                        s.Date
+                        ,
+                        o.SpaceNumber
+                    };
+            var query = from r in spaces select r;
+            foreach (var item in query)
             {
-                list.Add(item);
+                dt.Rows.Add(Date.Format(item.Date), item.SpaceNumber);
             }
-            return list;
+            return dt;
         }
     }
 }

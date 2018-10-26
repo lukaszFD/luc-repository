@@ -5,41 +5,50 @@ using System.Text;
 using System.Threading.Tasks;
 using Parking.Database.Model;
 using System.Threading;
+using Parking.Class;
 
 namespace Parking.Database.Controller
 {
     class ReservationDeleteController
     {
+        ParkingEntities pe = new ParkingEntities();
         private int _ownerId { get; set; }
-        private DateTime _date { get; set; }
+        private DateTime _dateToDelete { get; set; }
+        private DateTime _dateFrom { get; set; }
+        private DateTime _dateTo { get; set; }
 
+        public ReservationDeleteController()
+        {
+
+        }
         public ReservationDeleteController(int ownerId)
         {
             this._ownerId = ownerId;
         }
-        public ReservationDeleteController(int ownerId, DateTime date)
+        public ReservationDeleteController(int ownerId, DateTime dateToDelete)
         {
             this._ownerId = ownerId;
-            this._date = date;
+            this._dateToDelete = dateToDelete;
         }
-        private static DataModelDataContext Data
+        public ReservationDeleteController(int ownerId, DateTime dateFrom, DateTime dateTo)
         {
-            get
-            {
-                return new DataModelDataContext();
-            }
+            this._ownerId = ownerId;
+            this._dateFrom = dateFrom;
+            this._dateTo = dateTo;
         }
 
-        public async Task ReleaseSpaceAsync(DateTime start, DateTime end)
-        {
-            await Task.Factory.StartNew(() => Data.usp_FreeParkingSpaces_AddNew(_ownerId, start, end));
-        }
 
+        public async Task ReleaseSpaceAsync(object obj)
+        {
+            CancellationToken ct = (CancellationToken)obj;
+            ct.ThrowIfCancellationRequested();
+            await Task.Factory.StartNew(() => FreeParkingSpaces_AddNew(), ct);
+        }
         public async Task<List<DateTime>> GetSpacesAsync(object obj)
         {
             CancellationToken ct = (CancellationToken)obj;
             ct.ThrowIfCancellationRequested();
-            return await Task.Factory.StartNew(() => ListSpaces(),ct);
+            return await Task.Factory.StartNew(() => ListSpaces(), ct);
         }
         public async Task DeleteReleaseSpaceAsync(object obj)
         {
@@ -47,26 +56,117 @@ namespace Parking.Database.Controller
             ct.ThrowIfCancellationRequested();
             await Task.Factory.StartNew(() => DeleteReleaseSpace(), ct);
         }
+        public async Task<List<DateTime>> ListBlackoutDatesAsync(object obj)
+        {
+            CancellationToken ct = (CancellationToken)obj;
+            ct.ThrowIfCancellationRequested();
+            return await Task.Factory.StartNew(() => ListBlackoutDates(), ct);
+        }
+
+        private async void FreeParkingSpaces_AddNew()
+        {
+            Days day = new Days();
+            var listFreeDates = await OwnerFreeSpaces();
+            var listBlackoutDates = await ListBlackout();
+            var listWorkingDays = day.WorkingDays(_dateFrom, _dateTo).ToList();
+
+            var freeDatesToDelete = from free in listFreeDates select Date.Format(free.Date);
+            var blackoutDatesToDelete = from black in listBlackoutDates select Date.Format(black.Date);
+
+            var dateToInsert = from work in listWorkingDays
+                               where
+                                    !freeDatesToDelete.Contains(Date.Format(work.Date))
+                                    &&
+                                    !blackoutDatesToDelete.Contains(Date.Format(work.Date))
+
+                               select Date.Format(work.Date);
+
+            ParkingEntities d = new ParkingEntities();
+
+            foreach (var item in dateToInsert)
+            {
+                ParkingSpace p = new ParkingSpace();
+                p.Date = item;
+                p.ParkingSpaceOwnerID = _ownerId;
+
+                pe.ParkingSpaces.Add(p);
+                pe.SaveChanges();
+            }
+        }
+
+        private async Task<List<DateTime>> OwnerFreeSpaces()
+        {
+            CancellationTokenSource cts = new CancellationTokenSource();
+            List<DateTime> list = new List<DateTime>();
+            try
+            {
+                foreach (var item in await new ReservationDeleteController(_ownerId).GetSpacesAsync(cts.Token))
+                {
+                    list.Add(item);
+                }
+            }
+            catch (Exception ex)
+            {
+                cts.Cancel();
+                throw ex;
+            }
+            return list;
+        }
+        private async Task<List<DateTime>> ListBlackout()
+        {
+            CancellationTokenSource cts = new CancellationTokenSource();
+            List<DateTime> list = new List<DateTime>();
+            try
+            {
+                foreach (var item in await new ReservationDeleteController().ListBlackoutDatesAsync(cts.Token))
+                {
+                    list.Add(item);
+                }
+            }
+            catch (Exception ex)
+            {
+                cts.Cancel();
+                throw ex;
+            }
+            return list;
+        }
 
         private void DeleteReleaseSpace()
         {
-            var deleteDetails = Data.ParkingSpaces.Single(p => p.Date == _date && p.ParkingSpacesOwnerID == _ownerId);
-            DataModelDataContext d = new DataModelDataContext();
-            d.ParkingSpaces.Attach(deleteDetails);
-            d.ParkingSpaces.DeleteOnSubmit(deleteDetails);
-            d.SubmitChanges();
+            var deleteDetails = (from par in pe.ParkingSpaces
+                                 where 
+                                    par.Date == _dateToDelete 
+                                    && 
+                                    par.ParkingSpaceOwnerID == _ownerId
+                                 select par).SingleOrDefault();
+
+            pe.ParkingSpaces.Remove(deleteDetails);
+            pe.SaveChanges();
         }
 
+        private List<DateTime> ListBlackoutDates()
+        {
+            List<DateTime> list = new List<DateTime>();
+            var listDate = pe.BlackoutDates.ToList();
+            var spaces =
+                    from s in listDate
+                    select s.BlackoutDate1;
+            foreach (var item in spaces)
+            {
+                list.Add(item);
+            }
+            return list;
+        }
         private List<DateTime> ListSpaces()
         {
             List<DateTime> list = new List<DateTime>();
-            var listDate = Data.ParkingSpaces.ToList();
+            var listDate = pe.ParkingSpaces.ToList();
             var spaces =
                     from s in listDate
                     where
-                        s.Date >= Convert.ToDateTime(Convert.ToDateTime(DateTime.Now).ToString("yyyy-MM-dd"))
+                        s.Date >= Date.Format(DateTime.Now)
                         &&
-                        s.ParkingSpacesOwnerID == _ownerId
+                        s.ParkingSpaceOwnerID == _ownerId
                         &&
                         s.PlaceRentedFor == null
                     orderby
