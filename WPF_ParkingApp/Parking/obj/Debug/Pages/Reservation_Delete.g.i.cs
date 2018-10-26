@@ -81,7 +81,7 @@ namespace Parking.Pages {
         #line hidden
         
         
-        #line 76 "..\..\..\Pages\Reservation_Delete.xaml"
+        #line 74 "..\..\..\Pages\Reservation_Delete.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.TabItem tabCheck;
         
@@ -89,7 +89,7 @@ namespace Parking.Pages {
         #line hidden
         
         
-        #line 85 "..\..\..\Pages\Reservation_Delete.xaml"
+        #line 83 "..\..\..\Pages\Reservation_Delete.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.ListBox freeSpaces;
         
@@ -97,7 +97,7 @@ namespace Parking.Pages {
         #line hidden
         
         
-        #line 95 "..\..\..\Pages\Reservation_Delete.xaml"
+        #line 93 "..\..\..\Pages\Reservation_Delete.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Button btnDelete;
         
@@ -189,7 +189,7 @@ namespace Parking.Pages {
             case 9:
             this.freeSpaces = ((System.Windows.Controls.ListBox)(target));
             
-            #line 85 "..\..\..\Pages\Reservation_Delete.xaml"
+            #line 83 "..\..\..\Pages\Reservation_Delete.xaml"
             this.freeSpaces.SelectionChanged += new System.Windows.Controls.SelectionChangedEventHandler(this.freeSpaces_SelectionChanged);
             
             #line default
@@ -198,7 +198,7 @@ namespace Parking.Pages {
             case 10:
             this.btnDelete = ((System.Windows.Controls.Button)(target));
             
-            #line 95 "..\..\..\Pages\Reservation_Delete.xaml"
+            #line 93 "..\..\..\Pages\Reservation_Delete.xaml"
             this.btnDelete.Click += new System.Windows.RoutedEventHandler(this.btnDelete_Click);
             
             #line default
