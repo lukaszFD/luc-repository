@@ -20,4 +20,9 @@ C:\Users\lukasz.dejko\Documents\GitHub\luc-repository\WPF_ParkingApp\Parking\obj
 C:\Users\lukasz.dejko\Documents\GitHub\luc-repository\WPF_ParkingApp\Parking\obj\Debug\Parking.csproj.GenerateResource.Cache
 C:\Users\lukasz.dejko\Documents\GitHub\luc-repository\WPF_ParkingApp\Parking\obj\Debug\Parking.exe
 C:\Users\lukasz.dejko\Documents\GitHub\luc-repository\WPF_ParkingApp\Parking\obj\Debug\Parking.pdb
+C:\Users\lukasz.dejko\Documents\GitHub\luc-repository\WPF_ParkingApp\Parking\bin\Debug\EntityFramework.dll
+C:\Users\lukasz.dejko\Documents\GitHub\luc-repository\WPF_ParkingApp\Parking\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\lukasz.dejko\Documents\GitHub\luc-repository\WPF_ParkingApp\Parking\bin\Debug\EntityFramework.xml
+C:\Users\lukasz.dejko\Documents\GitHub\luc-repository\WPF_ParkingApp\Parking\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\lukasz.dejko\Documents\GitHub\luc-repository\WPF_ParkingApp\Parking\obj\Debug\Parking_Content.g.cs
 C:\Users\lukasz.dejko\Documents\GitHub\luc-repository\WPF_ParkingApp\Parking\obj\Debug\Parking.csprojResolveAssemblyReference.cache
