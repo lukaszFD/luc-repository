@@ -10,19 +10,19 @@ namespace Cwiczenia_1
         {
             #region Cwiczenie_1
 
-            //Account k = new Account("Jan Kowalski", "37562", "mala", "czarna");
-            //k.Zaloguj("mala", "czarna");
-            //Console.WriteLine(k);
-            //k.Wyloguj();
-            //k.Wplac(10.50);
-            //Console.WriteLine(k);
-            //k.Wyplac(10.50);
-            //Console.WriteLine(k);
-            //Console.WriteLine("\nNaciœnij dowolny klawisz");
-            //Thread.Sleep(1000);
-            //k.Zaloguj("mala", "czarna");
-            //k.ChangePassword("mala", "czarna");
-            //Console.ReadKey();
+            Account k = new Account("Jan Kowalski", "37562", "mala", "czarna");
+            k.Zaloguj("mala", "czarna");
+            Console.WriteLine(k);
+            k.Wyloguj();
+            k.Wplac(10.50);
+            Console.WriteLine(k);
+            k.Wyplac(10.50);
+            Console.WriteLine(k);
+            Console.WriteLine("\nNaciœnij dowolny klawisz");
+            Thread.Sleep(1000);
+            k.Zaloguj("mala", "czarna");
+            k.ChangePassword("mala", "czarna");
+            Console.ReadKey();
 
             #endregion
 
@@ -31,7 +31,7 @@ namespace Cwiczenia_1
             //Hours godz0 = new Hours();
             //Hours godz1 = new Hours();
             //Hours godz2 = new Hours();
-            //godz0.Hour = 0;
+            //godz0.Hour = 12;
             //godz1.Hour = 9;
             //godz2.Hour = 18;
             //Console.WriteLine(godz0);
@@ -69,8 +69,8 @@ namespace Cwiczenia_1
 
             #region Cwiczenie_6
 
-            Console.WriteLine(new Rectangle(2,4).Diagonal());
-            Console.ReadKey();
+            //Console.WriteLine(new Rectangle(2, 4).Diagonal());
+            //Console.ReadKey();
 
             #endregion
         }
