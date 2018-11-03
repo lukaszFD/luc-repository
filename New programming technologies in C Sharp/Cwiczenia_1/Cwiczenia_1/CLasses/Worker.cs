@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Cwiczenia_1.CLasses
 {
-    class Worker
+    struct Worker
     {
         private string Name { get; set; }
-        public int Salary {  get; set; }
+        public int Salary { private get; set; }
         public Worker(string _Name, int _Salary)
         {
             Name = _Name;

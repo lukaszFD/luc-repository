@@ -23,11 +23,17 @@ namespace Cwiczenia_1.CLasses
                         hour = value;
                         przyrostek = "AM";
                     }
-                    else
+                    if (value > 12)
                     {
                         hour = value - 12;
                         przyrostek = "PM";
                     }
+                    if (value == 12)
+                    {
+                        hour = value;
+                        przyrostek = "PM";
+                    }
+
                 }
                 else
                 {

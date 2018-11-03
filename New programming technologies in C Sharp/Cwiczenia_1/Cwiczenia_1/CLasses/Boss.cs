@@ -10,7 +10,7 @@ namespace Cwiczenia_1.CLasses
     {
         public void Increase(Worker w, int newSalary)
         {
-            w.Salary += newSalary;
+            w.Salary = newSalary;
         }
     }
 }
