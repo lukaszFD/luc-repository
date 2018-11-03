@@ -73,13 +73,13 @@ namespace Parking.Database.Controller
             var freeDatesToDelete = from free in listFreeDates select Date.Format(free.Date);
             var blackoutDatesToDelete = from black in listBlackoutDates select Date.Format(black.Date);
 
-            var dateToInsert = from work in listWorkingDays
+            var dateToInsert = (from work in listWorkingDays
                                where
                                     !freeDatesToDelete.Contains(Date.Format(work.Date))
                                     &&
                                     !blackoutDatesToDelete.Contains(Date.Format(work.Date))
 
-                               select Date.Format(work.Date);
+                               select Date.Format(work.Date)).ToList();
 
             ParkingEntities d = new ParkingEntities();
 
@@ -88,6 +88,7 @@ namespace Parking.Database.Controller
                 ParkingSpace p = new ParkingSpace();
                 p.Date = item;
                 p.ParkingSpaceOwnerID = _ownerId;
+                p.Added = DateTime.Now;
 
                 pe.ParkingSpaces.Add(p);
                 pe.SaveChanges();
@@ -138,6 +139,8 @@ namespace Parking.Database.Controller
                                     par.Date == _dateToDelete 
                                     && 
                                     par.ParkingSpaceOwnerID == _ownerId
+                                    &&
+                                    par.PlaceRentedFor == null
                                  select par).SingleOrDefault();
 
             pe.ParkingSpaces.Remove(deleteDetails);

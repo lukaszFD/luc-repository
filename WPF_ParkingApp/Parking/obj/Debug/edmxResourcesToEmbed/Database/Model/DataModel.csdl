@@ -15,6 +15,8 @@
     <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="PlaceRentedFor" Type="Int32" />
     <Property Name="ParkingSpaceOwnerID" Type="Int32" />
+    <Property Name="Added" Type="DateTime" Precision="3" />
+    <Property Name="PlaceRentedDate" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="ParkingSpacesAdministrator">
     <Key>

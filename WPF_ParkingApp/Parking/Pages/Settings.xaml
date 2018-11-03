@@ -5,12 +5,23 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Parking.Pages"
       mc:Ignorable="d" 
-      Title="Settings" Height="70" Width="300" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Top">
-    <Border BorderBrush="LightGray" BorderThickness="1" CornerRadius="4" Padding="10">
+      Title="Settings" 
+      Height="70" 
+      Width="300" 
+      Margin="10" 
+      HorizontalAlignment="Left" 
+      VerticalAlignment="Top">
+    <Border BorderBrush="LightGray" 
+            BorderThickness="1" 
+            CornerRadius="4" 
+            Padding="10">
 
         <StackPanel>
             <Border Padding="3">
-                <TextBlock Text="  Startuj z Windows"  FontWeight= "Bold" Foreground="#ffff">
+                <TextBlock Text="  
+                           Startuj z Windows"  
+                           FontWeight= "Bold" 
+                           Foreground="#ffff">
                 </TextBlock>
             </Border>
             <Border >
@@ -20,14 +31,36 @@
                         <ColumnDefinition Width ="*"/>
 
                     </Grid.ColumnDefinitions>
-                    <Button Margin="3 3 5 3 " Grid.Column="0" Content="Start"  FontWeight= "Bold" Background="#61c3d9" Foreground="#ffff" x:Name="startWithWindows" Click="startWithWindows_Click" >
+                    <Button Margin="3 3 5 3 " 
+                            Grid.Column="0" 
+                            Content="Start"  
+                            FontWeight= "Bold" 
+                            Background="#61c3d9" 
+                            Foreground="#ffff" 
+                            x:Name="startWithWindows" 
+                            Click="startWithWindows_Click" >
                         <Button.BitmapEffect>
-                            <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.5" />
+                            <DropShadowBitmapEffect Color="Black" 
+                                                    Direction="320" 
+                                                    Softness="1" 
+                                                    ShadowDepth="10" 
+                                                    Opacity="0.5" />
                         </Button.BitmapEffect>
                     </Button>
-                    <Button Margin="5 3 3 3 " Grid.Column="1" Content="Stop"  FontWeight= "Bold" Background="#61c3d9" Foreground="#ffff" x:Name="stopWithWindows" Click="stopWithWindows_Click" >
+                    <Button Margin="5 3 3 3 " 
+                            Grid.Column="1" 
+                            Content="Stop"  
+                            FontWeight= "Bold" 
+                            Background="#61c3d9" 
+                            Foreground="#ffff" 
+                            x:Name="stopWithWindows" 
+                            Click="stopWithWindows_Click" >
                         <Button.BitmapEffect>
-                            <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.5" />
+                            <DropShadowBitmapEffect Color="Black" 
+                                                    Direction="320" 
+                                                    Softness="1" 
+                                                    ShadowDepth="10" 
+                                                    Opacity="0.5" />
                         </Button.BitmapEffect>
                     </Button>
 

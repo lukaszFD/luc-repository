@@ -24,5 +24,20 @@ namespace Parking.Pages
         {
             InitializeComponent();
         }
+
+        private void freeGuestSpacesNumber_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void btnAddReservationGuest_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnRemoveGuest_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

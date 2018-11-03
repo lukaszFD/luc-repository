@@ -7,63 +7,79 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="660"
       Title="Reservation_Add" Loaded="Page_Loaded">
+    <Border BorderBrush="LightGray" 
+                        BorderThickness="1" 
+                        CornerRadius="4" 
+                        Background="Transparent">
 
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-
-        </Grid.ColumnDefinitions>
-        <!--<Grid.RowDefinitions>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-        </Grid.RowDefinitions>-->
-
-        <Border Grid.Column="0" Padding="5">
-            <StackPanel>
-                <Viewbox>
-                    <Calendar x:Name="CalendarControl"
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0" Padding="5">
+                <StackPanel>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="260"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0"
+                                    Text="Wybierz datę aby zarezerwować" 
+                                    FontSize="15" 
+                                    Margin="20 5" 
+                                    Foreground="#ffff"  />
+                        <Viewbox Grid.Row="1">
+                            <Calendar x:Name="CalendarControl"
                               HorizontalAlignment="Left"
                               VerticalAlignment="Top"
-                              DisplayMode="Month">
-                    </Calendar>
-                </Viewbox>
-                <Border Padding="5">
-                    <StackPanel>
-                        <Button x:Name="btnAddReservation"  
+                              DisplayMode="Month"
+                              SelectedDatesChanged="CalendarControl_SelectedDatesChanged">
+                            </Calendar>
+                        </Viewbox>
+                    </Grid>
+
+                    <Border Padding="15">
+                        <StackPanel>
+                            <Button x:Name="btnAddReservation"  
                             Click="btnAddReservation_Click"
                             HorizontalAlignment="Left" 
                             Height="100" 
                             BorderBrush="Transparent"  
                             Background="Transparent" >
-                            <Image Source="/Images/ok.ico">
-                            </Image>
-                        </Button>
-                        <CheckBox FontSize="17" IsChecked="True" Content="Dodaj przypomnienie do kalendarza" Foreground="#ffff" x:Name="checkBoxAddInfoToCalendar">
-                            
-                        </CheckBox>
-                    </StackPanel>
-                </Border>
-            </StackPanel>
+                                <Image Source="/Images/car.ico">
+                                </Image>
+                            </Button>
+                            <CheckBox FontSize="15" 
+                                  IsChecked="True" 
+                                  Content="Dodaj przypomnienie do kalendarza" 
+                                  Foreground="#ffff" 
+                                  x:Name="checkBoxAddInfoToCalendar">
+                            </CheckBox>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
 
-        </Border>
-        <Border Grid.Column="1" Padding="5">
-            <StackPanel>
-                <ListBox SelectionChanged="freeSpacesNumber_SelectionChanged" 
+            </Border>
+            <Border Grid.Column="1" Padding="5">
+                <StackPanel>
+                    <ListBox SelectionChanged="freeSpacesNumber_SelectionChanged" 
                          Background="Transparent" 
-                         Foreground="#ffff" 
-                         FontSize="30" 
-                         HorizontalAlignment="Center"
+                         Foreground="#ffff"
                          VerticalAlignment="Top"
-                         Height="440" 
-                         Width="280"  
-                         x:Name="freeSpacesNumber">
-                </ListBox>
-            </StackPanel>
+                         FontSize="30" 
+                         Height="auto" 
+                         Width="auto"  
+                         x:Name="freeSpacesNumber"
+                         >
+                    </ListBox>
+                </StackPanel>
 
-        </Border>
+            </Border>
 
-    </Grid>
+        </Grid>
+    </Border>
+   
 
 </Page>
 

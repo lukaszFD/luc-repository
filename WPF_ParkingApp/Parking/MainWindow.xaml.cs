@@ -89,9 +89,10 @@ namespace Parking
             mainFrame.NavigationService.Navigate(new Reservation_Delete());
         }
 
-        private async  void btnAdmin_Click(object sender, RoutedEventArgs e)
+        private void btnAdmin_Click(object sender, RoutedEventArgs e)
         {
-            await ShowBalloon("to co robimy ");
+            mainFrame.NavigationService.Navigate(new Admin());
+            //await ShowBalloon("to co robimy ");
         }
     }
 }

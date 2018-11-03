@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Parking.Class
 {
     class Days
     {
+        private DateTime _date { get; set; }
+
         public List<DateTime> Weekend(int d)
         {
             List<DateTime> list = new List<DateTime>();
@@ -34,15 +37,22 @@ namespace Parking.Class
             int days = diff.Days;
             for (var i = 0; i <= days; i++)
             {
-                var date = DateTime.Now.AddDays(i);
-                switch (date.DayOfWeek)
+                if (dateFrom == dateTo)
+                {
+                    _date = dateFrom;
+                }
+                else
+                {
+                    _date = dateFrom.AddDays(i);
+                }
+                switch (_date.DayOfWeek)
                 {
                     case DayOfWeek.Monday:
                     case DayOfWeek.Tuesday:
                     case DayOfWeek.Wednesday:
                     case DayOfWeek.Thursday:
                     case DayOfWeek.Friday:
-                        list.Add(date);
+                        list.Add(_date);
                         break;
                 }
             }

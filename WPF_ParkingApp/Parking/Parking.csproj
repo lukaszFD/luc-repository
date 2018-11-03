@@ -94,31 +94,31 @@
     <Compile Include="Database\Controller\ReservationDeleteController.cs" />
     <Compile Include="Database\Controller\SettingsController.cs" />
     <Compile Include="Database\Model\BlackoutDate.cs">
-      <DependentUpon>DataModel.tt</DependentUpon>
+      <DependentUpon>DB_Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Database\Model\DataModel.Context.cs">
+    <Compile Include="Database\Model\DB_Model.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DataModel.Context.tt</DependentUpon>
+      <DependentUpon>DB_Model.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Database\Model\DataModel.cs">
+    <Compile Include="Database\Model\DB_Model.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DataModel.tt</DependentUpon>
+      <DependentUpon>DB_Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Database\Model\DataModel.Designer.cs">
+    <Compile Include="Database\Model\DB_Model.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DataModel.edmx</DependentUpon>
+      <DependentUpon>DB_Model.edmx</DependentUpon>
     </Compile>
     <Compile Include="Database\Model\ParkingSpace.cs">
-      <DependentUpon>DataModel.tt</DependentUpon>
+      <DependentUpon>DB_Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Database\Model\ParkingSpacesAdministrator.cs">
-      <DependentUpon>DataModel.tt</DependentUpon>
+    <Compile Include="Database\Model\ParkingSpaceAdministrator.cs">
+      <DependentUpon>DB_Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Database\Model\ParkingSpacesOwner.cs">
-      <DependentUpon>DataModel.tt</DependentUpon>
+    <Compile Include="Database\Model\ParkingSpaceOwner.cs">
+      <DependentUpon>DB_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Interface\IOutlook.cs" />
     <Compile Include="Interface\ISetBalloonTip.cs" />
@@ -170,17 +170,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EntityDeploy Include="Database\Model\DataModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DataModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="Database\Model\DataModel.edmx.diagram">
-      <DependentUpon>DataModel.edmx</DependentUpon>
-    </None>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="Database\Model\DB_Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DB_Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Database\Model\DB_Model.edmx.diagram">
+      <DependentUpon>DB_Model.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -214,18 +214,22 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Database\Model\DataModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DataModel.edmx</DependentUpon>
-      <LastGenOutput>DataModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Database\Model\DataModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DataModel.edmx</DependentUpon>
-      <LastGenOutput>DataModel.cs</LastGenOutput>
-    </Content>
+    <Resource Include="Images\add-guest.ico" />
+    <Resource Include="Images\list-remove.ico" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Content Include="Database\Model\DB_Model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DB_Model.edmx</DependentUpon>
+      <LastGenOutput>DB_Model.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Database\Model\DB_Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DB_Model.edmx</DependentUpon>
+      <LastGenOutput>DB_Model.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
