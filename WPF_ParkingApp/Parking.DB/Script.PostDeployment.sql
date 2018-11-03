@@ -10,4 +10,16 @@ Post-Deployment Script Template
 --------------------------------------------------------------------------------------
 */
 
+INSERT INTO [parking].[ParkingSpaceOwner]([OwnerName], [SpaceNumber]) 
+VALUES 
+	('Guest',90)
+,('Guest',98)
+,('Guest',109)
+,('Guest',119)
+,('Guest',161)
+
+INSERT INTO [parking].[ParkingSpaceAdministrator]([AdministratorName])
+VALUES 
+('lukasz.dejko')
+ 
 GO

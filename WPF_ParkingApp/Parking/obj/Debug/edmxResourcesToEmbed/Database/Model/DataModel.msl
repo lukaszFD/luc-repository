@@ -12,6 +12,8 @@
     <EntitySetMapping Name="ParkingSpaces">
       <EntityTypeMapping TypeName="ParkingModel.ParkingSpace">
         <MappingFragment StoreEntitySet="ParkingSpaces">
+          <ScalarProperty Name="PlaceRentedDate" ColumnName="PlaceRentedDate" />
+          <ScalarProperty Name="Added" ColumnName="Added" />
           <ScalarProperty Name="ParkingSpaceId" ColumnName="ParkingSpaceId" />
           <ScalarProperty Name="Date" ColumnName="Date" />
           <ScalarProperty Name="PlaceRentedFor" ColumnName="PlaceRentedFor" />

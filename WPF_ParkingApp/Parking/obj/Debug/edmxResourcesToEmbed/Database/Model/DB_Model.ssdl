@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ParkingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BlackoutDate">
+    <Key>
+      <PropertyRef Name="DateId" />
+    </Key>
+    <Property Name="DateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BlackoutDate" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ParkingSpace">
+    <Key>
+      <PropertyRef Name="ParkingSpaceId" />
+    </Key>
+    <Property Name="ParkingSpaceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="date" Nullable="false" />
+    <Property Name="PlaceRentedFor" Type="int" />
+    <Property Name="ParkingSpaceOwnerID" Type="int" />
+    <Property Name="Added" Type="datetime" />
+    <Property Name="PlaceRentedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ParkingSpaceAdministrator">
+    <Key>
+      <PropertyRef Name="AdministratorId" />
+    </Key>
+    <Property Name="AdministratorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AdministratorName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="StartsOn" Type="datetime" Nullable="false" />
+    <Property Name="EndsOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ParkingSpaceOwner">
+    <Key>
+      <PropertyRef Name="ParkingSpaceOwnerID" />
+    </Key>
+    <Property Name="ParkingSpaceOwnerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OwnerName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="SpaceNumber" Type="int" />
+    <Property Name="StartsOn" Type="datetime" Nullable="false" />
+    <Property Name="EndsOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="ParkingModelStoreContainer">
+    <EntitySet Name="BlackoutDate" EntityType="Self.BlackoutDate" Schema="parking" store:Type="Tables" />
+    <EntitySet Name="ParkingSpace" EntityType="Self.ParkingSpace" Schema="parking" store:Type="Tables" />
+    <EntitySet Name="ParkingSpaceAdministrator" EntityType="Self.ParkingSpaceAdministrator" Schema="parking" store:Type="Tables" />
+    <EntitySet Name="ParkingSpaceOwner" EntityType="Self.ParkingSpaceOwner" Schema="parking" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

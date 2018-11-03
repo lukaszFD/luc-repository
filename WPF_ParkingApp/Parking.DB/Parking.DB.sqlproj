@@ -63,15 +63,19 @@
     <Folder Include="Security\" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="parking\Tables\BlackoutDates.sql" />
-    <Build Include="parking\Tables\ParkingSpaces.sql" />
-    <Build Include="parking\Tables\ParkingSpacesAdministrator.sql" />
-    <Build Include="parking\Tables\ParkingSpacesOwners.sql" />
+    <Build Include="parking\Tables\BlackoutDate.sql" />
+    <Build Include="parking\Tables\ParkingSpace.sql" />
+    <Build Include="parking\Tables\ParkingSpaceAdministrator.sql" />
+    <Build Include="parking\Tables\ParkingSpaceOwner.sql" />
     <Build Include="Storage\Data.sql" />
     <Build Include="Security\parking.sql" />
     <PostDeploy Include="Script.PostDeployment.sql" />
+    <Build Include="parking\Tables\ParkingSpaceGuest.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Parking.DB.publish.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="Parking.DB.refactorlog" />
   </ItemGroup>
 </Project>

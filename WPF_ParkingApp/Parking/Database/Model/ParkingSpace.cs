@@ -18,5 +18,7 @@ namespace Parking.Database.Model
         public System.DateTime Date { get; set; }
         public Nullable<int> PlaceRentedFor { get; set; }
         public Nullable<int> ParkingSpaceOwnerID { get; set; }
+        public Nullable<System.DateTime> Added { get; set; }
+        public Nullable<System.DateTime> PlaceRentedDate { get; set; }
     }
 }

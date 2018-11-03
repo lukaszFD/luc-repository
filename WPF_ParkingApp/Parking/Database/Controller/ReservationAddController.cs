@@ -13,29 +13,38 @@ namespace Parking.Database.Controller
     {
         ParkingEntities pe = new ParkingEntities();
         private int _ownerId { get; set; }
-        private int _parkingSpaceId { get; set; }
+        private int _selectedSpaceNumber { get; set; }
+        private DateTime _selectedDate { get; set; }
         private DateTime _dateFrom { get; set; }
         private DateTime _dateTo { get; set; }
         public ReservationAddController()
         {
 
         }
-        public ReservationAddController(int ownerId, int parkingSpaceId)
+        #region Constructors
+        public ReservationAddController(int ownerId)
         {
             this._ownerId = ownerId;
-            this._parkingSpaceId = parkingSpaceId;
         }
-        public ReservationAddController(int ownerId, DateTime dateFrom, DateTime dateTo)
+        public ReservationAddController(int ownerId, int selectedSpaceNumber, DateTime selectedDate)
         {
             this._ownerId = ownerId;
-            this._dateFrom = dateFrom;
-            this._dateTo = dateTo;
+            this._selectedSpaceNumber = selectedSpaceNumber;
+            this._selectedDate = selectedDate;
         }
+        #endregion
+
         public async Task<DataTable> ListAllSpacesAsync(object obj)
         {
             CancellationToken ct = (CancellationToken)obj;
             ct.ThrowIfCancellationRequested();
             return await Task.Factory.StartNew(() => ListAllSpaces(), ct);
+        }
+        public async Task<List<DateTime>> ListMyReservationsAsync(object obj)
+        {
+            CancellationToken ct = (CancellationToken)obj;
+            ct.ThrowIfCancellationRequested();
+            return await Task.Factory.StartNew(() => ListMyReservations(), ct);
         }
         public async Task ReservationAsync(object obj)
         {
@@ -43,23 +52,35 @@ namespace Parking.Database.Controller
             ct.ThrowIfCancellationRequested();
             await Task.Factory.StartNew(() => Reservation(), ct);
         }
-
+        #region Linq
         private void Reservation()
         {
-            ParkingSpace updateParkingSpaces = (from p in pe.ParkingSpaces where p.ParkingSpaceId == _parkingSpaceId select p).FirstOrDefault();
+            ParkingSpace updateParkingSpaces =
+                (
+                 from
+                    p in pe.ParkingSpaces
+                 join
+                    o in pe.ParkingSpaceOwners on p.ParkingSpaceOwnerID equals o.ParkingSpaceOwnerID
+                 where
+                    p.Date == _selectedDate 
+                    &&
+                    o.SpaceNumber == _selectedSpaceNumber
+                 select p
+                ).FirstOrDefault();
+
             updateParkingSpaces.PlaceRentedFor = _ownerId;
+            updateParkingSpaces.PlaceRentedDate = DateTime.Now;
             pe.SaveChanges();
         }
 
         private DataTable ListAllSpaces()
         {
             DataTable dt = new DataTable();
-            dt.Columns.Add("ParkingSpaceId");
-            dt.Columns.Add("Date");
             dt.Columns.Add("SpaceNumber");
+            dt.Columns.Add("Date");
 
-            var listDate = pe.ParkingSpaces.ToList();
-            var listOwners = pe.ParkingSpacesOwners.ToList();
+            var listDate = pe.ParkingSpaces.ToArray();
+            var listOwners = pe.ParkingSpaceOwners.ToArray();
             var spaces =
                     from
                         s in listDate
@@ -71,18 +92,37 @@ namespace Parking.Database.Controller
                         s.PlaceRentedFor == null
                     select new
                     {
-                        s.ParkingSpaceId
-                        ,
-                        s.Date
-                        ,
-                        o.SpaceNumber
+                         o.SpaceNumber
+                        ,s.Date
                     };
             var query = from r in spaces select r;
             foreach (var item in query)
             {
-                dt.Rows.Add(Date.Format(item.Date), item.SpaceNumber);
+                dt.Rows.Add(item.SpaceNumber,Date.Format(item.Date));
             }
             return dt;
         }
+
+        private List<DateTime> ListMyReservations()
+        {
+            List<DateTime> list = new List<DateTime>();
+            var listDate = pe.ParkingSpaces.ToList();
+            var spaces =
+                    from s in listDate
+                    where
+                        s.Date >= Date.Format(DateTime.Now)
+                        &&
+                        s.PlaceRentedFor == _ownerId
+                    orderby
+                        s.Date ascending
+                    select s.Date;
+
+            foreach (var item in spaces)
+            {
+                list.Add(item);
+            }
+            return list;
+        }
+        #endregion
     }
 }

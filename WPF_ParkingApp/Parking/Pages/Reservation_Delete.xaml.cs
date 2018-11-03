@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
 using Parking.Database.Controller;
 using System.Threading;
 using Parking.Class;
@@ -17,7 +16,10 @@ namespace Parking.Pages
         public Reservation_Delete()
         {
             InitializeComponent();
+            dateFrom.DisplayDateStart = DateTime.Today;
+            dateTo.DisplayDateStart = DateTime.Today;
         }
+
         private DateTime _date { get; set; }
         private DateTime _dateFrom { get; set; }
         private DateTime _dateTo { get; set; }
@@ -37,22 +39,42 @@ namespace Parking.Pages
             }
             finally
             {
-                foreach (var item in await new ReservationDeleteController(1).GetSpacesAsync(cts.Token))
+                foreach (var item in await new ReservationDeleteController(3).GetSpacesAsync(cts.Token))
                 {
                     freeSpaces.Items.Add(item);
                 }
             }
         }
 
-
         private void dateFrom_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
-            _dateFrom = Date.Format(dateFrom.Text);
+            try
+            {
+                if (dateFrom.SelectedDate.Value != null)
+                {
+                    _dateFrom = Date.Format(dateFrom.SelectedDate.Value);
+                }
+            }
+            catch (Exception)
+            {
+                return;
+            }
         }
 
         private void dateTo_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
-            _dateTo = Date.Format(dateTo.Text);
+            try
+            {
+                if (dateTo.SelectedDate.Value != null)
+                {
+                    _dateTo = Date.Format(dateTo.SelectedDate.Value);
+                }
+            }
+            catch (Exception)
+            {
+                return;
+            }
+
         }
 
         private async void btnDelete_Click(object sender, RoutedEventArgs e)
@@ -63,7 +85,7 @@ namespace Parking.Pages
             {
                 try
                 {
-                    await new ReservationDeleteController(1, _date).DeleteReleaseSpaceAsync(cts.Token);
+                    await new ReservationDeleteController(3, _date).DeleteReleaseSpaceAsync(cts.Token);
                 }
                 catch (Exception ex)
                 {
@@ -72,31 +94,42 @@ namespace Parking.Pages
                 }
                 finally
                 {
+                    dateFrom.SelectedDates.Clear();
+                    dateTo.SelectedDates.Clear();
                     await FillListBox();
+                    Page_Loaded(sender, e);
                 }
             }
             else
             {
                 return;
             }
-
         }
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            CancellationTokenSource cts = new CancellationTokenSource();
             try
             {
-                //Days days = new Days();
-                //foreach (var item in days.Weekend(100))
-                //{
-                //    dateFrom.BlackoutDates.Add(new CalendarDateRange(item));
-                //    dateTo.BlackoutDates.Add(new CalendarDateRange(item));
-                //}
-                await FillListBox();
+                Days days = new Days();
+                foreach (var item in days.Weekend(100))
+                {
+                    dateFrom.BlackoutDates.Add(new CalendarDateRange(item));
+                    dateTo.BlackoutDates.Add(new CalendarDateRange(item));
+                }
+                foreach (var item in await new ReservationDeleteController(3).GetSpacesAsync(cts.Token))
+                {
+                    dateFrom.BlackoutDates.Add(new CalendarDateRange(item));
+                    dateTo.BlackoutDates.Add(new CalendarDateRange(item));
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                await FillListBox();
             }
         }
 
@@ -111,27 +144,30 @@ namespace Parking.Pages
             {
                 return;
             }
-
         }
 
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
         }
 
         private async void btnDeleteRes_Click(object sender, RoutedEventArgs e)
         {
+            if (_dateFrom < DateTime.Today || _dateTo < DateTime.Today)
+            {
+                MessageBox.Show("Proszę wybrać daty");
+                return;
+            }
             if (_dateFrom > _dateTo)
             {
-                dateTo.Background = Brushes.Red;
+                MessageBox.Show("Wybrana data \"do\" nie może wcześniejsza niż data \"od\"");
+                return;
             }
             else
             {
                 CancellationTokenSource cts = new CancellationTokenSource();
-                dateTo.Background = Brushes.Transparent;
                 try
                 {
-                    await new ReservationDeleteController(1, _dateFrom, _dateTo).ReleaseSpaceAsync(cts.Token);
+                    await new ReservationDeleteController(3, _dateFrom, _dateTo).ReleaseSpaceAsync(cts.Token);
                 }
                 catch (Exception ex)
                 {
@@ -140,7 +176,10 @@ namespace Parking.Pages
                 }
                 finally
                 {
-                   await FillListBox();
+                    dateFrom.SelectedDates.Clear();
+                    dateTo.SelectedDates.Clear();
+                    await FillListBox();
+                    Page_Loaded(sender, e);
                 }
             }
         }
