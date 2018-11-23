@@ -11,7 +11,7 @@ namespace Parking.Database.Controller
 {
     class ReservationAddController
     {
-        ParkingEntities pe = new ParkingEntities();
+        ParkingEntities1 pe = new ParkingEntities1();
         private int _ownerId { get; set; }
         private int _selectedSpaceNumber { get; set; }
         private DateTime _selectedDate { get; set; }

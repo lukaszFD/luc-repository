@@ -27,6 +27,16 @@
     <Property Name="StartsOn" Type="datetime" Nullable="false" />
     <Property Name="EndsOn" Type="datetime" Nullable="false" />
   </EntityType>
+  <EntityType Name="ParkingSpaceGuest">
+    <Key>
+      <PropertyRef Name="GuestId" />
+    </Key>
+    <Property Name="GuestId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ParkingSpaceOwnerID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="EmailSentBy" Type="varchar" MaxLength="100" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+  </EntityType>
   <EntityType Name="ParkingSpaceOwner">
     <Key>
       <PropertyRef Name="ParkingSpaceOwnerID" />
@@ -34,6 +44,7 @@
     <Property Name="ParkingSpaceOwnerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="OwnerName" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="SpaceNumber" Type="int" />
+    <Property Name="EmailContact" Type="smallint" />
     <Property Name="StartsOn" Type="datetime" Nullable="false" />
     <Property Name="EndsOn" Type="datetime" Nullable="false" />
   </EntityType>
@@ -41,6 +52,7 @@
     <EntitySet Name="BlackoutDate" EntityType="Self.BlackoutDate" Schema="parking" store:Type="Tables" />
     <EntitySet Name="ParkingSpace" EntityType="Self.ParkingSpace" Schema="parking" store:Type="Tables" />
     <EntitySet Name="ParkingSpaceAdministrator" EntityType="Self.ParkingSpaceAdministrator" Schema="parking" store:Type="Tables" />
+    <EntitySet Name="ParkingSpaceGuest" EntityType="Self.ParkingSpaceGuest" Schema="parking" store:Type="Tables" />
     <EntitySet Name="ParkingSpaceOwner" EntityType="Self.ParkingSpaceOwner" Schema="parking" store:Type="Tables" />
   </EntityContainer>
 </Schema>

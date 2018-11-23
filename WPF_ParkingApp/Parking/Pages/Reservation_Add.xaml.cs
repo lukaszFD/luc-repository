@@ -57,16 +57,24 @@ namespace Parking.Pages
 
         private async void btnAddReservation_Click(object sender, RoutedEventArgs e)
         {
-            CancellationTokenSource cts = new CancellationTokenSource();
-            try
+            if (selectedSpaceNumber != null)
             {
-                await new ReservationAddController(1, Convert.ToInt32(selectedSpaceNumber), selectedDate).ReservationAsync(cts.Token);
-                Page_Loaded(sender, e);
+                CancellationTokenSource cts = new CancellationTokenSource();
+                try
+                {
+                    await new ReservationAddController(1, Convert.ToInt32(selectedSpaceNumber), selectedDate).ReservationAsync(cts.Token);
+                    Page_Loaded(sender, e);
+                    MessageBox.Show("Dodano rezerwację");
+                }
+                catch (Exception ex)
+                {
+                    cts.Cancel();
+                    MessageBox.Show(ex.Message);
+                }
             }
-            catch (Exception ex)
+            else
             {
-                cts.Cancel();
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Proszę zaznaczyć miejsce które chcesz zarezerwować klikając dwa razy w numer." +Environment.NewLine + "Zaznaczony numer musi byc podświetlony na czerwono.");
             }
         }
         private void CalendarControl_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
@@ -77,9 +85,10 @@ namespace Parking.Pages
                 selectedDate = CalendarControl.SelectedDate.Value;
                 for (int i = 0; i < allSpacesDT.Rows.Count; i++)
                 {
-                    if (Convert.ToString(Date.Format(selectedDate)) == Convert.ToString(Date.Format(allSpacesDT.Rows[i][1].ToString())))
+                    if (Convert.ToString(Date.Format(selectedDate)) == allSpacesDT.Rows[i][1].ToString())
                     {
                         freeSpacesNumber.Items.Add(allSpacesDT.Rows[i][0].ToString());
+                        
                     }
                 }
             }

@@ -14,4 +14,18 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="PlaceRentedDate" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="fe12c1c8-dc72-4007-a9e1-6d3de3ce2fcf" ChangeDateTime="11/20/2018 21:40:36">
+    <Property Name="ElementName" Value="[parking].[ParkingSpaceGuest].[SendedEmail]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[parking].[ParkingSpaceGuest]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SendedEmailBy" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="40d0b0a2-e163-4f35-9b17-a937a128a68b" ChangeDateTime="11/20/2018 21:42:21">
+    <Property Name="ElementName" Value="[parking].[ParkingSpaceGuest].[SendedEmailBy]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[parking].[ParkingSpaceGuest]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="EmailSentBy" />
+  </Operation>
 </Operations>

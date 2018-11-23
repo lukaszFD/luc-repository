@@ -9,17 +9,25 @@ Post-Deployment Script Template
                SELECT * FROM [$(TableName)]					
 --------------------------------------------------------------------------------------
 */
+BEGIN
+	Truncate Table [parking].[ParkingSpaceOwner]
+	Truncate Table [parking].[ParkingSpaceAdministrator]
+	Truncate Table [parking].[ParkingSpaceGuest]
+END
 
-INSERT INTO [parking].[ParkingSpaceOwner]([OwnerName], [SpaceNumber]) 
-VALUES 
-	('Guest',90)
-,('Guest',98)
-,('Guest',109)
-,('Guest',119)
-,('Guest',161)
+BEGIN
+	INSERT INTO [parking].[ParkingSpaceOwner]([OwnerName], [SpaceNumber], [EmailContact]) 
+	VALUES 
+		 ('Guest',90, null)
+		,('Guest',98, null)
+		,('Guest',109, null)
+		,('Guest',119, null)
+		,('Guest',161, null)
+		,('lukasz.dejko',null,1)
+		,('Izabela.Kukawska', null,1)
 
-INSERT INTO [parking].[ParkingSpaceAdministrator]([AdministratorName])
-VALUES 
-('lukasz.dejko')
- 
+	INSERT INTO [parking].[ParkingSpaceAdministrator]([AdministratorName])
+	VALUES 
+	('lukasz.dejko')
+	END
 GO

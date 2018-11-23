@@ -2,6 +2,7 @@
 	[GuestId] [INT] IDENTITY(1,1) NOT NULL,
 	[ParkingSpaceOwnerID] INT NOT NULL,
 	[Name] [NVARCHAR](100) NOT NULL,
+	[EmailSentBy] VARCHAR(100) null,
 	[Date] [DATETIME] NOT NULL DEFAULT getdate(),
 PRIMARY KEY CLUSTERED 
 (
