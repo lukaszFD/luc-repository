@@ -13,6 +13,7 @@
         <TabControl  BorderBrush="Transparent" 
                      Background="Transparent" 
                      SelectionChanged="TabControl_SelectionChanged">
+            <!--#region TabControl.Resources-->
             <TabControl.Resources>
                 <Style TargetType="TabItem">
                     <Setter Property="Template">
@@ -22,8 +23,7 @@
                                         BorderThickness="1,1,1,0" 
                                         BorderBrush="Gainsboro" 
                                         CornerRadius="4,4,0,0" 
-                                        Margin="2,0"
-                                        >
+                                        Margin="2,0">
                                     <ContentPresenter x:Name="ContentSite"
                                         VerticalAlignment="Center"
                                         HorizontalAlignment="Center"
@@ -47,11 +47,14 @@
                     </Setter>
                 </Style>
             </TabControl.Resources>
-            <TabItem x:Name="tabDelet" 
+            <!--#endregion-->
+
+            <!--#region Delete reservation-->
+            <TabItem x:Name="tabDelete" 
                      FontWeight="Bold" 
                      FontSize="15" 
                      Header="Odwołaj rezerwację" 
-                     Width="315" 
+                     Width="auto" 
                      Height="25" 
                      Background="Transparent" 
                      BorderThickness="0.6" 
@@ -64,10 +67,15 @@
                     <StackPanel>
                         <Grid Height="300">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="241*"/>
+                                <ColumnDefinition Width="85*"/>
+                                <ColumnDefinition Width="326*"/>
                             </Grid.ColumnDefinitions>
-                            <Border  Grid.Column="0">
+                            <Border Grid.Column="0"
+                                    BorderBrush="LightGray" 
+                                    BorderThickness="1" 
+                                    CornerRadius="4" 
+                                    Background="Transparent" Grid.ColumnSpan="2">
                                 <StackPanel>
                                     <Grid>
                                         <Grid.RowDefinitions>
@@ -91,7 +99,11 @@
                                 </StackPanel>
                             </Border>
 
-                            <Border  Grid.Column="1">
+                            <Border Grid.Column="2"
+                                    BorderBrush="LightGray" 
+                                    BorderThickness="1" 
+                                    CornerRadius="4" 
+                                    Background="Transparent">
                                 <StackPanel>
                                     <Grid>
                                         <Grid.RowDefinitions>
@@ -125,8 +137,6 @@
                                     Background="Transparent" >
                                 <Image Source="/Images/car.ico">
                                 </Image>
-                                
-                                
                             </Button>
                             <CheckBox Grid.Column="1"
                                       Margin="15" 
@@ -141,14 +151,14 @@
                         </Grid>
                     </StackPanel>
                 </Border>
-                
-               
             </TabItem>
+            <!--#endregion-->
+            <!--#region check reservation-->
             <TabItem x:Name="tabCheck" 
                      FontWeight="Bold" 
                      Header="Sprawdź odwołane rezerwacje" 
                      FontSize="15" 
-                     Width="315" 
+                     Width="auto" 
                      Foreground="#ffff" >
                 <Border BorderBrush="LightGray" 
                         BorderThickness="1" 
@@ -157,51 +167,78 @@
                     <Grid>
                         <Grid.ColumnDefinitions >
                             <ColumnDefinition Width ="*"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width ="*"/>
                         </Grid.ColumnDefinitions>
-                        <StackPanel Grid.Column="0">
-                            <Viewbox>
-                                <ListBox SelectionChanged="freeSpaces_SelectionChanged" 
+                        <Border Grid.Column="0"
+                                BorderBrush="LightGray" 
+                                BorderThickness="1" 
+                                CornerRadius="4" 
+                                Background="Transparent">
+                            <StackPanel >
+                                <Viewbox>
+                                    <ListBox SelectionChanged="freeSpaces_SelectionChanged" 
                                      Background="Transparent" 
                                      Foreground="#ffff" 
                                      FontSize="30" 
                                      HorizontalAlignment="Center" 
-                                     Height="408" 
+                                     Height="399" 
                                      Width="315"  
                                      x:Name="freeSpaces">
-                                </ListBox>
 
-                            </Viewbox>
+                                        <ListBox.ItemContainerStyle>
+                                            <Style TargetType="ListBoxItem">
+                                                <Style.Triggers>
+                                                    <Trigger Property="IsSelected" Value="True" >
+                                                        <Setter Property="FontWeight" Value="Bold" />
+                                                        <Setter Property="Background" Value="Transparent" />
+                                                        <Setter Property="Foreground" Value="Red" />
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                                <Style.Resources>
+                                                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent"/>
+                                                </Style.Resources>
+                                            </Style>
+                                        </ListBox.ItemContainerStyle>
+                                    </ListBox>
+                                </Viewbox>
 
-                        </StackPanel>
-
-                        <StackPanel Grid.Column="1">
-                            <TextBlock Text="Zaznacz datę aby usunąć" 
+                            </StackPanel>
+                        </Border>
+                        <Border Grid.Column="1"
+                                BorderBrush="LightGray" 
+                                BorderThickness="1" 
+                                CornerRadius="4" 
+                                Background="Transparent">
+                            <StackPanel >
+                                <TextBlock Text="Zaznacz datę aby usunąć" 
                                        Foreground="#ffff" 
                                        FontSize="15" 
                                        Margin="10 60 10 10" 
                                        HorizontalAlignment="Center"/>
-                            <TextBlock Text="i naciśni przycisk poniżej" 
+                                <TextBlock Text="i naciśni przycisk poniżej" 
                                        Foreground="#ffff" 
                                        FontSize="15" 
                                        Margin="10 10 10 10" 
                                        HorizontalAlignment="Center"/>
-                            <Button Margin="0 48" 
-                                    x:Name="btnDelete" 
-                                    Click="btnDelete_Click" 
-                                    VerticalAlignment="Center" 
-                                    HorizontalAlignment="Center" 
-                                    Height="200" 
-                                    BorderBrush="Transparent" 
-                                    Background="Transparent" >
-                                <Image Source="/Images/delete.ico" HorizontalAlignment="Center">
-                                </Image>
-                            </Button>
-                        </StackPanel>
+                                <Button Margin="0 48" 
+                                        x:Name="btnDelete" 
+                                        Click="btnDelete_Click" 
+                                        VerticalAlignment="Center" 
+                                        HorizontalAlignment="Center" 
+                                        Height="200" 
+                                        BorderBrush="Transparent" 
+                                        Background="Transparent" >
+                                    <Image Source="/Images/delete.ico" HorizontalAlignment="Center">
+                                    </Image>
+                                </Button>
+                            </StackPanel>
+                        </Border >
+                        
                     </Grid>
                 </Border>
 
             </TabItem>
+            <!--#endregion-->
 
 
         </TabControl>

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ParkingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ParkingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="BlackoutDate">
           <Key>
             <PropertyRef Name="DateId" />
@@ -32,6 +32,16 @@
           <Property Name="StartsOn" Type="datetime" Nullable="false" />
           <Property Name="EndsOn" Type="datetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="ParkingSpaceGuest">
+          <Key>
+            <PropertyRef Name="GuestId" />
+          </Key>
+          <Property Name="GuestId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParkingSpaceOwnerID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="EmailSentBy" Type="varchar" MaxLength="100" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="ParkingSpaceOwner">
           <Key>
             <PropertyRef Name="ParkingSpaceOwnerID" />
@@ -39,6 +49,7 @@
           <Property Name="ParkingSpaceOwnerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="OwnerName" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="SpaceNumber" Type="int" />
+          <Property Name="EmailContact" Type="smallint" />
           <Property Name="StartsOn" Type="datetime" Nullable="false" />
           <Property Name="EndsOn" Type="datetime" Nullable="false" />
         </EntityType>
@@ -46,10 +57,10 @@
           <EntitySet Name="BlackoutDate" EntityType="Self.BlackoutDate" Schema="parking" store:Type="Tables" />
           <EntitySet Name="ParkingSpace" EntityType="Self.ParkingSpace" Schema="parking" store:Type="Tables" />
           <EntitySet Name="ParkingSpaceAdministrator" EntityType="Self.ParkingSpaceAdministrator" Schema="parking" store:Type="Tables" />
+          <EntitySet Name="ParkingSpaceGuest" EntityType="Self.ParkingSpaceGuest" Schema="parking" store:Type="Tables" />
           <EntitySet Name="ParkingSpaceOwner" EntityType="Self.ParkingSpaceOwner" Schema="parking" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ParkingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -80,6 +91,16 @@
           <Property Name="StartsOn" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="EndsOn" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
+        <EntityType Name="ParkingSpaceGuest">
+          <Key>
+            <PropertyRef Name="GuestId" />
+          </Key>
+          <Property Name="GuestId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParkingSpaceOwnerID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EmailSentBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
         <EntityType Name="ParkingSpaceOwner">
           <Key>
             <PropertyRef Name="ParkingSpaceOwnerID" />
@@ -87,13 +108,15 @@
           <Property Name="ParkingSpaceOwnerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="OwnerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SpaceNumber" Type="Int32" />
+          <Property Name="EmailContact" Type="Int16" />
           <Property Name="StartsOn" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="EndsOn" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
-        <EntityContainer Name="ParkingEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="ParkingEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="BlackoutDates" EntityType="Self.BlackoutDate" />
           <EntitySet Name="ParkingSpaces" EntityType="Self.ParkingSpace" />
           <EntitySet Name="ParkingSpaceAdministrators" EntityType="Self.ParkingSpaceAdministrator" />
+          <EntitySet Name="ParkingSpaceGuests" EntityType="Self.ParkingSpaceGuest" />
           <EntitySet Name="ParkingSpaceOwners" EntityType="Self.ParkingSpaceOwner" />
         </EntityContainer>
       </Schema>
@@ -101,7 +124,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ParkingModelStoreContainer" CdmEntityContainer="ParkingEntities">
+        <EntityContainerMapping StorageEntityContainer="ParkingModelStoreContainer" CdmEntityContainer="ParkingEntities1">
           <EntitySetMapping Name="BlackoutDates">
             <EntityTypeMapping TypeName="ParkingModel.BlackoutDate">
               <MappingFragment StoreEntitySet="BlackoutDate">
@@ -132,12 +155,24 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="ParkingSpaceGuests">
+            <EntityTypeMapping TypeName="ParkingModel.ParkingSpaceGuest">
+              <MappingFragment StoreEntitySet="ParkingSpaceGuest">
+                <ScalarProperty Name="EmailSentBy" ColumnName="EmailSentBy" />
+                <ScalarProperty Name="GuestId" ColumnName="GuestId" />
+                <ScalarProperty Name="ParkingSpaceOwnerID" ColumnName="ParkingSpaceOwnerID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="ParkingSpaceOwners">
             <EntityTypeMapping TypeName="ParkingModel.ParkingSpaceOwner">
               <MappingFragment StoreEntitySet="ParkingSpaceOwner">
                 <ScalarProperty Name="ParkingSpaceOwnerID" ColumnName="ParkingSpaceOwnerID" />
                 <ScalarProperty Name="OwnerName" ColumnName="OwnerName" />
                 <ScalarProperty Name="SpaceNumber" ColumnName="SpaceNumber" />
+                <ScalarProperty Name="EmailContact" ColumnName="EmailContact" />
                 <ScalarProperty Name="StartsOn" ColumnName="StartsOn" />
                 <ScalarProperty Name="EndsOn" ColumnName="EndsOn" />
               </MappingFragment>

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="ParkingModelStoreContainer" CdmEntityContainer="ParkingEntities">
+  <EntityContainerMapping StorageEntityContainer="ParkingModelStoreContainer" CdmEntityContainer="ParkingEntities1">
     <EntitySetMapping Name="BlackoutDates">
       <EntityTypeMapping TypeName="ParkingModel.BlackoutDate">
         <MappingFragment StoreEntitySet="BlackoutDate">
@@ -31,12 +31,24 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="ParkingSpaceGuests">
+      <EntityTypeMapping TypeName="ParkingModel.ParkingSpaceGuest">
+        <MappingFragment StoreEntitySet="ParkingSpaceGuest">
+          <ScalarProperty Name="EmailSentBy" ColumnName="EmailSentBy" />
+          <ScalarProperty Name="GuestId" ColumnName="GuestId" />
+          <ScalarProperty Name="ParkingSpaceOwnerID" ColumnName="ParkingSpaceOwnerID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="ParkingSpaceOwners">
       <EntityTypeMapping TypeName="ParkingModel.ParkingSpaceOwner">
         <MappingFragment StoreEntitySet="ParkingSpaceOwner">
           <ScalarProperty Name="ParkingSpaceOwnerID" ColumnName="ParkingSpaceOwnerID" />
           <ScalarProperty Name="OwnerName" ColumnName="OwnerName" />
           <ScalarProperty Name="SpaceNumber" ColumnName="SpaceNumber" />
+          <ScalarProperty Name="EmailContact" ColumnName="EmailContact" />
           <ScalarProperty Name="StartsOn" ColumnName="StartsOn" />
           <ScalarProperty Name="EndsOn" ColumnName="EndsOn" />
         </MappingFragment>

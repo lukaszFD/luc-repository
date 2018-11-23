@@ -6,11 +6,11 @@ namespace Parking.Class
     {
         public static DateTime Format(DateTime dateTime)
         {
-            return Convert.ToDateTime(Convert.ToDateTime(dateTime).ToString("yyyy-MM-dd"));
+            return Convert.ToDateTime(dateTime.ToString("yyyy-MM-dd"));
         }
-        public static DateTime Format(string stringDate)
+        public static string Format(string stringDate)
         {
-            return Convert.ToDateTime(Convert.ToDateTime(stringDate).ToString("yyyy-MM-dd"));
+            return Convert.ToDateTime(stringDate).ToString("yyyy-MM-dd");
         }
     }
 }

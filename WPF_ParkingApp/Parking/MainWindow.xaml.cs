@@ -94,5 +94,10 @@ namespace Parking
             mainFrame.NavigationService.Navigate(new Admin());
             //await ShowBalloon("to co robimy ");
         }
+
+        private void BtnCar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

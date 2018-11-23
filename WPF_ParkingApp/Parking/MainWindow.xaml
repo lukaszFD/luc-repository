@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Parking"
         mc:Ignorable="d"
-        Title="" Height="650" Width="660" StateChanged="Window_StateChanged" Closed="Window_Closed">
+        Title="" Height="650" Width="700" StateChanged="Window_StateChanged" Closed="Window_Closed">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/Images/blue-gradient_0.jpg" Stretch="UniformToFill"/>
@@ -23,6 +23,8 @@
                         </Grid.ColumnDefinitions>
                         <Button  
                             HorizontalAlignment="Left" 
+                            x:Name="btnCar"
+                            Click="BtnCar_Click"
                             Height="45" 
                             BorderBrush="Transparent" 
                             Grid.Column="0" 

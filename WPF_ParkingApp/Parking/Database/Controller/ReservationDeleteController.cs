@@ -11,7 +11,7 @@ namespace Parking.Database.Controller
 {
     class ReservationDeleteController
     {
-        ParkingEntities pe = new ParkingEntities();
+        ParkingEntities1 pe = new ParkingEntities1();
         private int _ownerId { get; set; }
         private DateTime _dateToDelete { get; set; }
         private DateTime _dateFrom { get; set; }
@@ -44,11 +44,17 @@ namespace Parking.Database.Controller
             ct.ThrowIfCancellationRequested();
             await Task.Factory.StartNew(() => FreeParkingSpaces_AddNew(), ct);
         }
-        public async Task<List<DateTime>> GetSpacesAsync(object obj)
+        public async Task<List<DateTime>> GetDeletedSpacesAsync(object obj)
         {
             CancellationToken ct = (CancellationToken)obj;
             ct.ThrowIfCancellationRequested();
-            return await Task.Factory.StartNew(() => ListSpaces(), ct);
+            return await Task.Factory.StartNew(() => GetDeletedSpaces(), ct);
+        }
+        public async Task<List<DateTime>> ListDeletedSpacesAsync(object obj)
+        {
+            CancellationToken ct = (CancellationToken)obj;
+            ct.ThrowIfCancellationRequested();
+            return await Task.Factory.StartNew(() => ListDeletedSpaces(), ct);
         }
         public async Task DeleteReleaseSpaceAsync(object obj)
         {
@@ -61,6 +67,12 @@ namespace Parking.Database.Controller
             CancellationToken ct = (CancellationToken)obj;
             ct.ThrowIfCancellationRequested();
             return await Task.Factory.StartNew(() => ListBlackoutDates(), ct);
+        }
+        public async Task<List<string>> GetNamesAsync(object obj)
+        {
+            CancellationToken ct = (CancellationToken)obj;
+            ct.ThrowIfCancellationRequested();
+            return await Task.Factory.StartNew(() => GetNames(), ct);
         }
 
         private async void FreeParkingSpaces_AddNew()
@@ -81,7 +93,7 @@ namespace Parking.Database.Controller
 
                                select Date.Format(work.Date)).ToList();
 
-            ParkingEntities d = new ParkingEntities();
+            ParkingEntities1 d = new ParkingEntities1();
 
             foreach (var item in dateToInsert)
             {
@@ -101,7 +113,7 @@ namespace Parking.Database.Controller
             List<DateTime> list = new List<DateTime>();
             try
             {
-                foreach (var item in await new ReservationDeleteController(_ownerId).GetSpacesAsync(cts.Token))
+                foreach (var item in await new ReservationDeleteController(_ownerId).GetDeletedSpacesAsync(cts.Token))
                 {
                     list.Add(item);
                 }
@@ -160,7 +172,28 @@ namespace Parking.Database.Controller
             }
             return list;
         }
-        private List<DateTime> ListSpaces()
+        private List<DateTime> GetDeletedSpaces()
+        {
+            List<DateTime> list = new List<DateTime>();
+            var listDate = pe.ParkingSpaces.ToList();
+            var spaces =
+                    from s in listDate
+                    where
+                        s.Date >= Date.Format(DateTime.Now)
+                        &&
+                        s.ParkingSpaceOwnerID == _ownerId
+                    orderby
+                        s.Date ascending
+                    select s.Date;
+
+            foreach (var item in spaces)
+            {
+                list.Add(item);
+            }
+            return list;
+        }
+
+        private List<DateTime> ListDeletedSpaces()
         {
             List<DateTime> list = new List<DateTime>();
             var listDate = pe.ParkingSpaces.ToList();
@@ -179,6 +212,27 @@ namespace Parking.Database.Controller
             foreach (var item in spaces)
             {
                 list.Add(item);
+            }
+            return list;
+        }
+
+        private List<string> GetNames()
+        {
+            List<string> list = new List<string>();
+            var peopleList = pe.ParkingSpaceOwners.ToList();
+
+            var people = from p in peopleList
+                         where
+                            p.SpaceNumber == null
+                            &&
+                            p.OwnerName != "Guest"
+                            &&
+                            p.EmailContact == 1
+                         select 
+                            p.OwnerName;
+            foreach (var item in people)
+            {
+                list.Add(item + "@" + System.Net.NetworkInformation.IPGlobalProperties.GetIPGlobalProperties().DomainName);
             }
             return list;
         }

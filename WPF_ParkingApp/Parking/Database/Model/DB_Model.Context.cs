@@ -13,10 +13,10 @@ namespace Parking.Database.Model
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ParkingEntities : DbContext
+    public partial class ParkingEntities1 : DbContext
     {
-        public ParkingEntities()
-            : base("name=ParkingEntities")
+        public ParkingEntities1()
+            : base("name=ParkingEntities1")
         {
         }
     
@@ -28,6 +28,7 @@ namespace Parking.Database.Model
         public virtual DbSet<BlackoutDate> BlackoutDates { get; set; }
         public virtual DbSet<ParkingSpace> ParkingSpaces { get; set; }
         public virtual DbSet<ParkingSpaceAdministrator> ParkingSpaceAdministrators { get; set; }
+        public virtual DbSet<ParkingSpaceGuest> ParkingSpaceGuests { get; set; }
         public virtual DbSet<ParkingSpaceOwner> ParkingSpaceOwners { get; set; }
     }
 }

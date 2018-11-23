@@ -5,6 +5,7 @@ using Parking.Database.Controller;
 using System.Threading;
 using Parking.Class;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace Parking.Pages
 {
@@ -39,7 +40,7 @@ namespace Parking.Pages
             }
             finally
             {
-                foreach (var item in await new ReservationDeleteController(3).GetSpacesAsync(cts.Token))
+                foreach (var item in await new ReservationDeleteController(3).ListDeletedSpacesAsync(cts.Token))
                 {
                     freeSpaces.Items.Add(item);
                 }
@@ -86,6 +87,7 @@ namespace Parking.Pages
                 try
                 {
                     await new ReservationDeleteController(3, _date).DeleteReleaseSpaceAsync(cts.Token);
+                    MessageBox.Show("Usunięto");
                 }
                 catch (Exception ex)
                 {
@@ -108,6 +110,31 @@ namespace Parking.Pages
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
+                await FillListBox();
+        }
+
+        private void freeSpaces_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                int index = freeSpaces.SelectedIndex;
+                if (index >= 0)
+                {
+                    _date = Convert.ToDateTime(Convert.ToDateTime(freeSpaces.Items[index].ToString()).ToString("yyyy-MM-dd"));
+                }
+                else
+                {
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private async void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
             CancellationTokenSource cts = new CancellationTokenSource();
             try
             {
@@ -117,7 +144,7 @@ namespace Parking.Pages
                     dateFrom.BlackoutDates.Add(new CalendarDateRange(item));
                     dateTo.BlackoutDates.Add(new CalendarDateRange(item));
                 }
-                foreach (var item in await new ReservationDeleteController(3).GetSpacesAsync(cts.Token))
+                foreach (var item in await new ReservationDeleteController(3).GetDeletedSpacesAsync(cts.Token))
                 {
                     dateFrom.BlackoutDates.Add(new CalendarDateRange(item));
                     dateTo.BlackoutDates.Add(new CalendarDateRange(item));
@@ -125,29 +152,9 @@ namespace Parking.Pages
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                await FillListBox();
-            }
-        }
-
-        private void freeSpaces_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            int index = freeSpaces.SelectedIndex;
-            if (index >= 0)
-            {
-                _date = Convert.ToDateTime(Convert.ToDateTime(freeSpaces.Items[index].ToString()).ToString("yyyy-MM-dd"));
-            }
-            else
-            {
+                //MessageBox.Show(ex.Message);
                 return;
             }
-        }
-
-        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
         }
 
         private async void btnDeleteRes_Click(object sender, RoutedEventArgs e)
@@ -168,6 +175,7 @@ namespace Parking.Pages
                 try
                 {
                     await new ReservationDeleteController(3, _dateFrom, _dateTo).ReleaseSpaceAsync(cts.Token);
+                    MessageBox.Show("Anulowano rezerwację");
                 }
                 catch (Exception ex)
                 {
@@ -176,10 +184,39 @@ namespace Parking.Pages
                 }
                 finally
                 {
-                    dateFrom.SelectedDates.Clear();
-                    dateTo.SelectedDates.Clear();
-                    await FillListBox();
-                    Page_Loaded(sender, e);
+                    if (checkboxCalendarDelete.IsChecked == true )
+                    {
+                        CancellationTokenSource cts2 = new CancellationTokenSource();
+                        try
+                        {
+                            string days = "";
+                            foreach (var item in await new ReservationDeleteController(3).ListDeletedSpacesAsync(cts2.Token))
+                            {
+                                days += "- " + Date.Format(item) + Environment.NewLine;
+                            }
+
+                            List<string> nameslist = new List<string>();
+
+                            foreach (var item in await new ReservationDeleteController().GetNamesAsync(cts2.Token))
+                            {
+                                nameslist.Add(item);
+                            }
+
+                            await new OutlookSendEmail().Email_Async(cts2.Token, string.Format("Wolne miejsce parkingowe nr {0}", 1), "Wolne dni : " + Environment.NewLine + days, nameslist);
+                        }
+                        catch (Exception ex)
+                        {
+                            cts2.Cancel();
+                            MessageBox.Show(ex.Message);
+                        }
+                        finally
+                        {
+                            dateFrom.SelectedDates.Clear();
+                            dateTo.SelectedDates.Clear();
+                            await FillListBox();
+                            Page_Loaded(sender, e);
+                        }
+                    }
                 }
             }
         }

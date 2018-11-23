@@ -17,7 +17,11 @@
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Border Grid.Column="0" Padding="5">
+            <Border Grid.Column="0" 
+                    BorderBrush="LightGray" 
+                    BorderThickness="1" 
+                    CornerRadius="4" 
+                    Background="Transparent">
                 <StackPanel>
                     <Grid>
                         <Grid.RowDefinitions>
@@ -55,13 +59,18 @@
                                   Content="Dodaj przypomnienie do kalendarza" 
                                   Foreground="#ffff" 
                                   x:Name="checkBoxAddInfoToCalendar">
+                                
                             </CheckBox>
                         </StackPanel>
                     </Border>
                 </StackPanel>
 
             </Border>
-            <Border Grid.Column="1" Padding="5">
+            <Border Grid.Column="1" 
+                    BorderBrush="LightGray" 
+                    BorderThickness="1" 
+                    CornerRadius="4" 
+                    Background="Transparent">
                 <StackPanel>
                     <ListBox SelectionChanged="freeSpacesNumber_SelectionChanged" 
                          Background="Transparent" 
@@ -70,8 +79,21 @@
                          FontSize="30" 
                          Height="auto" 
                          Width="auto"  
-                         x:Name="freeSpacesNumber"
-                         >
+                         x:Name="freeSpacesNumber">
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <Style.Triggers>
+                                    <Trigger Property="IsSelected" Value="True" >
+                                        <Setter Property="FontWeight" Value="Bold" />
+                                        <Setter Property="Background" Value="Transparent" />
+                                        <Setter Property="Foreground" Value="Red" />
+                                    </Trigger>
+                                </Style.Triggers>
+                                <Style.Resources>
+                                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent"/>
+                                </Style.Resources>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
                     </ListBox>
                 </StackPanel>
 

@@ -4,11 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2e398b87cd5444b49ac151e4ed57ed68" Name="Diagram1">
+      <Diagram DiagramId="eab09eb9188741e9bab083b778387b31" Name="Diagram1">
         <EntityTypeShape EntityType="ParkingModel.BlackoutDate" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ParkingModel.ParkingSpace" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ParkingModel.ParkingSpaceAdministrator" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ParkingModel.ParkingSpaceOwner" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ParkingModel.ParkingSpaceGuest" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ParkingModel.ParkingSpaceOwner" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

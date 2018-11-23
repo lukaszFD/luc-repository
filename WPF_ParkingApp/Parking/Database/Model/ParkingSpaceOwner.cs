@@ -17,6 +17,7 @@ namespace Parking.Database.Model
         public int ParkingSpaceOwnerID { get; set; }
         public string OwnerName { get; set; }
         public Nullable<int> SpaceNumber { get; set; }
+        public Nullable<short> EmailContact { get; set; }
         public System.DateTime StartsOn { get; set; }
         public System.DateTime EndsOn { get; set; }
     }

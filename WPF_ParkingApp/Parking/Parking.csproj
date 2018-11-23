@@ -89,6 +89,7 @@
     <Compile Include="Class\Days.cs" />
     <Compile Include="Class\Main_Interface_Class\PlugToInterface.cs" />
     <Compile Include="Class\OutlookAppointment.cs" />
+    <Compile Include="Class\OutlookSendEmail.cs" />
     <Compile Include="Database\Controller\AdminController.cs" />
     <Compile Include="Database\Controller\ReservationAddController.cs" />
     <Compile Include="Database\Controller\ReservationDeleteController.cs" />
@@ -115,6 +116,9 @@
       <DependentUpon>DB_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Database\Model\ParkingSpaceAdministrator.cs">
+      <DependentUpon>DB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Model\ParkingSpaceGuest.cs">
       <DependentUpon>DB_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Database\Model\ParkingSpaceOwner.cs">
@@ -217,7 +221,6 @@
     <Resource Include="Images\add-guest.ico" />
     <Resource Include="Images\list-remove.ico" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="Database\Model\DB_Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
