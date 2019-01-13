@@ -1,0 +1,11 @@
+C:\Users\lukasz.dejko\Documents\C# Project\Maratony\Maratony.Data\bin\Debug\Maratony.Data.dll
+C:\Users\lukasz.dejko\Documents\C# Project\Maratony\Maratony.Data\bin\Debug\Maratony.Data.pdb
+C:\Users\lukasz.dejko\Documents\C# Project\Maratony\Maratony.Data\obj\Debug\Maratony.Data.csproj.CoreCompileInputs.cache
+C:\Users\lukasz.dejko\Documents\C# Project\Maratony\Maratony.Data\obj\Debug\Maratony.Data.dll
+C:\Users\lukasz.dejko\Documents\C# Project\Maratony\Maratony.Data\obj\Debug\Maratony.Data.pdb
+C:\Users\lukasz.dejko\Documents\GitHub\luc-repository\IPI_PAN_PROGRAMOWANIE _NA_PLATFORMIE_NET\WPF\Maratony\Maratony.Data\bin\Debug\Maratony.Data.dll
+C:\Users\lukasz.dejko\Documents\GitHub\luc-repository\IPI_PAN_PROGRAMOWANIE _NA_PLATFORMIE_NET\WPF\Maratony\Maratony.Data\bin\Debug\Maratony.Data.pdb
+C:\Users\lukasz.dejko\Documents\GitHub\luc-repository\IPI_PAN_PROGRAMOWANIE _NA_PLATFORMIE_NET\WPF\Maratony\Maratony.Data\obj\Debug\Maratony.Data.csprojAssemblyReference.cache
+C:\Users\lukasz.dejko\Documents\GitHub\luc-repository\IPI_PAN_PROGRAMOWANIE _NA_PLATFORMIE_NET\WPF\Maratony\Maratony.Data\obj\Debug\Maratony.Data.csproj.CoreCompileInputs.cache
+C:\Users\lukasz.dejko\Documents\GitHub\luc-repository\IPI_PAN_PROGRAMOWANIE _NA_PLATFORMIE_NET\WPF\Maratony\Maratony.Data\obj\Debug\Maratony.Data.dll
+C:\Users\lukasz.dejko\Documents\GitHub\luc-repository\IPI_PAN_PROGRAMOWANIE _NA_PLATFORMIE_NET\WPF\Maratony\Maratony.Data\obj\Debug\Maratony.Data.pdb

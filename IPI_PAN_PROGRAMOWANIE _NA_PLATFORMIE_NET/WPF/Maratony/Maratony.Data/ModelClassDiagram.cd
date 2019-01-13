@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Maratony.Data.Zawody">
+    <Position X="0.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAgAAAABAAQAACAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Zawody.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Maratony.Data.Biegacz">
+    <Position X="4.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAEAAAAIAAgAAAABAAAAAAAAAAAAAAAAAAAAAABAA=</HashCode>
+      <FileName>Biegacz.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Bieg" />
+    </ShowAsAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
