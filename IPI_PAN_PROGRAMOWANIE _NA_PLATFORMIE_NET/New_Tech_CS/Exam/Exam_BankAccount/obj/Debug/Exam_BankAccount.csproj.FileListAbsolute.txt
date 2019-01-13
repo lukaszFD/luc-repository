@@ -1,0 +1,6 @@
+c:\users\lukasz.dejko\documents\visual studio 2015\Projects\Exam\Exam_BankAccount\bin\Debug\Exam_BankAccount.exe.config
+c:\users\lukasz.dejko\documents\visual studio 2015\Projects\Exam\Exam_BankAccount\bin\Debug\Exam_BankAccount.exe
+c:\users\lukasz.dejko\documents\visual studio 2015\Projects\Exam\Exam_BankAccount\bin\Debug\Exam_BankAccount.pdb
+c:\users\lukasz.dejko\documents\visual studio 2015\Projects\Exam\Exam_BankAccount\obj\Debug\Exam_BankAccount.csprojResolveAssemblyReference.cache
+c:\users\lukasz.dejko\documents\visual studio 2015\Projects\Exam\Exam_BankAccount\obj\Debug\Exam_BankAccount.exe
+c:\users\lukasz.dejko\documents\visual studio 2015\Projects\Exam\Exam_BankAccount\obj\Debug\Exam_BankAccount.pdb
