@@ -1,0 +1,77 @@
+﻿<Window x:Class="ReportViewer_WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:rv="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms"
+        xmlns:local="clr-namespace:ReportViewer_WPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="700" Width="1200">
+    <Grid>
+        <StackPanel>
+            <Grid Width="auto" Height="auto">
+                <Border BorderBrush="LightBlue" BorderThickness="0.6" CornerRadius="4" Background="Transparent">
+                    <Border.Effect>
+                        <DropShadowEffect/>
+                    </Border.Effect>
+                    <StackPanel Height="auto" Width="auto">
+                        <Grid>
+                            <Grid.Background>
+                                <ImageBrush ImageSource="/Image/blue-gradient_1.jpg" Stretch="UniformToFill"/>
+                            </Grid.Background>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"></ColumnDefinition>
+                                <ColumnDefinition Width="370"></ColumnDefinition>
+                                <ColumnDefinition Width="300"></ColumnDefinition>
+                                <ColumnDefinition Width="200"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Column="0"  
+                                    BorderBrush="Transparent" 
+                                    Background="Transparent" 
+                                    FontWeight= "Bold" 
+                                    Foreground="#ffff" 
+                                    Margin="10 10" 
+                                    Content="Pobierz" 
+                                    HorizontalAlignment="Left" 
+                                    Height="auto" 
+                                    Width="auto" 
+                                    x:Name="btnClient" 
+                                    Click="btnClient_Click" ></Button>
+                            <TextBox Grid.Column="1" 
+                                     SelectionChanged="tbxClient_SelectionChanged" 
+                                     x:Name="tbxClient" 
+                                     Height="26" 
+                                     FontSize="16"
+                                     Width="320" 
+                                     Margin="0 0 10 0"></TextBox>
+                            <ComboBox Grid.Column="2"
+                                      x:Name="cbxReports"
+                                      Padding="2" 
+                                      IsReadOnly="True" 
+                                      Height="26"
+                                      FontSize="16">
+                            </ComboBox>
+                            <ProgressBar x:Name="progressBar" 
+                                         Grid.Column="3" 
+                                         Minimum="0" 
+                                         Maximum="1" 
+                                         Height="20" 
+                                         IsIndeterminate="True" 
+                                         Background="Transparent" 
+                                         Foreground="LightBlue" 
+                                         BorderBrush="Transparent" 
+                                         Margin="0,14,0,13"/>
+                        </Grid>
+                        <Grid Height="950" Width="1900" >
+                            <WindowsFormsHost Height="auto" Width="auto">
+                                <rv:ReportViewer x:Name="reportViewer1" ProcessingMode="Local" />
+                            </WindowsFormsHost>
+                        </Grid>
+
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Window>
