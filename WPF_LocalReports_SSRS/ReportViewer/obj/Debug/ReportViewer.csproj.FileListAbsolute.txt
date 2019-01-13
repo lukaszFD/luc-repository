@@ -1,0 +1,16 @@
+C:\Projects\bipoland\Solutions\LocalReports_SSRS\ReportViewer\bin\Debug\ReportViewer.dll.config
+C:\Projects\bipoland\Solutions\LocalReports_SSRS\ReportViewer\bin\Debug\ReportViewer.dll
+C:\Projects\bipoland\Solutions\LocalReports_SSRS\ReportViewer\bin\Debug\ReportViewer.pdb
+C:\Projects\bipoland\Solutions\LocalReports_SSRS\ReportViewer\bin\Debug\Microsoft.SqlServer.Types.dll
+C:\Projects\bipoland\Solutions\LocalReports_SSRS\ReportViewer\bin\Debug\de\Microsoft.SqlServer.Types.resources.dll
+C:\Projects\bipoland\Solutions\LocalReports_SSRS\ReportViewer\bin\Debug\es\Microsoft.SqlServer.Types.resources.dll
+C:\Projects\bipoland\Solutions\LocalReports_SSRS\ReportViewer\bin\Debug\fr\Microsoft.SqlServer.Types.resources.dll
+C:\Projects\bipoland\Solutions\LocalReports_SSRS\ReportViewer\bin\Debug\it\Microsoft.SqlServer.Types.resources.dll
+C:\Projects\bipoland\Solutions\LocalReports_SSRS\ReportViewer\bin\Debug\ja\Microsoft.SqlServer.Types.resources.dll
+C:\Projects\bipoland\Solutions\LocalReports_SSRS\ReportViewer\bin\Debug\ko\Microsoft.SqlServer.Types.resources.dll
+C:\Projects\bipoland\Solutions\LocalReports_SSRS\ReportViewer\bin\Debug\pt\Microsoft.SqlServer.Types.resources.dll
+C:\Projects\bipoland\Solutions\LocalReports_SSRS\ReportViewer\bin\Debug\ru\Microsoft.SqlServer.Types.resources.dll
+C:\Projects\bipoland\Solutions\LocalReports_SSRS\ReportViewer\bin\Debug\zh-Hans\Microsoft.SqlServer.Types.resources.dll
+C:\Projects\bipoland\Solutions\LocalReports_SSRS\ReportViewer\bin\Debug\zh-Hant\Microsoft.SqlServer.Types.resources.dll
+C:\Projects\bipoland\Solutions\LocalReports_SSRS\ReportViewer\obj\Debug\ReportViewer.dll
+C:\Projects\bipoland\Solutions\LocalReports_SSRS\ReportViewer\obj\Debug\ReportViewer.pdb
