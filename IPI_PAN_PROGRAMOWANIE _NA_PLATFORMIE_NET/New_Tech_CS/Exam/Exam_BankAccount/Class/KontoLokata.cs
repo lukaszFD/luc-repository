@@ -25,14 +25,16 @@ namespace Exam_BankAccount.Class
             return Saldo * stopaProcentowa / 100.00;
         }
 
-        public override void Wplac()
+        public override double Wplac(double kwotaDoWplaty)
         {
-            throw new NotImplementedException();
+            Saldo += kwotaDoWplaty;
+            return Saldo;
         }
 
-        public override void Wyplac()
+        public override double Wyplac(double kwotaDoWyplaty)
         {
-            throw new NotImplementedException();
+            Saldo -= kwotaDoWyplaty;
+            return Saldo;
         }
     }
 }

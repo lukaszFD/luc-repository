@@ -17,6 +17,7 @@ namespace Exam_BankAccount.Class
         }
         public double WyszukajKonto()
         {
+
             List<KontoOsobiste> listaKont = new List<KontoOsobiste>();
             listaKont.Add(new KontoOsobiste() { NumerKonta = "5678", Saldo = 1500.25 });
             listaKont.Add(new KontoOsobiste() { NumerKonta = "1234", Saldo = 150000.25 });
