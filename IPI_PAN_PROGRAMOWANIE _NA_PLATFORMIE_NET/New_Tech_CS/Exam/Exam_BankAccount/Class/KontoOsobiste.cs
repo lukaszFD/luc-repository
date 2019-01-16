@@ -20,19 +20,31 @@ namespace Exam_BankAccount.Class
             get; set;
         }
 
-        public double KontrolaWypłaty(double kwotawyplaty)
+        public override double Wplac(double kwotaDoWplaty)
         {
-            throw new NotImplementedException();
+            Saldo += kwotaDoWplaty;
+            return Saldo;
         }
 
-        public override void Wplac()
+        public override double Wyplac(double kwotaDoWyplaty)
         {
-            throw new NotImplementedException();
+            Saldo -= kwotaDoWyplaty;
+            return Saldo;
         }
 
-        public override void Wyplac()
+        bool IOsobista.KontrolaWypłaty(double param)
         {
-            throw new NotImplementedException();
+            bool stanKonta;
+
+            if (Saldo <= 0)
+            {
+                stanKonta = true;
+            }
+            else
+            {
+                stanKonta = false;
+            }
+            return stanKonta;
         }
     }
 }

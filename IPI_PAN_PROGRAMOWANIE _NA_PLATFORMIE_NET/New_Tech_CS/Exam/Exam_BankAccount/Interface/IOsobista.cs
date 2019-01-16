@@ -8,6 +8,6 @@ namespace Exam_BankAccount.Interface
 {
     interface IOsobista
     {
-        double KontrolaWypłaty(double param);
+        bool KontrolaWypłaty(double param);
     }
 }
