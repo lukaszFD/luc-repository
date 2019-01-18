@@ -14,37 +14,33 @@ namespace Exam_BankAccount.Class
         {
             get; set;
         }
-
+        
         public override double Saldo
         {
             get; set;
         }
 
-        public override double Wplac(double kwotaDoWplaty)
+        public override void Wplac(double kwotaDoWplaty)
         {
             Saldo += kwotaDoWplaty;
-            return Saldo;
         }
 
-        public override double Wyplac(double kwotaDoWyplaty)
+        public override void Wyplac(double kwotaDoWyplaty)
         {
-            Saldo -= kwotaDoWyplaty;
-            return Saldo;
+            KontrolaWypłaty(kwotaDoWyplaty);
         }
 
-        bool IOsobista.KontrolaWypłaty(double param)
+        public void KontrolaWypłaty(double kwota)
         {
-            bool stanKonta;
-
-            if (Saldo <= 0)
+            if (Saldo >= kwota)
             {
-                stanKonta = true;
+                Saldo -= kwota;
             }
             else
             {
-                stanKonta = false;
+                Console.WriteLine("Proszę wybrać niższą kwotę która jest mniejsza lub równa wysokości salda.");
             }
-            return stanKonta;
+
         }
     }
 }

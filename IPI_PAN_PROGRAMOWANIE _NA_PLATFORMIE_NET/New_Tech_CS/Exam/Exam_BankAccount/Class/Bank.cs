@@ -1,5 +1,6 @@
 ﻿using Exam_BankAccount.Class_Abstract;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,24 +16,24 @@ namespace Exam_BankAccount.Class
         {
            this._numerDoWyszukania = numerDoWyszukania;
         }
-        public double WyszukajKonto()
+        public bool WyszukajKonto()
         {
+            ArrayList listaKont = new ArrayList();
+            listaKont.Add( "3333");
+            listaKont.Add( "2222");
+            listaKont.Add( "0000");
+            listaKont.Add( "1111");
 
-            List<KontoOsobiste> listaKont = new List<KontoOsobiste>();
-            listaKont.Add(new KontoOsobiste() { NumerKonta = "5678", Saldo = 1500.25 });
-            listaKont.Add(new KontoOsobiste() { NumerKonta = "1234", Saldo = 150000.25 });
-            listaKont.Add(new KontoOsobiste() { NumerKonta = "0000", Saldo = 15.01 });
-
-            double saldoKonta = 0;
-
+            bool czyJestNumerKonta = false;
             foreach (var item in listaKont)
             {
-                if (item.NumerKonta == _numerDoWyszukania)
+                if (item.ToString() == _numerDoWyszukania)
                 {
-                    saldoKonta = item.Saldo;
+                    czyJestNumerKonta = true;
                 }
             }
-            return saldoKonta;
+            return czyJestNumerKonta;
         }
     }
 }
+

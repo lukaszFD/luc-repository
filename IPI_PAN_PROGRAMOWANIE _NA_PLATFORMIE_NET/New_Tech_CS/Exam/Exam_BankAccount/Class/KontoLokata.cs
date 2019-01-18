@@ -20,21 +20,19 @@ namespace Exam_BankAccount.Class
             get; set;
         }
 
-        public double ObliczZysk(double stopaProcentowa)
+        public void ObliczZysk(double stopaProcentowa)
         {
-            return Saldo * stopaProcentowa / 100.00;
+            Saldo += Saldo * stopaProcentowa / 100.00;
         }
 
-        public override double Wplac(double kwotaDoWplaty)
+        public override void Wplac(double kwotaDoWplaty)
         {
             Saldo += kwotaDoWplaty;
-            return Saldo;
         }
 
-        public override double Wyplac(double kwotaDoWyplaty)
+        public override void Wyplac(double kwotaDoWyplaty)
         {
             Saldo -= kwotaDoWyplaty;
-            return Saldo;
         }
     }
 }

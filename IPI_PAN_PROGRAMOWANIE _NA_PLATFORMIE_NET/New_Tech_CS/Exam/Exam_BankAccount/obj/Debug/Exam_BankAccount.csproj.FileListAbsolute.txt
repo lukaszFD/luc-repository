@@ -4,3 +4,10 @@ c:\users\lukasz.dejko\documents\visual studio 2015\Projects\Exam\Exam_BankAccoun
 c:\users\lukasz.dejko\documents\visual studio 2015\Projects\Exam\Exam_BankAccount\obj\Debug\Exam_BankAccount.csprojResolveAssemblyReference.cache
 c:\users\lukasz.dejko\documents\visual studio 2015\Projects\Exam\Exam_BankAccount\obj\Debug\Exam_BankAccount.exe
 c:\users\lukasz.dejko\documents\visual studio 2015\Projects\Exam\Exam_BankAccount\obj\Debug\Exam_BankAccount.pdb
+C:\Users\luc\Documents\GitHub\luc-repository\IPI_PAN_PROGRAMOWANIE _NA_PLATFORMIE_NET\New_Tech_CS\Exam\Exam_BankAccount\bin\Debug\Exam_BankAccount.exe.config
+C:\Users\luc\Documents\GitHub\luc-repository\IPI_PAN_PROGRAMOWANIE _NA_PLATFORMIE_NET\New_Tech_CS\Exam\Exam_BankAccount\bin\Debug\Exam_BankAccount.exe
+C:\Users\luc\Documents\GitHub\luc-repository\IPI_PAN_PROGRAMOWANIE _NA_PLATFORMIE_NET\New_Tech_CS\Exam\Exam_BankAccount\bin\Debug\Exam_BankAccount.pdb
+C:\Users\luc\Documents\GitHub\luc-repository\IPI_PAN_PROGRAMOWANIE _NA_PLATFORMIE_NET\New_Tech_CS\Exam\Exam_BankAccount\obj\Debug\Exam_BankAccount.csprojAssemblyReference.cache
+C:\Users\luc\Documents\GitHub\luc-repository\IPI_PAN_PROGRAMOWANIE _NA_PLATFORMIE_NET\New_Tech_CS\Exam\Exam_BankAccount\obj\Debug\Exam_BankAccount.csproj.CoreCompileInputs.cache
+C:\Users\luc\Documents\GitHub\luc-repository\IPI_PAN_PROGRAMOWANIE _NA_PLATFORMIE_NET\New_Tech_CS\Exam\Exam_BankAccount\obj\Debug\Exam_BankAccount.exe
+C:\Users\luc\Documents\GitHub\luc-repository\IPI_PAN_PROGRAMOWANIE _NA_PLATFORMIE_NET\New_Tech_CS\Exam\Exam_BankAccount\obj\Debug\Exam_BankAccount.pdb
