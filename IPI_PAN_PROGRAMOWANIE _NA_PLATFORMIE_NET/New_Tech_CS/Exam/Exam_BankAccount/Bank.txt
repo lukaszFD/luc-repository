@@ -1,0 +1,24 @@
+1. 
+	Zdefiniuj klasę abstrakcyjną Konto (konto bankowe) z danymi składowymi: 
+	NrKonta typu String, oraz Saldo typu Double i abstrakcyjnymi metodami Wplac() i Wyplac().
+
+2.       
+	Zdefiniuj następnie dwie klasy konkretne KontoOsobiste i KontoLokata dziedziczące z klasy abstrakcyjnej Konto.
+
+3.
+	Pierwsza z klas konkretnych implementować będzie na klasę interfejsową Osobista z abstrakcyjną metodą KontrolaWypłaty(). 
+	Zadaniem jej implementacji będzie niedopuszczenia do jednorazowej wypłaty w wysokości przekazanej przez parametr metody.
+
+4.       
+	Klasa KontoLokata implementować będzie klasę interfejsową Zysk z abstrakcyjną metodą ObliczZysk(). 
+	Jej zadaniem będzie policzenie zysku z aktualnej wysokości lokaty wg stopy 
+	procentowej przekazanej przez parametr metody i dodanie salda.
+
+5.       
+	Utwórz klasę zbiorczą Bank agregującą pewną ilość różnych rodzajów kont w kolekcji ArrayList. 
+	W klasie Bank zdefiniuj co najmniej: konstruktor do tworzenia obiektów klasy Bank oraz metodą 
+	wyszukiwania kont o określonych numerach.
+
+6.       
+	W części wykonawczej aplikacji zadeklaruj zmienną referencyjną do klasy abstrakcyjnej 
+	Konto i pokaż działanie polimorfizmu wywołując metody Wplac() i Wyplac().

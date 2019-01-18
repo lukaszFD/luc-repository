@@ -8,6 +8,6 @@ namespace Exam_BankAccount.Interface
 {
     interface IZysk
     {
-        double ObliczZysk(double stopaProcentowa);
+        void ObliczZysk(double stopaProcentowa);
     }
 }

@@ -5,7 +5,12 @@
         public abstract string NumerKonta { get; set; }
         public abstract double Saldo { get; set; }
 
-        abstract public double Wplac(double kwotaDoWplaty);
-        abstract public double Wyplac(double kwotaDoWyplaty);
+        abstract public void Wplac(double kwotaDoWplaty);
+        abstract public void Wyplac(double kwotaDoWyplaty);
+
+        public override string ToString()
+        {
+            return string.Format("Na koncie : {0} jest {1} zł.", NumerKonta, Saldo);
+        }
     }
 }
