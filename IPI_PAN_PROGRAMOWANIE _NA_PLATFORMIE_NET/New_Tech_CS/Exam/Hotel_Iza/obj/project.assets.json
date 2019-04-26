@@ -689,7 +689,8 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\luc\\.nuget\\packages\\": {}
+    "C:\\Users\\luc\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
@@ -700,6 +701,9 @@
       "packagesPath": "C:\\Users\\luc\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\luc\\Documents\\GitHub\\luc-repository\\IPI_PAN_PROGRAMOWANIE _NA_PLATFORMIE_NET\\New_Tech_CS\\Exam\\Hotel_Iza\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
         "C:\\Users\\luc\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"

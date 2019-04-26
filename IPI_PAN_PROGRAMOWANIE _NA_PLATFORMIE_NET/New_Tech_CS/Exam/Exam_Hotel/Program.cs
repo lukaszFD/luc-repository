@@ -13,9 +13,9 @@ namespace Exam_Hotel
         {
             Pokoj p = new Pokoj();
 
-            //p.Zarezerwuj(5, "Lipa");
+            p.Zarezerwuj(10, "Mały");
             //p.Wycofaj(1, "Dejko");
-            p.Wydaj(10, "Mały");
+            p.Wydaj(8, "Dejko");
 
             Console.WriteLine(p);
 
@@ -81,7 +81,7 @@ namespace Exam_Hotel
         {
             foreach (var item in Hotel.pokojeHotelowe)
             {
-                if (item.StanPokoju == Pokoj.Stan.wolny && item.NumerPokoju == numerek)
+                if (item.StanPokoju != Pokoj.Stan.zarezerwowany && item.NumerPokoju == numerek)
                 {
                     Hotel.pokojeHotelowe.Enqueue(new Pokoj(numerek, nazwisko, Stan.zarezerwowany));
                 }
@@ -90,16 +90,23 @@ namespace Exam_Hotel
 
         public override string ToString()
         {
-            return string.Format("Klient : {0} , Numer pokoju : {1}, Status : {2}",Nazwisko,NumerPokoju, StanPokoju);
+            return string.Format("{0} pokój numer : {1} jest w statusie : {2}",Nazwisko,NumerPokoju, StanPokoju);
         }
     }
     class Gosc : Metody
     {
-        string Nazwisko { get; set; }
+        private string Nazwisko { get; set; }
+        private int NumerPokoju { get; set; }
+
+        public Gosc(int numer, string nazwisko)
+        {
+            this.NumerPokoju = numer;
+            this.Nazwisko = nazwisko;
+        }
 
         public override void WyszukajWolnyPokoj()
         {
-            throw new NotImplementedException();
+            new Pokoj().Zarezerwuj(NumerPokoju, Nazwisko);
         }
 
         public override void ZarezerwujPokoj()
@@ -115,50 +122,41 @@ namespace Exam_Hotel
         static Hotel()
         {
             pokojeHotelowe = new Queue<Pokoj>();
-            pokojeHotelowe.Enqueue(new Pokoj(1, "Dejko", Pokoj.Stan.zarezerwowany));
-            pokojeHotelowe.Enqueue(new Pokoj(2, "Kowalski", Pokoj.Stan.zarezerwowany));
-            pokojeHotelowe.Enqueue(new Pokoj(10, "Kostek", Pokoj.Stan.wolny));
         }
-        //dodawanie Queue.enqueue(element)
-        //usuwanie Queue.dequeue()
-        //spr ile Queue.Count
-        //czy zawiera Queue.Contains(element)
-        //wywaleanie z kolejki Queue.Clear
     }
 
-    class DyrektorHotelu
+    class DyrektorHotelu : Pokoj
     {
-        void DodajPokoj()
+        void DodajPokoj(int numerek, string nazwisko)
         {
-
+            Zarezerwuj(numerek, nazwisko);
         }
 
-        void WycofajPokoj()
+        void WycofajPokoj(int numerek, string nazwisko)
         {
-
+            Wycofaj(numerek, nazwisko);
         }
     }
 
     class Recepcjonista : Metody
     {
+        private string Nazwisko { get; set; }
+        private int NumerPokoju { get; set; }
+
+        public Recepcjonista(int numer, string nazwisko)
+        {
+            this.NumerPokoju = numer;
+            this.Nazwisko = nazwisko;
+        }
+    
         public override void WyszukajWolnyPokoj()
         {
-            throw new NotImplementedException();
+            new Pokoj().Zarezerwuj(NumerPokoju, Nazwisko);
         }
 
         public override void ZarezerwujPokoj()
         {
             throw new NotImplementedException();
-        }
-
-        void WyszukajZarezerwowany()
-        {
-
-        }
-
-        void ZwolnijPokoj()
-        {
-
         }
     }
 }
