@@ -1,0 +1,5 @@
+C:\Users\luc\Documents\GitHub\luc-repository\IPI_PAN_PROGRAMOWANIE _NA_PLATFORMIE_NET\HTML_2\Studia.HTML5.Przyklad3.Lib\bin\Debug\Studia.HTML5.Przyklad3.Lib.dll
+C:\Users\luc\Documents\GitHub\luc-repository\IPI_PAN_PROGRAMOWANIE _NA_PLATFORMIE_NET\HTML_2\Studia.HTML5.Przyklad3.Lib\bin\Debug\Studia.HTML5.Przyklad3.Lib.pdb
+C:\Users\luc\Documents\GitHub\luc-repository\IPI_PAN_PROGRAMOWANIE _NA_PLATFORMIE_NET\HTML_2\Studia.HTML5.Przyklad3.Lib\obj\Debug\Studia.HTML5.Przyklad3.Lib.csproj.CoreCompileInputs.cache
+C:\Users\luc\Documents\GitHub\luc-repository\IPI_PAN_PROGRAMOWANIE _NA_PLATFORMIE_NET\HTML_2\Studia.HTML5.Przyklad3.Lib\obj\Debug\Studia.HTML5.Przyklad3.Lib.dll
+C:\Users\luc\Documents\GitHub\luc-repository\IPI_PAN_PROGRAMOWANIE _NA_PLATFORMIE_NET\HTML_2\Studia.HTML5.Przyklad3.Lib\obj\Debug\Studia.HTML5.Przyklad3.Lib.pdb

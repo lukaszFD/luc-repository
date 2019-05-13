@@ -13,9 +13,9 @@ namespace Exam_Hotel
         {
             Pokoj p = new Pokoj();
 
-            p.Zarezerwuj(10, "Mały");
-            //p.Wycofaj(1, "Dejko");
-            p.Wydaj(8, "Dejko");
+            p.Zarezerwuj(1, "Mały");
+            //p.Wycofaj(1);
+            p.Wydaj();
 
             Console.WriteLine(p);
 
@@ -23,7 +23,6 @@ namespace Exam_Hotel
             {
                 Console.WriteLine(item);
             }
-
             Console.ReadKey();
         }
     }
@@ -34,8 +33,17 @@ namespace Exam_Hotel
         abstract public void ZarezerwujPokoj();
     }
 
-    class Pokoj
+    class Pokoj : IEquatable<Pokoj>
     {
+        public bool Equals(Pokoj other)
+        {
+            return (other.NumerPokoju == this.NumerPokoju && other.Nazwisko == this.Nazwisko && other.StanPokoju == Stan.wolny);
+        }
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as Pokoj);
+        }
+
         public string Nazwisko { get; set; }
         public int NumerPokoju { get; set; }
         public Stan StanPokoju { get; set; }
@@ -47,44 +55,47 @@ namespace Exam_Hotel
             zarezerwowany,
             wycofany,
         }
-        public Pokoj() { }
-
-        public Pokoj(int numer, string nazwisko, Stan stan)
-        {
-            this.NumerPokoju = numer;
-            this.Nazwisko = nazwisko;
-            this.StanPokoju = stan;
-        }
 
         public void Zarezerwuj(int numerek, string nazwisko)
         {
-            Hotel.pokojeHotelowe.Enqueue(new Pokoj(numerek, nazwisko, Stan.zarezerwowany));
-        }
-
-        public void Wycofaj(int numerek, string nazwisko)
-        {
-            Pokoj pok = Hotel.pokojeHotelowe.Dequeue();
-
-            pok.NumerPokoju = numerek;
-            pok.Nazwisko = nazwisko;
-            pok.StanPokoju = Stan.wycofany;
-        }
-        public void Przyjmij(int numerek, string nazwisko)
-        {
-            Pokoj pok = Hotel.pokojeHotelowe.Dequeue();
-
-            pok.NumerPokoju = numerek;
-            pok.Nazwisko = nazwisko;
-            pok.StanPokoju = Stan.wolny;
-        }
-        public void Wydaj(int numerek, string nazwisko)
-        {
-            foreach (var item in Hotel.pokojeHotelowe)
+            if (Hotel.pokojeHotelowe.Contains(new Pokoj() { NumerPokoju = numerek, Nazwisko = null, StanPokoju = Stan.wolny }))
             {
-                if (item.StanPokoju != Pokoj.Stan.zarezerwowany && item.NumerPokoju == numerek)
+                Wycofaj(numerek);
+                Hotel.pokojeHotelowe.Enqueue(new Pokoj() { NumerPokoju = numerek, Nazwisko = nazwisko, StanPokoju = Stan.zajety });
+            }
+        }
+
+        public void Wycofaj(int numerek)
+        {
+            Pokoj pok = Hotel.pokojeHotelowe.Dequeue();
+            pok.NumerPokoju = numerek;
+        }
+        public void Przyjmij(int numerek)
+        {
+            Wycofaj(numerek);
+            Hotel.pokojeHotelowe.Enqueue(new Pokoj() { NumerPokoju = numerek, Nazwisko = null, StanPokoju = Stan.wolny });
+        }
+        public void Wydaj()
+        {
+            List<int> list = new List<int>();
+            try
+            {
+                foreach (var item in Hotel.pokojeHotelowe)
                 {
-                    Hotel.pokojeHotelowe.Enqueue(new Pokoj(numerek, nazwisko, Stan.zarezerwowany));
+                    if (item.StanPokoju == Stan.wolny)
+                    {
+                        list.Add(item.NumerPokoju);
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                int fisrt = list.FirstOrDefault();
+                Console.WriteLine(fisrt);
             }
         }
 
@@ -106,35 +117,45 @@ namespace Exam_Hotel
 
         public override void WyszukajWolnyPokoj()
         {
-            new Pokoj().Zarezerwuj(NumerPokoju, Nazwisko);
+            new Pokoj().Wydaj();
         }
 
         public override void ZarezerwujPokoj()
         {
-            throw new NotImplementedException();
+            new Pokoj().Zarezerwuj(NumerPokoju, Nazwisko);
         }
     }
 
     class Hotel
     {
-        public static Queue<Pokoj> pokojeHotelowe { get; set; }
+        public static Queue<Pokoj> pokojeHotelowe;
 
         static Hotel()
         {
             pokojeHotelowe = new Queue<Pokoj>();
+            pokojeHotelowe.Enqueue(new Pokoj() { NumerPokoju = 1, Nazwisko = null, StanPokoju = Pokoj.Stan.wolny });
+            pokojeHotelowe.Enqueue(new Pokoj() { NumerPokoju = 2, Nazwisko = null, StanPokoju = Pokoj.Stan.wolny });
+            pokojeHotelowe.Enqueue(new Pokoj() { NumerPokoju = 3, Nazwisko = null, StanPokoju = Pokoj.Stan.wolny });
+            pokojeHotelowe.Enqueue(new Pokoj() { NumerPokoju = 4, Nazwisko = null, StanPokoju = Pokoj.Stan.wolny });
+            pokojeHotelowe.Enqueue(new Pokoj() { NumerPokoju = 5, Nazwisko = null, StanPokoju = Pokoj.Stan.wolny });
+            pokojeHotelowe.Enqueue(new Pokoj() { NumerPokoju = 6, Nazwisko = null, StanPokoju = Pokoj.Stan.wolny });
+            pokojeHotelowe.Enqueue(new Pokoj() { NumerPokoju = 7, Nazwisko = null, StanPokoju = Pokoj.Stan.wolny });
+            pokojeHotelowe.Enqueue(new Pokoj() { NumerPokoju = 8, Nazwisko = null, StanPokoju = Pokoj.Stan.wolny });
+            pokojeHotelowe.Enqueue(new Pokoj() { NumerPokoju = 9, Nazwisko = null, StanPokoju = Pokoj.Stan.wolny });
+            pokojeHotelowe.Enqueue(new Pokoj() { NumerPokoju = 10, Nazwisko = null, StanPokoju = Pokoj.Stan.wolny });
         }
     }
 
     class DyrektorHotelu : Pokoj
     {
-        void DodajPokoj(int numerek, string nazwisko)
+        void DodajPokoj(int numerek)
         {
-            Zarezerwuj(numerek, nazwisko);
+            Hotel.pokojeHotelowe.Enqueue(new Pokoj() { NumerPokoju = numerek, Nazwisko = null, StanPokoju = Stan.wolny });
         }
 
-        void WycofajPokoj(int numerek, string nazwisko)
+        void WycofajPokoj(int numerek)
         {
-            Wycofaj(numerek, nazwisko);
+            Wycofaj(numerek);
         }
     }
 
@@ -151,12 +172,12 @@ namespace Exam_Hotel
     
         public override void WyszukajWolnyPokoj()
         {
-            new Pokoj().Zarezerwuj(NumerPokoju, Nazwisko);
+            new Pokoj().Wydaj();
         }
 
         public override void ZarezerwujPokoj()
         {
-            throw new NotImplementedException();
+            new Pokoj().Zarezerwuj(NumerPokoju, Nazwisko);
         }
     }
 }
