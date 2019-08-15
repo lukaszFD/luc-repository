@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\lukasz.dejko\Documents\GitHub\luc-repository\WPF_ParkingApp\Parking\obj\Debug\
+C:\Users\luc\Documents\GitHub\luc-repository\WPF_ParkingApp\Parking\obj\Debug\
 Parking
 none
 false
 DEBUG;TRACE
-C:\Users\lukasz.dejko\Documents\GitHub\luc-repository\WPF_ParkingApp\Parking\App.xaml
+C:\Users\luc\Documents\GitHub\luc-repository\WPF_ParkingApp\Parking\App.xaml
 5-2072053911
 21806762141
-31-145528903
-22-734287377
+32-1640534754
+22-314531968
 MainWindow.xaml;Pages\Admin.xaml;Pages\Reservation_Add.xaml;Pages\Reservation_Delete.xaml;Pages\Settings.xaml;
 
-False
+True
 

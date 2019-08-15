@@ -1,0 +1,7 @@
+C:\Users\luc\Documents\GitHub\luc-repository\IPI_PAN_PROGRAMOWANIE _NA_PLATFORMIE_NET\New_Tech_CS\Egzamin\Egzamin\bin\Debug\Egzamin.exe.config
+C:\Users\luc\Documents\GitHub\luc-repository\IPI_PAN_PROGRAMOWANIE _NA_PLATFORMIE_NET\New_Tech_CS\Egzamin\Egzamin\bin\Debug\Egzamin.exe
+C:\Users\luc\Documents\GitHub\luc-repository\IPI_PAN_PROGRAMOWANIE _NA_PLATFORMIE_NET\New_Tech_CS\Egzamin\Egzamin\bin\Debug\Egzamin.pdb
+C:\Users\luc\Documents\GitHub\luc-repository\IPI_PAN_PROGRAMOWANIE _NA_PLATFORMIE_NET\New_Tech_CS\Egzamin\Egzamin\obj\Debug\Egzamin.csprojAssemblyReference.cache
+C:\Users\luc\Documents\GitHub\luc-repository\IPI_PAN_PROGRAMOWANIE _NA_PLATFORMIE_NET\New_Tech_CS\Egzamin\Egzamin\obj\Debug\Egzamin.csproj.CoreCompileInputs.cache
+C:\Users\luc\Documents\GitHub\luc-repository\IPI_PAN_PROGRAMOWANIE _NA_PLATFORMIE_NET\New_Tech_CS\Egzamin\Egzamin\obj\Debug\Egzamin.exe
+C:\Users\luc\Documents\GitHub\luc-repository\IPI_PAN_PROGRAMOWANIE _NA_PLATFORMIE_NET\New_Tech_CS\Egzamin\Egzamin\obj\Debug\Egzamin.pdb

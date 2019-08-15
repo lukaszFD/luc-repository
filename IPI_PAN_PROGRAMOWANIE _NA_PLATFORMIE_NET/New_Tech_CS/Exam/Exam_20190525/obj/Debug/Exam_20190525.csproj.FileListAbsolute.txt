@@ -1,0 +1,7 @@
+C:\Users\luc\Documents\GitHub\luc-repository\IPI_PAN_PROGRAMOWANIE _NA_PLATFORMIE_NET\New_Tech_CS\Exam\Exam_20190525\obj\Debug\Exam_20190525.csprojAssemblyReference.cache
+C:\Users\luc\Documents\GitHub\luc-repository\IPI_PAN_PROGRAMOWANIE _NA_PLATFORMIE_NET\New_Tech_CS\Exam\Exam_20190525\obj\Debug\Exam_20190525.csproj.CoreCompileInputs.cache
+C:\Users\luc\Documents\GitHub\luc-repository\IPI_PAN_PROGRAMOWANIE _NA_PLATFORMIE_NET\New_Tech_CS\Exam\Exam_20190525\bin\Debug\Exam_20190525.exe.config
+C:\Users\luc\Documents\GitHub\luc-repository\IPI_PAN_PROGRAMOWANIE _NA_PLATFORMIE_NET\New_Tech_CS\Exam\Exam_20190525\bin\Debug\Exam_20190525.exe
+C:\Users\luc\Documents\GitHub\luc-repository\IPI_PAN_PROGRAMOWANIE _NA_PLATFORMIE_NET\New_Tech_CS\Exam\Exam_20190525\bin\Debug\Exam_20190525.pdb
+C:\Users\luc\Documents\GitHub\luc-repository\IPI_PAN_PROGRAMOWANIE _NA_PLATFORMIE_NET\New_Tech_CS\Exam\Exam_20190525\obj\Debug\Exam_20190525.exe
+C:\Users\luc\Documents\GitHub\luc-repository\IPI_PAN_PROGRAMOWANIE _NA_PLATFORMIE_NET\New_Tech_CS\Exam\Exam_20190525\obj\Debug\Exam_20190525.pdb

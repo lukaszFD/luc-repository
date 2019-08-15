@@ -33,11 +33,11 @@ namespace Exam_Hotel
         abstract public void ZarezerwujPokoj();
     }
 
-    class Pokoj : IEquatable<Pokoj>
+    internal class Pokoj : IEquatable<Pokoj>
     {
-        public bool Equals(Pokoj other)
+        public bool Equals(Pokoj p)
         {
-            return (other.NumerPokoju == this.NumerPokoju && other.Nazwisko == this.Nazwisko && other.StanPokoju == Stan.wolny);
+            return (p.NumerPokoju == this.NumerPokoju && p.Nazwisko == this.Nazwisko && p.StanPokoju == Stan.wolny);
         }
         public override bool Equals(object obj)
         {

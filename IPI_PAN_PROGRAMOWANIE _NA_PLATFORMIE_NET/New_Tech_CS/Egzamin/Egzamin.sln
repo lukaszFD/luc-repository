@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.352
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Egzamin", "Egzamin\Egzamin.csproj", "{7EF245D8-1B05-4692-8F16-274D0102A3A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "moj_egza", "moj_egza\moj_egza.csproj", "{C2946FD0-F1CD-4470-B929-F287B5136FFC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "test_egz", "test_egz\test_egz.csproj", "{773B3ABF-C5F4-45D1-9B69-CD2C2BCC7E88}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7EF245D8-1B05-4692-8F16-274D0102A3A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EF245D8-1B05-4692-8F16-274D0102A3A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EF245D8-1B05-4692-8F16-274D0102A3A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EF245D8-1B05-4692-8F16-274D0102A3A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2946FD0-F1CD-4470-B929-F287B5136FFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2946FD0-F1CD-4470-B929-F287B5136FFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2946FD0-F1CD-4470-B929-F287B5136FFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2946FD0-F1CD-4470-B929-F287B5136FFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{773B3ABF-C5F4-45D1-9B69-CD2C2BCC7E88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{773B3ABF-C5F4-45D1-9B69-CD2C2BCC7E88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{773B3ABF-C5F4-45D1-9B69-CD2C2BCC7E88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{773B3ABF-C5F4-45D1-9B69-CD2C2BCC7E88}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A8BABB92-EE40-4922-BCDE-4267C4DD05F3}
+	EndGlobalSection
+EndGlobal
