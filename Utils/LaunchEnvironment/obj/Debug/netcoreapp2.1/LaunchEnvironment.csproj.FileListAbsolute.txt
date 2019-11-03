@@ -1,0 +1,13 @@
+C:\Users\Luc\Documents\GitHub\luc-repository\Utils\LaunchEnvironment\bin\Debug\netcoreapp2.1\LaunchEnvironment.deps.json
+C:\Users\Luc\Documents\GitHub\luc-repository\Utils\LaunchEnvironment\bin\Debug\netcoreapp2.1\LaunchEnvironment.runtimeconfig.json
+C:\Users\Luc\Documents\GitHub\luc-repository\Utils\LaunchEnvironment\bin\Debug\netcoreapp2.1\LaunchEnvironment.runtimeconfig.dev.json
+C:\Users\Luc\Documents\GitHub\luc-repository\Utils\LaunchEnvironment\bin\Debug\netcoreapp2.1\LaunchEnvironment.dll
+C:\Users\Luc\Documents\GitHub\luc-repository\Utils\LaunchEnvironment\bin\Debug\netcoreapp2.1\LaunchEnvironment.pdb
+C:\Users\Luc\Documents\GitHub\luc-repository\Utils\LaunchEnvironment\bin\Debug\netcoreapp2.1\Utils.dll
+C:\Users\Luc\Documents\GitHub\luc-repository\Utils\LaunchEnvironment\bin\Debug\netcoreapp2.1\Utils.pdb
+C:\Users\Luc\Documents\GitHub\luc-repository\Utils\LaunchEnvironment\obj\Debug\netcoreapp2.1\LaunchEnvironment.csprojAssemblyReference.cache
+C:\Users\Luc\Documents\GitHub\luc-repository\Utils\LaunchEnvironment\obj\Debug\netcoreapp2.1\LaunchEnvironment.AssemblyInfoInputs.cache
+C:\Users\Luc\Documents\GitHub\luc-repository\Utils\LaunchEnvironment\obj\Debug\netcoreapp2.1\LaunchEnvironment.AssemblyInfo.cs
+C:\Users\Luc\Documents\GitHub\luc-repository\Utils\LaunchEnvironment\obj\Debug\netcoreapp2.1\LaunchEnvironment.csproj.CopyComplete
+C:\Users\Luc\Documents\GitHub\luc-repository\Utils\LaunchEnvironment\obj\Debug\netcoreapp2.1\LaunchEnvironment.dll
+C:\Users\Luc\Documents\GitHub\luc-repository\Utils\LaunchEnvironment\obj\Debug\netcoreapp2.1\LaunchEnvironment.pdb

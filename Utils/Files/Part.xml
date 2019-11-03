@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<ArrayOfPart xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Part>
+    <PartName>crank arm</PartName>
+    <PartId>1234</PartId>
+  </Part>
+  <Part>
+    <PartName>chain ring</PartName>
+    <PartId>1334</PartId>
+  </Part>
+  <Part>
+    <PartName>regular seat</PartName>
+    <PartId>1434</PartId>
+  </Part>
+  <Part>
+    <PartName>banana seat</PartName>
+    <PartId>1444</PartId>
+  </Part>
+  <Part>
+    <PartName>cassette</PartName>
+    <PartId>1534</PartId>
+  </Part>
+  <Part>
+    <PartName>shift lever</PartName>
+    <PartId>1634</PartId>
+  </Part>
+</ArrayOfPart>

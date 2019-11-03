@@ -1,0 +1,8 @@
+C:\Users\Luc\Documents\GitHub\luc-repository\Utils\Utils\bin\Debug\netcoreapp2.1\Utils.deps.json
+C:\Users\Luc\Documents\GitHub\luc-repository\Utils\Utils\bin\Debug\netcoreapp2.1\Utils.dll
+C:\Users\Luc\Documents\GitHub\luc-repository\Utils\Utils\bin\Debug\netcoreapp2.1\Utils.pdb
+C:\Users\Luc\Documents\GitHub\luc-repository\Utils\Utils\obj\Debug\netcoreapp2.1\Utils.csprojAssemblyReference.cache
+C:\Users\Luc\Documents\GitHub\luc-repository\Utils\Utils\obj\Debug\netcoreapp2.1\Utils.AssemblyInfoInputs.cache
+C:\Users\Luc\Documents\GitHub\luc-repository\Utils\Utils\obj\Debug\netcoreapp2.1\Utils.AssemblyInfo.cs
+C:\Users\Luc\Documents\GitHub\luc-repository\Utils\Utils\obj\Debug\netcoreapp2.1\Utils.dll
+C:\Users\Luc\Documents\GitHub\luc-repository\Utils\Utils\obj\Debug\netcoreapp2.1\Utils.pdb
